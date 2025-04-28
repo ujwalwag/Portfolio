@@ -1,0 +1,292 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h2, h3 {
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Padding */
+section {
+    padding: 60px 0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Skill Card Styles */
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgb(255, 255, 255);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    color: #333;
+}
+
+.skill-title {
+    margin-top: auto;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Card Styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgb(255, 255, 255);
+}
+
+.card:active {
+    transform: translateY(2px);
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Links Inside Cards */
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* Logo Container */
+.logo-container {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 175px;
+    height: 175px;
+}
+
+.logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Button Customization */
+.btn-custom {
+    background-color: black !important;
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #333 !important;
+    text-decoration: none;
+}
+
+.btn-custom:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+/* Anchor Styles */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skill-card {
+        width: 100%;
+    }
+    .card-body {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Timeline Styles */
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-item .card-body {
+    flex-grow: 1;
+}
+
+.timeline-item .card-body p {
+    margin-top: auto;
+}
+
+/* Logo Styling */
+.timeline-logo {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+}
+
+/* Fade-in Effect */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.skill-icon {
+    font-size: 40px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.skill-card {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: translate 0.3s;
+}
+
+.skill-card:hover {
+    transform: translate(-5px);
+    box-shadow: 0 4px 15px rgb(255, 255, 255);
+}
+
+.skill-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.skill-card img {
+    max-width: 100px;
+    margin-bottom: 15px;
+}
+
+.row {
+    justify-content: center;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107;
+}
