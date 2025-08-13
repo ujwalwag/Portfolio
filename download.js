@@ -1,5 +1,5 @@
 document.getElementById('downloadForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Stop the form from submitting normally
+    event.preventDefault(); 
 
     const email = document.getElementById('emailInput').value;
     const industry = document.getElementById('industrySelect').value;
@@ -14,7 +14,7 @@ document.getElementById('downloadForm').addEventListener('submit', function(even
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Create a temporary link to trigger the download
+            
             const link = document.createElement('a');
             link.href = data.resumeUrl;
             link.download = data.resumeUrl.split('/').pop();
@@ -22,7 +22,7 @@ document.getElementById('downloadForm').addEventListener('submit', function(even
             link.click();
             document.body.removeChild(link);
 
-            // Hide the modal
+          
             const myModal = bootstrap.Modal.getInstance(document.getElementById('resumeModal'));
             myModal.hide();
 
