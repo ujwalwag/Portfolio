@@ -84,36 +84,39 @@
     <h2 class="text-center display-4 mb-4">Projects</h2>
     <div class="container mt-5">
         <!-- Project 1 -->
-        <div class="card mb-3">
-            <div class="card-header">Unmanned Ground Vehicle for reconnaissance and soil testing in farming applications</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> Designed and developed an autonomous Unmanned Ground Vehicle (UGV) for agricultural reconnaissance. The UGV collects real-time data on soil health, temperature, and humidity, assisting farmers in precision farming.</p>
-                <p><strong>Technologies:</strong> RaspberryPi, Arduino, NRF, NPK Sensors, OpenCV.</p>
-                <p><strong>Objective:</strong> Perform real-time soil health analysis and reconnaissance.</p>
-                <button class="btn btn-custom" onclick="toggleDetails(0)">View Details</button>
-                <div class="card-details" id="details-0">
-                    <h4>Expandable Content:</h4>
-                    <ul>
-                        <li>Designed and developed an autonomous UGV for soil data collection.     </li>
-                        <li>Integrated sensors (NPK, temperature, humidity) for real-time analysis.</li>
-                        <li>Transmitted data to a cloud-based dashboard for visualization.         </li>
-                        <a href="https://github.com/ujwalwag/UGVRECON" class="btn btn-custom" target="_blank">View on GitHub</a>
-                    </ul>
-                </div>
-            </div>
+<div class="card mb-3">
+    <div class="card-header">Autonomous UGV for Precision Agriculture with Cloud-Based IoT Platform</div>
+    <div class="card-body">
+        <p><strong>Description:</strong> Developed an end-to-end autonomous system for precision agriculture, combining an Unmanned Ground Vehicle (UGV) with a scalable AWS IoT platform. The UGV autonomously collects real-time soil and environmental data, which is securely transmitted to the cloud for real-time analysis, storage, and automated processing.</p>
+        
+        <button class="btn btn-custom" onclick="toggleDetails(0)">View Details</button>
+        <div class="card-details" id="details-0">
+            
+            <ul>
+                <p><strong>Technologies:</strong> Raspberry Pi, Arduino, ESP32, MQTT, NRF, NPK Sensors, OpenCV, AWS IoT Core, AWS Lambda, Amazon DynamoDB, AWS IoT Analytics.</p>
+                <p><strong>Objective:</strong> Design and implement a complete autonomous system for environmental monitoring, leveraging secure device-to-cloud communication and advanced data analytics to support precision farming.</p>
+                <li>Designed and built an autonomous Unmanned Ground Vehicle (UGV) for soil data collection and reconnaissance.</li>
+                <li>Integrated multiple sensors (NPK, temperature, humidity) for real-time data acquisition and utilized OpenCV for visual analysis.</li>
+                <li>Configured and secured **AWS IoT Core** using **MQTT**, certificates, and policies to enable reliable data transmission from the UGV to the cloud.</li>
+                <li>Engineered an event-driven data pipeline using **AWS Lambda** and **IoT rule engines** to process and store sensor data in **Amazon DynamoDB**.</li>
+                <li>Performed in-depth data analysis using **AWS IoT Analytics** to derive insights from the collected sensor data.</li>
+                <li>Created a real-time, cloud-based dashboard for monitoring UGV status, sensor readings, and automated event triggers.</li>
+                <a href="https://github.com/ujwalwag/UGVRECON" class="btn btn-custom" target="_blank">View on GitHub</a>
+            </ul>
         </div>
+    </div>
+</div>
 
         <!-- Project 2 -->
         <div class="card mb-3">
             <div class="card-header">Leaf Disease Detection System</div>
             <div class="card-body">
                 <p><strong>Description:</strong> A deep learning-based system that detects and classifies plant leaf diseases using images. The model was trained on the PlantVillage dataset and deployed on an autonomous rover for smart farming applications.</p>
-                <p><strong>Technologies:</strong> Python, PyTorch, OpenCV, AlexNet, EfficientNet, MobileNet, ResNet, InceptionV3, Vision Transformer..</p>
-                <p><strong>Objective:</strong> Automate disease detection using CNN/Transformer models.</p>
                 <button class="btn btn-custom" onclick="toggleDetails(1)">View Details</button>
                 <div class="card-details" id="details-1">
-                    <h4>Expandable Content:</h4>
-                    <ul>
+                    
+                    <ul><p><strong>Technologies:</strong> Python, PyTorch, OpenCV, AlexNet, EfficientNet, MobileNet, ResNet, InceptionV3, Vision Transformer..</p>
+                <p><strong>Objective:</strong> Automate disease detection using CNN/Transformer models.</p>
                         <li>Trained a CNN using transfer learning on PlantVillage dataset.           </li>
                         <li>Implemented real-time leaf classification and disease prediction.        </li>
                         <li>Deployed the model on an autonomous rover for smart farming applications.</li>
@@ -128,12 +131,13 @@
             <div class="card-header">Multimodal Movie Genre Classification Website</div>
             <div class="card-body">
                 <p><strong>Description:</strong> Developed a web application that predicts movie genres using both text descriptions and poster images. The system utilizes deep learning models to extract and analyze multimodal features for classification.</p>
-                <p><strong>Technologies:</strong> Python, PyTorch, Flask, React.</p>
-                <p><strong>Objective:</strong> Build a website to predict movie genres using multimodal data.</p>
+                
                 <button class="btn btn-custom" onclick="toggleDetails(2)">View Details</button>
                 <div class="card-details" id="details-2">
-                    <h4>Expandable Content:</h4>
+                    
                     <ul>
+                        <p><strong>Technologies:</strong> Python, PyTorch, Flask, React.</p>
+                <p><strong>Objective:</strong> Build a website to predict movie genres using multimodal data.</p>
                         <li>Implemented CNN and NLP models for poster and text analysis.           </li>
                         <li>Developed a Flask backend and React frontend for real-time predictions.</li>
                         <li>Optimized model performance using ensemble learning techniques.        </li>
@@ -148,52 +152,52 @@
             <div class="card-header">Digital Twin of an Automated Farm</div>
             <div class="card-body">
                 <p><strong>Description:</strong> Built a virtual simulation of a fully automated farm using CoppeliaSim and ROS. The environment includes multiple robots: a TurtleBot for fetching items, a robotic arm for loading/unloading, and a UGV for field operations such as seeding, sowing, and weeding.</p>
-                <p><strong>Technologies:</strong> ROS, CoppeliaSim, Python, Gazebo, URDF.</p>
-                <p><strong>Objective:</strong> Model an autonomous farm with robotic operations.</p>
+                
                 <button class="btn btn-custom" onclick="toggleDetails(3)">View Details</button>
                 <div class="card-details" id="details-3">
-                    <h4>Expandable Content:</h4>
-                    <ul>
-                        <li>Built an interactive environment simulating automated farming tasks.            </li>
+                   
+                    <ul><p><strong>Technologies:</strong> ROS, CoppeliaSim, Python, Gazebo, URDF.</p>
+                <p><strong>Objective:</strong> Model an autonomous farm with robotic operations.</p>
+                        <li>Built an interactive environment simulating automated farming tasks. </li>
                         <li>Simulated a UGV and robotic arm for farm operations like seeding and harvesting.</li>
-                        <li>Integrated navigation algorithms to optimize farming routes.                    </li>
+                        <li>Integrated navigation algorithms to optimize farming routes. </li>
                         <a href="https://github.com/ujwalwag/DigitalFarm" class="btn btn-custom" target="_blank">View on GitHub</a>
                     </ul>
                 </div>
             </div>
         </div>
 
-<div class="card mb-3">
-    <div class="card-header">Crop Yield Prediction and Optimization for Major Indian Crops</div>
-    <div class="card-body">
-        <p><strong>Description:</strong> A comprehensive data analysis and machine learning project aimed at predicting crop yields at a regional level in India and identifying key factors influencing these yields for enhanced agricultural planning and resource allocation.</p>
-        <p><strong>Technologies:</strong> Python, Machine Learning (Scikit-learn, TensorFlow/Keras), Pandas, NumPy, Matplotlib, Seaborn, SQL, Apache Airflow, Tableau/Power BI/Dash, Web Scraping/APIs.</p>
-        <p><strong>Objective:</strong> Predict future crop yields, analyze the impact of environmental and agricultural practices on yield, and provide actionable insights through an interactive dashboard.</p>
-        <button class="btn btn-custom" onclick="toggleDetails(0)">View Details</button>
-        <div class="card-details" id="details-0">
-            <h4>Expandable Content:</h4>
-            <ul>
-                <li>Developed robust data pipelines for collecting, cleaning, and transforming historical crop yield, weather, soil, and irrigation data from diverse sources.</li>
-                <li>Conducted in-depth Exploratory Data Analysis (EDA) to uncover trends, correlations, and spatial patterns in crop yields across different regions and over time.</li>
-                <li>Built and evaluated various machine learning models (e.g., Random Forest Regressor, Gradient Boosting Machines, LSTM for time series) to accurately predict crop yields.</li>
-                <li>Created an interactive dashboard visualizing predicted yields, highlighting key influencing factors (e.g., rainfall, temperature, soil quality), and comparing actual vs. predicted outcomes.</li>
-                <a href="https://github.com/ujwalwag/CropRecommender" class="btn btn-custom" target="_blank">View on GitHub</a>
-                </ul>
+        <!-- Project 5 -->
+        <div class="card mb-3">
+            <div class="card-header">Crop Yield Prediction and Optimization for Major Indian Crops</div>
+            <div class="card-body">
+                <p><strong>Description:</strong> A comprehensive data analysis and machine learning project aimed at predicting crop yields at a regional level in India and identifying key factors influencing these yields for enhanced agricultural planning and resource allocation.</p>
+               
+                <button class="btn btn-custom" onclick="toggleDetails(4)">View Details</button>
+                <div class="card-details" id="details-4">
+                    
+                    <ul><p><strong>Technologies:</strong> Python, Machine Learning (Scikit-learn, TensorFlow/Keras), Pandas, NumPy, Matplotlib, Seaborn, SQL, Apache Airflow, Tableau/Power BI/Dash, Web Scraping/APIs.</p>
+                <p><strong>Objective:</strong> redict future crop yields, analyze the impact of environmental and agricultural practices on yield, and provide actionable insights through an interactive dashboard.</p>
+                        <li>Developed robust data pipelines for collecting, cleaning, and transforming historical crop yield, weather, soil, and irrigation data from diverse sources.</li>
+                        <li>Built and evaluated various machine learning models to accurately predict crop yields.                  </li>
+                        <li>Created an interactive dashboard visualizing predicted yields, highlighting key influencing factors, and comparing actual vs. predicted outcomes.</li>
+                        <a href="https://github.com/ujwalwag/CropRecommender" class="btn btn-custom" target="_blank">View on GitHub</a>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
         <!-- Project 6 -->
         <div class="card mb-3">
             <div class="card-header">Azure DevOps Project End-to-End</div>
             <div class="card-body">
                 <p><strong>Description:</strong> Implemented a full-scale DevOps pipeline using Azure services. The project includes CI/CD automation, containerization, infrastructure as code (IaC), and deployment monitoring.</p>
-                <p><strong>Technologies:</strong> Azure DevOps, Docker, Kubernetes, CI/CD.</p>
-                <p><strong>Objective:</strong> Automate software deployment and monitoring.</p>
+                
                 <button class="btn btn-custom" onclick="toggleDetails(5)">View Details</button>
                 <div class="card-details" id="details-5">
-                    <h4>Expandable Content:</h4>
-                    <ul>
+                  
+                    <ul><p><strong>Technologies:</strong> Azure DevOps, Docker, Kubernetes, CI/CD.</p>
+                <p><strong>Objective:</strong> Automate software deployment and monitoring.</p>
                         <li>Set up end-to-end CI/CD pipelines for automated builds and deployments.         </li>
                         <li>Integrated Docker and Kubernetes for scalable microservices.                    </li>
                         <li>Implemented monitoring and logging using Azure Monitor and Application Insights.</li>
@@ -204,27 +208,7 @@
         </div>
         
 
-        <!-- Project 7 -->
-        <div class="card mb-3">
-            <div class="card-header">IoT Device-to-Cloud Communication with AWS IoT Core</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> Developed an IoT system to enable real-time communication between an embedded device and AWS IoT Core using MQTT. Implemented secure data transmission, cloud storage, and automated processing using AWS services. Designed a dashboard for monitoring sensor data and triggering actions based on IoT events.</p>
-                <p><strong>Technologies:</strong> AWS IoT Core, MQTT, AWS Lambda, Amazon DynamoDB, AWS IoT Analytics, ESP32, Raspberry Pi, Arduino.</p>
-                <p><strong>Objective:</strong> Enable secure and efficient IoT device communication with AWS Cloud, facilitating real-time data monitoring, analysis, and automated event-driven actions.</p>
-                <button class="btn btn-custom" onclick="toggleDetails(6)">View Details</button>
-                <div class="card-details" id="details-6">
-                    <h4>Expandable Content:</h4>
-                    <ul>
-                        <li>Configured AWS IoT Core for secure device connectivity using MQTT.</li>
-                        <li>Implemented AWS IoT security with certificates, policies, and authentication.</li>
-                        <li>Stored and analyzed sensor data using AWS DynamoDB and IoT Analytics.</li>
-                        <li>Created a cloud-based dashboard for real-time monitoring of IoT devices.</li>
-                        <li>Automated event-driven processing using AWS Lambda and IoT rule engines.</li>
-                        <a href="https://github.com/ujwalwag/AWSIoT" class="btn btn-custom" target="_blank">View on GitHub</a>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    
         
     </div>
 </section>
