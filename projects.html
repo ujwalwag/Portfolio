@@ -1,285 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ujwal Waghray | Projects</title>
 
-  gtag('config', 'G-951E7GVLKD');
-</script>
-     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets\gptdp.png" sizes="32x32">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujwal Waghray | Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Custom button style */
-        
-        .btn-custom {
-            background-color: black !important;
-            color: white !important;
-            border: none;
-        }
-        
-        .btn-custom:hover {
-            background-color: none !important;
-            text-decoration: none;
-        }
-        
-        .btn-center {
-            display: block;
-            margin: 0 auto;
-        }
-        
-        .card-details {
-            display: none;
-            padding: 0px;
-            background-color: #ffffff;
-            border: 0px solid #ffffff;
-            margin-top: 0px;
-        }
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
+  </script>
 
-        .card-header {
-            font-weight: bold;
-             background-color: #ffffff;
-        }
-        a {
-            text-decoration: none; 
-        }
-        
-        a:hover {
-            text-decoration: none; 
-        }
-        
-    </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Ujwal Waghray — Projects" />
+  <meta property="og:description" content="Robotics, AI, and systems projects in a clean, minimal theme." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/dp1(1)(1).jpg" />
+  <meta property="og:url" content="https://ujwalwaghray.dev/projects.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Minimal black & white + blueprint accents -->
+  <style>
+    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; --chip:#eef6ff; }
+    html,body{height:100%}
+    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--ink); text-decoration:none}
+
+    /* sticky, translucent navbar */
+    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
+    .navbar-brand{font-weight:800}
+    .navbar-light .nav-link{color:#111827}
+    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
+
+    /* decorative blueprint grid */
+    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
+    .grid-bg svg{width:100%; height:100%; display:block}
+
+    /* project cards */
+    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff; transition:transform .18s ease, box-shadow .18s ease}
+    .card-clean:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.06)}
+
+    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
+    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.85rem; border-radius:999px; padding:.35rem .6rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
+
+    /* details/summary */
+    details summary{list-style:none; cursor:pointer; font-weight:700; display:inline-flex; align-items:center; gap:.5rem}
+    details summary::marker{display:none}
+    details[open] summary .twist{transform:rotate(90deg)}
+    .twist{display:inline-block; transition:transform .15s ease}
+
+    .project-links a{border:1px solid var(--ink); border-radius:12px; padding:.5rem .8rem; display:inline-block}
+    .project-links a + a{margin-left:.5rem}
+
+    footer{border-top:1px solid var(--line); color:var(--muted)}
+  </style>
 </head>
 <body>
+  <!-- blueprint background -->
+  <div class="grid-bg" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
+        </pattern>
+        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
+          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+      <rect width="100%" height="100%" fill="url(#gridBold)" />
+    </svg>
+  </div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="education.html">Education</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="skills.html">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="experience.html">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-<!-- Projects Section -->
-<section id="projects" class="container py-5">
-    <h2 class="text-center display-4 mb-4">Projects</h2>
-    <div class="container mt-5">
-        
-        <!-- Project 1 -->
-<div class="card mb-3">
-    <div class="card-header">IoT-based UGV Robot for Remote Soil Health Sensing</div>
-    <div class="card-body">
-        <p><strong>Description:</strong> Developed an end-to-end autonomous system for precision agriculture using an Unmanned Ground Vehicle (UGV). The UGV collects real-time soil, environmental, and GPS data, which is securely transmitted to a local base station for real-time analysis and local data storage.</p>
-        
-        <button class="btn btn-custom" onclick="toggleDetails(0)">View Details</button>
-        <div class="card-details" id="details-0">
-            
-            <ul><p></p>
-                <p><strong>Technologies:</strong> Raspberry Pi, Arduino Nano, NRF24, Matplotlib, GPS Module, NPK Sensors, DHT11 Sensor, Soil Moisture Sensors, Freenove Software.</p>
-                <p><strong>Objective:</strong> Design and implement a complete autonomous system for environmental monitoring, leveraging secure device-to-base station communication and local data analysis to support precision farming.</p>
-                <li>Designed and built an autonomous Unmanned Ground Vehicle (UGV) for soil data collection and reconnaissance.</li>
-                <li>Integrated multiple sensors (NPK, temperature, humidity) for real-time data acquisition and a GPS module for location tracking.</li>
-                <li>Configured an NRF24 wireless network to enable reliable data transmission from the UGV to the Base Station.</li>
-                <li>Engineered a real-time data pipeline using Python to process, visualize (Matplotlib), and store sensor data in CSV files.</li>
-                <li>Created a real-time, local dashboard for monitoring UGV status, sensor readings, and location data.</li>
-                <p></p>
-                
-            </ul>
-            <div class="text-center mt-3"><a href="https://github.com/ujwalwag/UGVRECON" class="btn btn-custom" target="_blank">View on GitHub</a></div>
-        </div>
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
-</div>
+  </nav>
 
-        <!-- Project 2 -->
-        <div class="card mb-3">
-            <div class="card-header">Leaf Disease Detection System</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> A deep learning-based system that detects and classifies plant leaf diseases using images. The model was trained on the PlantVillage dataset and deployed on an autonomous rover for smart farming applications.</p>
-                <button class="btn btn-custom" onclick="toggleDetails(1)">View Details</button>
-                <div class="card-details" id="details-1">
-                    
-                    <ul>
-                        <p></p> 
-                        <p><strong>Technologies:</strong> Python, PyTorch, OpenCV, AlexNet, EfficientNet, MobileNet, ResNet, InceptionV3, Vision Transformer..</p>
-                <p><strong>Objective:</strong> Automate disease detection using CNN/Transformer models.</p>
-                        <li>Trained a CNN using transfer learning on PlantVillage dataset.           </li>
-                        <li>Implemented real-time leaf classification and disease prediction.        </li>
-                        <li>Deployed the model on an autonomous rover for smart farming applications.</li>
-                        <p></p>
-                        
-                    </ul>
-                    <div class="text-center mt-3"><a href="https://github.com/ujwalwag/LeafDiseaseDetectionSys" class="btn btn-custom" target="_blank">View on GitHub</a></div>
+  <!-- Projects -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="text-center display-5 mb-4">Projects</h2>
+
+      <div class="row g-3">
+        <!-- Project 1: UGV Soil Health -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">IoT‑based UGV Robot for Remote Soil Health Sensing</h5>
+                <p class="mb-2" style="color:var(--muted)">End‑to‑end autonomous system for precision agriculture: UGV collects soil/env/GPS data and streams to a local base for real‑time analysis and storage.</p>
+                <div class="chips">
+                  <span class="chip">Raspberry Pi</span>
+                  <span class="chip">Arduino Nano</span>
+                  <span class="chip">NRF24</span>
+                  <span class="chip">GPS</span>
+                  <span class="chip">NPK/DHT11</span>
+                  <span class="chip">Matplotlib</span>
                 </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/UGVRECON" target="_blank" rel="noopener">Code</a>
+              </div>
             </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>Designed a UGV for soil data collection and reconnaissance.</li>
+                <li>Integrated NPK, temperature, and humidity sensors with GPS tracking.</li>
+                <li>Configured NRF24 wireless link from UGV to base station.</li>
+                <li>Built a Python pipeline to process, visualize, and store CSV sensor streams.</li>
+                <li>Local dashboard for UGV status, sensor readings, and location.</li>
+              </ul>
+            </details>
+          </article>
         </div>
 
-        <!-- Project 3 -->
-        <div class="card mb-3">
-            <div class="card-header">Multimodal Movie Genre Classification Website</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> Developed a web application that predicts movie genres using both text descriptions and poster images. The system utilizes deep learning models to extract and analyze multimodal features for classification.</p>
-                ttps://multimodalmoviegenreclassificationsys.onrender.com
-                <button class="btn btn-custom" onclick="toggleDetails(2)">View Details</button>
-                <div class="card-details" id="details-2">
-                    
-                    <ul><p></p> 
-                        <p><strong>Technologies:</strong> Python, PyTorch, Flask, React.</p>
-                <p><strong>Objective:</strong> Build a website to predict movie genres using multimodal data.</p>
-                        <li>Implemented CNN and NLP models for poster and text analysis.           </li>
-                        <li>Developed a Flask backend and React frontend for real-time predictions.</li>
-                        <li>Optimized model performance using ensemble learning techniques.        </li>
-                        <p></p>
-                        
-                    </ul>
-                    <div class="text-center mt-3"><a href="https://github.com/ujwalwag/MultiModalMovieGenreClassificationSys" class="btn btn-custom" target="_blank">View on GitHub</a></div>
+        <!-- Project 2: Leaf Disease Detection -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Leaf Disease Detection System</h5>
+                <p class="mb-2" style="color:var(--muted)">DL system to detect and classify plant leaf diseases; trained on PlantVillage and deployed on an autonomous rover.</p>
+                <div class="chips">
+                  <span class="chip">PyTorch</span>
+                  <span class="chip">OpenCV</span>
+                  <span class="chip">ResNet</span>
+                  <span class="chip">EfficientNet</span>
+                  <span class="chip">ViT</span>
+                  <span class="chip">Flask</span>
+                  <span class="chip">Tkinter</span>
                 </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/LeafDiseaseDetectionSys" target="_blank" rel="noopener">Code</a>
+              </div>
             </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>Transfer learning on PlantVillage dataset.</li>
+                <li>Real‑time classification and disease prediction.</li>
+                <li>Deployed on a rover for smart farming.</li>
+              </ul>
+            </details>
+          </article>
         </div>
 
-        <!-- Project 4 -->
-        <div class="card mb-3">
-            <div class="card-header">Digital Twin of an Automated Farm</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> Built a virtual simulation of a fully automated farm using CoppeliaSim and ROS. The environment includes multiple robots: a TurtleBot for fetching items, a robotic arm for loading/unloading, and a UGV for field operations such as seeding, sowing, and weeding.</p>
-                
-                <button class="btn btn-custom" onclick="toggleDetails(3)">View Details</button>
-                <div class="card-details" id="details-3">
-                   
-                    <ul><p></p> 
-                        <p><strong>Technologies:</strong> ROS, CoppeliaSim, Python, Gazebo, URDF.</p>
-                <p><strong>Objective:</strong> Model an autonomous farm with robotic operations.</p>
-                        <li>Built an interactive environment simulating automated farming tasks. </li>
-                        <li>Simulated a UGV and robotic arm for farm operations like seeding and harvesting.</li>
-                        <li>Integrated navigation algorithms to optimize farming routes. </li>
-                        <p></p> 
-                        
-                    
-                    </ul>
-                    <div class="text-center mt-3"><a href="https://github.com/ujwalwag/DigitalFarm" class="btn btn-custom" target="_blank">View on GitHub</a></div>
+        <!-- Project 3: Multimodal Movie Genre Classification -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Multimodal Movie Genre Classification Website</h5>
+                <p class="mb-2" style="color:var(--muted)">Web app that predicts movie genres using text (overview) + image (poster) features with DL models.</p>
+                <div class="chips">
+                  <span class="chip">PyTorch</span>
+                  <span class="chip">Flask</span>
+                  <span class="chip">HTML</span>
+                  <span class="chip">NLP</span>
+                  <span class="chip">CNN</span>
+                  <span class="chip">CSS</span>
                 </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/MultiModalMovieGenreClassificationSys" target="_blank" rel="noopener">Code</a>
+                <a href="https://multimodalmoviegenreclassificationsys.onrender.com" target="_blank" rel="noopener">Live</a>
+              </div>
             </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>CNN for posters + NLP for overviews; early/late fusion variants.</li>
+                <li>Flask backend + React frontend for interactive predictions.</li>
+                <li>Ensemble techniques to boost multi‑label accuracy.</li>
+              </ul>
+            </details>
+          </article>
         </div>
 
-        <!-- Project 5 -->
-        <div class="card mb-3">
-            <div class="card-header">Crop Yield Prediction and Optimization for Major Indian Crops</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> A comprehensive data analysis and machine learning project aimed at predicting crop yields at a regional level in India and identifying key factors influencing these yields for enhanced agricultural planning and resource allocation.</p>
-               
-                <button class="btn btn-custom" onclick="toggleDetails(4)">View Details</button>
-                <div class="card-details" id="details-4">
-                    
-                    <ul><p></p> 
-                        <p><strong>Technologies:</strong> Python, Machine Learning (Scikit-learn, TensorFlow/Keras), Pandas, NumPy, Matplotlib, Seaborn, SQL, Apache Airflow, Tableau/Power BI/Dash, Web Scraping/APIs.</p>
-                <p><strong>Objective:</strong> redict future crop yields, analyze the impact of environmental and agricultural practices on yield, and provide actionable insights through an interactive dashboard.</p>
-                        <li>Developed robust data pipelines for collecting, cleaning, and transforming historical crop yield, weather, soil, and irrigation data from diverse sources.</li>
-                        <li>Built and evaluated various machine learning models to accurately predict crop yields.                  </li>
-                        <li>Created an interactive dashboard visualizing predicted yields, highlighting key influencing factors, and comparing actual vs. predicted outcomes.</li>
-                        <p></p>
-                   
-                       
-                    </ul>
-                    <div class="text-center mt-3"><a href="https://github.com/ujwalwag/CropRecommender" class="btn btn-custom" target="_blank">View on GitHub</a></div>
+        <!-- Project 4: Digital Twin Farm -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Digital Twin of an Automated Farm</h5>
+                <p class="mb-2" style="color:var(--muted)">CoppeliaSim + ROS simulation with multiple robots: TurtleBot fetch, robotic arm loading, UGV field ops (seeding, sowing, weeding).</p>
+                <div class="chips">
+                  <span class="chip">ROS</span>
+                  <span class="chip">CoppeliaSim</span>
+                  <span class="chip">Gazebo</span>
+                  <span class="chip">URDF</span>
+                  <span class="chip">Python</span>
                 </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/DigitalFarm" target="_blank" rel="noopener">Code</a>
+              </div>
             </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>Interactive environment for automated farming tasks.</li>
+                <li>UGV + robotic arm simulation for seeding/harvesting flows.</li>
+                <li>Navigation algorithms for route optimization.</li>
+              </ul>
+            </details>
+          </article>
         </div>
 
-        <!-- Project 6 -->
-        <div class="card mb-3">
-            <div class="card-header">Azure DevOps Project End-to-End</div>
-            <div class="card-body">
-                <p><strong>Description:</strong> Implemented a full-scale DevOps pipeline using Azure services. The project includes CI/CD automation, containerization, infrastructure as code (IaC), and deployment monitoring.</p>
-                
-                <button class="btn btn-custom" onclick="toggleDetails(5)">View Details</button>
-                <div class="card-details" id="details-5">
-                  
-                    <ul><p></p> 
-                        <p><strong>Technologies:</strong> Azure DevOps, Docker, Kubernetes, CI/CD.</p>
-                <p><strong>Objective:</strong> Automate software deployment and monitoring.</p>
-                        <li>Set up end-to-end CI/CD pipelines for automated builds and deployments.         </li>
-                        <li>Integrated Docker and Kubernetes for scalable microservices.                    </li>
-                        <li>Implemented monitoring and logging using Azure Monitor and Application Insights.</li>
-                        <p></p>
-                   
-                        
-                    </ul>
-                    <div class="text-center mt-3"><a href="https://github.com/ujwalwag/AzureDevops" class="btn btn-custom" target="_blank">View on GitHub</a></div>
+        <!-- Project 5: Crop Yield Prediction -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Crop Yield Prediction & Optimization (India)</h5>
+                <p class="mb-2" style="color:var(--muted)">Data pipelines + ML to predict yields and key drivers across regions; dashboard for insights.</p>
+                <div class="chips">
+                  <span class="chip">scikit‑learn</span>
+                  <span class="chip">TensorFlow/Keras</span>
+                  <span class="chip">Pandas</span>
+                  <span class="chip">Airflow</span>
+                  <span class="chip">SQL</span>
                 </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/CropRecommender" target="_blank" rel="noopener">Code</a>
+              </div>
             </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>Collected, cleaned, and fused historical crop, weather, soil, and irrigation data.</li>
+                <li>Benchmarked models to forecast yields and analyze feature importances.</li>
+                <li>Built an interactive dashboard to explore predicted vs. actual outcomes.</li>
+              </ul>
+            </details>
+          </article>
         </div>
-        
 
-    
-        
+        <!-- Project 6: Azure DevOps -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Azure DevOps Project End‑to‑End</h5>
+                <p class="mb-2" style="color:var(--muted)">Full CI/CD pipeline with containerization, IaC, and monitoring.</p>
+                <div class="chips">
+                  <span class="chip">Azure DevOps</span>
+                  <span class="chip">Docker</span>
+                  <span class="chip">Kubernetes</span>
+                  <span class="chip">IaC</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/AzureDevops" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>End‑to‑end CI/CD for automated builds/deployments.</li>
+                <li>Containerized microservices with Docker + Kubernetes.</li>
+                <li>Monitoring/logging via Azure Monitor + App Insights.</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+
+      </div>
     </div>
-</section>
+  </section>
 
-
-<style>
-    
-    a {
-        text-decoration: none; 
-    }
-    
-    a:hover {
-        text-decoration: none; 
-    }
-    
-    
-</style>
-
+  <footer class="text-center py-4">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p>
     </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Ujwal Waghray. All rights reserved.</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Toggle details visibility
-        function toggleDetails(index) {
-            const details = document.getElementById('details-' + index);
-            if (details.style.display === "none" || details.style.display === "") {
-                details.style.display = "block";
-            } else {
-                details.style.display = "none";
-            }
-        }
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

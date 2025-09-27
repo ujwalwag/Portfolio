@@ -1,160 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education - Ujwal Waghray</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
+  </script>
+
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ujwal Waghray | Home</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Theme: Minimal B/W + blueprint accents -->
+  <style>
+    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; }
+    html,body{height:100%}
+    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--ink); text-decoration:none}
+
+    /* blueprint grid background */
+    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
+    .grid-bg svg{width:100%; height:100%; display:block}
+
+    /* sticky, translucent navbar */
+    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
+    .navbar-brand{font-weight:800}
+    .navbar-light .nav-link{color:#111827}
+    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
+
+    /* hero */
+    .hero{position:relative; padding:6rem 0}
+    .hero .title{font-weight:800; letter-spacing:.3px}
+    .hero .subtitle{color:var(--muted)}
+    .profile-img{
+      width: 150px; height:150px; border-radius:50%; object-fit:cover;
+      border:1px solid var(--line); background:#fff;
+    }
+
+    /* chips for roles */
+    .chips{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1rem}
+    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.9rem; border-radius:999px; padding:.38rem .7rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
+
+    /* outline button */
+    .btn-outline-ink{
+      border:1px solid #111827; border-radius:12px; padding:.6rem 1rem; font-weight:600;
+    }
+    .btn-outline-ink:hover{background:#111827; color:#fff}
+
+    /* section */
+    #about-me p{color:var(--muted)}
+    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff}
+
+    footer{border-top:1px solid var(--line); color:var(--muted); background:#fff}
+  </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="education.html">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <!-- blueprint background -->
+  <div class="grid-bg" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
+        </pattern>
+        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
+          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+      <rect width="100%" height="100%" fill="url(#gridBold)" />
+    </svg>
+  </div>
 
-   <!-- Education Section -->
-<section id="education" class="container py-5">
-    <h2 class="text-center display-4 mb-4">Degrees</h2>
-
-    <!-- Timeline of Education Journey -->
-    <div class="timeline d-flex flex-column align-items-center">
-
-        <div class="timeline-item card shadow border-0 p-4 mb-3">
-            <div class="d-flex align-items-center">
-                <div class="timeline-logo me-4">
-                    <img src="assets/suny.png" alt="SUNY Buffalo Logo" class="img-fluid">
-                </div>
-                <div>
-                    <h5 class="fw-bold">Master of Science in Engineering Sciences (Robotics)</h5>
-                    <h6 class="text-muted">SUNY Buffalo | 2024 - 2025</h6>
-                    <p class="mb-0">Focusing on advanced robotics, machine learning, computer vision, and autonomous systems.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item card shadow border-0 p-4 mb-3">
-            <div class="d-flex align-items-center">
-                <div class="timeline-logo me-4">
-                    <img src="assets/srm.webp" alt="SRM University Logo" class="img-fluid">
-                </div>
-                <div>
-                    <h5 class="fw-bold">Bachelor of Technology in Electronics & Instrumentation</h5>
-                    <h6 class="text-muted">SRM University | 2013 - 2018</h6>
-                    <p class="mb-0">Specialized in electronics, control systems, automation, and instrumentation with hands-on experience in designing control systems.</p>
-                </div>
-            </div>
-        </div>
-
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
-</section>
+  </nav>
 
-<!-- Certifications Section -->
-<section id="certifications" class="container py-5">
-    <h2 class="text-center display-4 mb-4">Certifications</h2>
-    
-    <div class="row justify-content-center">
-        <div class="col-md-6 mb-4">
-            <div class="card shadow border-0 p-4 text-center">
-                <div class="logo-container mb-3">
-                    <img src="assets/df4oebg-751682e5-6a04-42d9-bba1-c0dd6f6ce601.png" alt="360DigiTMG Logo" class="logo-img">
-                </div>
-                <div class="card-body">
-                    <h5 class="fw-bold">Data Science Certification</h5>
-                    <h6 class="text-muted">360DigiTMG</h6>
-                    <p class="mb-3">Completed the Data Science using Python & R Programming course offered by 360DigiTMG, India.</p>
-                    <a href="assets/Certification_00.png" class="btn btn-custom" target="_blank">View Certificate</a>
-                </div>
-            </div>
-        </div>
+  <!-- Hero -->
+  <header class="hero text-center">
+    <div class="container">
+      <img src="assets/dp1(1)(1).jpg" alt="Ujwal Waghray portrait" class="profile-img mb-3">
+      <h1 class="display-5 title mb-2">Ujwal Waghray</h1>
+      <p class="lead subtitle mb-2">Robotics Engineer · Developer</p>
 
-        <div class="col-md-6 mb-4">
-            <div class="card shadow border-0 p-4 text-center">
-                <div class="logo-container mb-3">
-                    <img src="assets/Google_Cloud_logo.svg.png" alt="Google Cloud Logo" class="logo-img">
-                </div>
-                <div class="card-body">
-                    <h5 class="fw-bold">Professional Machine Learning Engineer Certification</h5>
-                    <h6 class="text-muted">Google Cloud</h6>
-                    <p class="mb-3">Completed the Google Cloud Professional Machine Learning Certification, gaining expertise in building and deploying ML models on Google Cloud.</p>
-                    <a href="assets/5578703.png" class="btn btn-custom" target="_blank">View Certificate</a>
-                </div>
-            </div>
-        </div>
+      <div class="chips">
+        <span class="chip">ROS / Gazebo</span>
+        <span class="chip">Computer Vision</span>
+        <span class="chip">Deep Learning</span>
+        <span class="chip">Embedded & IoT</span>
+      </div>
+
+      <div class="mt-4">
+        <a href="projects.html" class="btn btn-outline-ink me-2">View Projects</a>
+        <a href="assets/UJWAL WAGHRAY.docx" class="btn btn-outline-ink" download>Download Resume</a>
+      </div>
     </div>
-</section>
+  </header>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2025 Ujwal Waghray. All rights reserved.</p>
-</footer>
+  <!-- About -->
+  <section id="about-me" class="py-4">
+    <div class="container">
+      <div class="card-clean p-4 p-md-5">
+        <h2 class="h3 mb-3 text-center">About Me</h2>
+        <p class="lead mb-0 text-center">
+          I’m a robotics-focused engineer with experience spanning software, data, and embedded systems.
+          I build end-to-end solutions—from sensing and perception to autonomy and deployment—
+          using tools like ROS, Python, and modern ML frameworks. I enjoy solving practical problems
+          with a clean, systems approach and shipping things that actually work.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<style>
-    /* Matching Transition and Shadow Effects to Contact Page */
-    .card {
-        border-radius: 12px;
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease-in-out;
-    }
+  <footer class="text-center py-4">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p>
+    </div>
+  </footer>
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .timeline-item {
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .timeline-item:hover {
-        transform: scale(1.03);
-        box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-
-    .logo-img {
-        max-width: 120px;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .btn-custom {
-        background-color: #007bff;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: background 0.3s ease-in-out;
-    }
-
-    .btn-custom:hover {
-        background-color: #000000;
-    }
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="download.js"></script>
 </body>
 </html>
