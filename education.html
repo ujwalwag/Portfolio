@@ -189,7 +189,7 @@ flex-direction: column;
             <h5 class="fw-bold mb-1">Data Science Certification</h5>
             <h6 class="text-muted mb-2">360DigiTMG</h6>
             <p class="mb-3" style="color:var(--muted)">Completed Data Science using Python & R Programming.</p>
-            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/certification/certification_360.png" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" href="assets/certification/certification_360.png" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -200,7 +200,7 @@ flex-direction: column;
             <h5 class="fw-bold mb-1">Data Analysis with Python</h5>
             <h6 class="text-muted mb-2">freeCodeCamp</h6>
             <p class="mb-3" style="color:var(--muted)">Data wrangling, visualization, and statistics in Python.</p>
-            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/certification/cert1_boai.jpg" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" href="assets/certification/cert1_boai.jpg" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -211,7 +211,7 @@ flex-direction: column;
             <h5 class="fw-bold mb-1">College Algebra with Python</h5>
             <h6 class="text-muted mb-2">freeCodeCamp</h6>
             <p class="mb-3" style="color:var(--muted)">Equations, functions, graphing, and applied algebra.</p>
-            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/certification/cert2_boai.jpg" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" href="assets/certification/cert2_boai.jpg" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -222,7 +222,7 @@ flex-direction: column;
             <h5 class="fw-bold mb-1">Scientific Computing with Python</h5>
             <h6 class="text-muted mb-2">freeCodeCamp</h6>
             <p class="mb-3" style="color:var(--muted)">Efficient algorithms and numerical computations.</p>
-            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/certification/cert3_boai.jpg" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" href="assets/certification/cert3_boai.jpg" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -233,7 +233,7 @@ flex-direction: column;
             <h5 class="fw-bold mb-1">Professional Machine Learning Engineer</h5>
             <h6 class="text-muted mb-2">Google Cloud</h6>
             <p class="mb-3" style="color:var(--muted)">Building and deploying ML models on Google Cloud.</p>
-            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/5578703.png" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" href="assets/5578703.png" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -248,7 +248,7 @@ flex-direction: column;
     <p class="mb-3" style="color:var(--muted)">
       Built a career transition recommendation system using Python
     </p>
-    <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/certification/certificate_inno.jpg" target="_blank" rel="noopener">
+    <a class="btn btn-outline-dark view-cert-btn" href="assets/certification/certificate_inno.jpg" target="_blank" rel="noopener">
       View Certificate
     </a>
   </div>
@@ -260,19 +260,7 @@ flex-direction: column;
       </div>
     </div>
   </section>
-  <!-- START NEW MODAL HTML STRUCTURE -->
-<div id="certificateModal" class="modal-viewer">
-<div class="modal-content-viewer">
-<div class="d-flex justify-content-end mb-2">
-<button id="closeCertModal" class="btn btn-outline-danger btn-sm" aria-label="Close">
- &times; Close Viewer
- </button>
-</div>
-<!-- Iframe to display PDF/Image content -->
- <iframe id="certIframe" style="width:100%; height:calc(100% - 45px); border:1px solid #ddd; border-radius:8px;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-</div>
-</div>
-<!-- END NEW MODAL HTML STRUCTURE -->
+
 
   <footer class="text-center py-4">
     <div class="container"><p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p></div>
@@ -282,38 +270,6 @@ flex-direction: column;
 
   </script>
 
-<script>
-// FINAL GUARANTEED FIX: Bypassing Security Blocks by launching in a new tab.
 
-const viewCertButtons = document.querySelectorAll('.view-cert-btn'); 
-
-// Iterate over all buttons and attach the event listener
-viewCertButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault(); // Stop the default link action 
-    let url = e.currentTarget.getAttribute('data-certificate-url');
-
-    if (url) {
-        // --- Path Cleaning (Keep this for consistency and to fix backslashes) ---
-        url = url.replace(/\\/g, '/');
-        
-        if (url.startsWith('./')) {
-            url = url.substring(2);
-        } else if (url.startsWith('/')) {
-            url = url.substring(1);
-        }
-        // Construct the final absolute URL
-        const absoluteUrl = window.location.origin + '/' + url;
-        // --- End Path Cleaning ---
-
-        // GUARANTEED ACTION: Open the certificate directly in a new tab.
-        // This completely avoids the iframe security restrictions.
-        window.open(absoluteUrl, '_blank'); 
-    }
-  });
-});
-
-// Since the modal is no longer used, we remove the rest of the modal control functions.
-</script>
 </body>
 </html>
