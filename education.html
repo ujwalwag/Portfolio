@@ -21,6 +21,7 @@
 
   <!-- Styles -->
   <style>
+
     :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; }
     html,body{height:100%}
     body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -56,6 +57,34 @@
 
     .logo-pad img{max-width:160px; max-height:160px}
     footer{border-top:1px solid var(--line); color:var(--muted)}
+
+    /* START NEW MODAL CSS */
+.modal-viewer {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.8);
+backdrop-filter: blur(4px);
+justify-content: center;
+align-items: center;
+z-index: 2000;
+}
+.modal-content-viewer {
+width: 95%;
+max-width: 1000px;
+height: 95vh;
+background: #fff;
+padding: 10px;
+border-radius: 12px;
+display: flex;
+flex-direction: column;
+}
+@media (max-width: 768px) {
+.modal-content-viewer {
+ height: 90vh;
+ }
+}
+/* END NEW MODAL CSS */
   </style>
 </head>
 <body>
@@ -160,7 +189,7 @@
             <h5 class="fw-bold mb-1">Data Science Certification</h5>
             <h6 class="text-muted mb-2">360DigiTMG</h6>
             <p class="mb-3" style="color:var(--muted)">Completed Data Science using Python & R Programming.</p>
-            <a class="btn btn-outline-dark" href="assets/Certification/360dtmgCertification.pdf" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets\Certification\Certification_00.png" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -171,7 +200,7 @@
             <h5 class="fw-bold mb-1">Data Analysis with Python</h5>
             <h6 class="text-muted mb-2">freeCodeCamp</h6>
             <p class="mb-3" style="color:var(--muted)">Data wrangling, visualization, and statistics in Python.</p>
-            <a class="btn btn-outline-dark" href="assets/Certification/cert1_boai.pdf" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets\Certification\cert1_boai.jpg" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -182,7 +211,7 @@
             <h5 class="fw-bold mb-1">College Algebra with Python</h5>
             <h6 class="text-muted mb-2">freeCodeCamp</h6>
             <p class="mb-3" style="color:var(--muted)">Equations, functions, graphing, and applied algebra.</p>
-            <a class="btn btn-outline-dark" href="assets/Certification/cert2_boai.pdf" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets\Certification\cert2_boai.jpg" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -193,7 +222,7 @@
             <h5 class="fw-bold mb-1">Scientific Computing with Python</h5>
             <h6 class="text-muted mb-2">freeCodeCamp</h6>
             <p class="mb-3" style="color:var(--muted)">Efficient algorithms and numerical computations.</p>
-            <a class="btn btn-outline-dark" href="assets/Certification/cert3.pdf" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets\Certification\cert3_page-0001.jpg" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -204,7 +233,7 @@
             <h5 class="fw-bold mb-1">Professional Machine Learning Engineer</h5>
             <h6 class="text-muted mb-2">Google Cloud</h6>
             <p class="mb-3" style="color:var(--muted)">Building and deploying ML models on Google Cloud.</p>
-            <a class="btn btn-outline-dark" href="assets/5578703.png" target="_blank">View Certificate</a>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/5578703.png" target="_blank">View Certificate</a>
           </div>
         </div>
 
@@ -219,7 +248,7 @@
     <p class="mb-3" style="color:var(--muted)">
       Built a career transition recommendation system using Python
     </p>
-    <a class="btn btn-outline-dark" href="assets\Certificate - Innodatatics - Ujwal Waghray.jpg" target="_blank" rel="noopener">
+    <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets\Certification\Certificate - Innodatatics - Ujwal Waghray.jpg" target="_blank" rel="noopener">
       View Certificate
     </a>
   </div>
@@ -231,11 +260,78 @@
       </div>
     </div>
   </section>
+  <!-- START NEW MODAL HTML STRUCTURE -->
+<div id="certificateModal" class="modal-viewer">
+<div class="modal-content-viewer">
+<div class="d-flex justify-content-end mb-2">
+<button id="closeCertModal" class="btn btn-outline-danger btn-sm" aria-label="Close">
+ &times; Close Viewer
+ </button>
+</div>
+<!-- Iframe to display PDF/Image content -->
+ <iframe id="certIframe" style="width:100%; height:calc(100% - 45px); border:1px solid #ddd; border-radius:8px;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+</div>
+</div>
+<!-- END NEW MODAL HTML STRUCTURE -->
 
   <footer class="text-center py-4">
     <div class="container"><p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p></div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// MODAL SCRIPT FOR CERTIFICATE VIEWER
+
+const certModal = document.getElementById('certificateModal');
+const closeCertModal = document.getElementById('closeCertModal');
+const certIframe = document.getElementById('certIframe');
+// Select all buttons that are now meant to open the modal
+const viewCertButtons = document.querySelectorAll('.view-cert-btn'); 
+
+// 1. Open Modal and Load Content
+viewCertButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+ e.preventDefault(); // Stop the default link action (download/new tab)
+// Get the URL from the new data attribute
+let url = e.currentTarget.getAttribute('data-certificate-url'); // <-- Changed to 'let'
+
+ if (url) {
+        // --- START OF SNIPPET TO CHANGE/ADD ---
+        // FIX: Construct the absolute URL to bypass Same-Origin Policy conflicts.
+        // Remove leading slash if present to ensure correct concatenation.
+        if (url.startsWith('/')) {
+            url = url.substring(1);
+        }
+        const absoluteUrl = window.location.origin + '/' + url;
+        
+// Set the iframe source to display the PDF or image using the absolute path
+ certIframe.src = absoluteUrl; // <-- Changed variable to absoluteUrl
+        // --- END OF SNIPPET TO CHANGE/ADD ---
+
+ certModal.style.display = 'flex';
+
+// Optional: Log when the content is loaded
+ certIframe.onload = () => {
+ console.log("Certificate loaded.");
+ };
+}
+});
+});
+
+// 2. Close Modal and Clear Content
+closeCertModal.addEventListener('click', () => {
+   certModal.style.display = 'none';
+// Clear the iframe source to stop video/audio playback and free resources
+ certIframe.src = ''; 
+});
+
+// 3. Close Modal on Escape Key
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && certModal.style.display === 'flex') {
+certModal.style.display = 'none';
+certIframe.src = '';
+}
+});
+</script>
 </body>
 </html>

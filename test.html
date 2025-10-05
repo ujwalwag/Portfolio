@@ -1,149 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
-  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
+  </script>
 
-  <!-- Meta -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ujwal Waghray | Home</title>
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ujwal Waghray | Education</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
 
-  <!-- Fonts & CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Theme: Minimal B/W + blueprint accents -->
-  <style>
-    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; }
-    html,body{height:100%}
-    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:var(--ink); text-decoration:none}
+  <!-- Styles -->
+  <style>
+    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; }
+    html,body{height:100%}
+    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--ink); text-decoration:none}
 
-    /* blueprint grid background */
-    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
-    .grid-bg svg{width:100%; height:100%; display:block}
+    /* sticky, translucent navbar */
+    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
+    .navbar-brand{font-weight:800}
+    .navbar-light .nav-link{color:#111827}
+    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
 
-    /* sticky, translucent navbar */
-    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
-    .navbar-brand{font-weight:800}
-    .navbar-light .nav-link{color:#111827}
-    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
+    /* blueprint background */
+    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
+    .grid-bg svg{width:100%; height:100%; display:block}
 
-    /* hero */
-    .hero{position:relative; padding:6rem 0}
-    .hero .title{font-weight:800; letter-spacing:.3px}
-    .hero .subtitle{color:var(--muted)}
-    .profile-img{
-      width: 150px; height:150px; border-radius:50%; object-fit:cover;
-      border:1px solid var(--line); background:#fff;
-    }
+    /* cards */
+    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff; transition:transform .18s ease, box-shadow .18s ease}
+    .card-clean:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.06)}
 
-    /* chips for roles */
-    .chips{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1rem}
-    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.9rem; border-radius:999px; padding:.38rem .7rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
+    /* edu layout */
+    .edu-item{display:flex; gap:16px; align-items:center}
+    .edu-logo{flex:0 0 auto; width:88px; height:88px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; background:#fff}
+    .edu-logo img{max-width:64px; max-height:64px}
 
-    /* outline button */
-    .btn-outline-ink{
-      border:1px solid #111827; border-radius:12px; padding:.6rem 1rem; font-weight:600;
-    }
-    .btn-outline-ink:hover{background:#111827; color:#fff}
+    /* chips */
+    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
+    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.85rem; border-radius:999px; padding:.35rem .6rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
 
-    /* section */
-    #about-me p{color:var(--muted)}
-    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff}
+    /* cert grid fix */
+    .cert-card{display:flex; flex-direction:column; align-items:center; height:100%}
+    .cert-card .logo-pad{margin-bottom:.75rem}
+    .cert-card .btn{margin-top:auto}
 
-    footer{border-top:1px solid var(--line); color:var(--muted); background:#fff}
-  </style>
+    .logo-pad img{max-width:160px; max-height:160px}
+    footer{border-top:1px solid var(--line); color:var(--muted)}
+
+    /* START NEW MODAL CSS */
+    .modal-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content-viewer {
+      width: 95%;
+      max-width: 1000px;
+      height: 95vh;
+      background: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 768px) {
+      .modal-content-viewer {
+        height: 90vh;
+      }
+    }
+    /* END NEW MODAL CSS */
+  </style>
 </head>
 <body>
+  <!-- blueprint background -->
+  <div class="grid-bg" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
+        </pattern>
+        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
+          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+      <rect width="100%" height="100%" fill="url(#gridBold)" />
+    </svg>
+  </div>
 
-  <!-- blueprint background -->
-  <div class="grid-bg" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
-        </pattern>
-        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
-          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" />
-      <rect width="100%" height="100%" fill="url(#gridBold)" />
-    </svg>
-  </div>
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="education.html">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      </div>
+  </nav>
 
-  <!-- Nav -->
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Degrees -->
+  <section id="education" class="py-5">
+    <div class="container">
+      <h2 class="text-center display-5 mb-4 section-title">Degrees</h2>
 
-  <!-- Hero -->
-  <header class="hero text-center">
-    <div class="container">
-      <img src="assets/dp1(1)(1).jpg" alt="Ujwal Waghray portrait" class="profile-img mb-3">
-      <h1 class="display-5 title mb-2">Ujwal Waghray</h1>
-      <p class="lead subtitle mb-2">Robotics Engineer · Developer</p>
+      <div class="row justify-content-center g-3">
+        <!-- SUNY Buffalo -->
+        <div class="col-12 col-lg-10">
+          <div class="card-clean p-4">
+            <div class="edu-item">
+              <div class="edu-logo" aria-hidden="true">
+                <img src="assets/suny.png" alt="SUNY Buffalo logo" />
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1">Master of Science in Engineering Sciences (Robotics)</h5>
+                <h6 class="text-muted mb-2">SUNY Buffalo · 2024 — 2025</h6>
+                <p class="mb-2" style="color:var(--muted)">Focus on advanced robotics, machine learning, computer vision, and autonomous systems.</p>
+                <div class="chips">
+                  <span class="chip">SLAM</span>
+                  <span class="chip">Perception</span>
+                  <span class="chip">Controls</span>
+                  <span class="chip">ROS/ROS2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="chips">
-        <span class="chip">ROS / Gazebo</span>
-        <span class="chip">Computer Vision</span>
-        <span class="chip">Deep Learning</span>
-        <span class="chip">Embedded & IoT</span>
-      </div>
+        <!-- SRM University -->
+        <div class="col-12 col-lg-10">
+          <div class="card-clean p-4">
+            <div class="edu-item">
+              <div class="edu-logo" aria-hidden="true">
+                <img src="assets/srm.webp" alt="SRM University logo" />
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1">Bachelor of Technology in Electronics & Instrumentation</h5>
+                <h6 class="text-muted mb-2">SRM University · 2013 — 2018</h6>
+                <p class="mb-2" style="color:var(--muted)">Specialization in electronics, control systems, automation, and instrumentation with hands‑on control system design.</p>
+                <div class="chips">
+                  <span class="chip">Control Systems</span>
+                  <span class="chip">Instrumentation</span>
+                  <span class="chip">Automation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="mt-4">
-        <a href="projects.html" class="btn btn-outline-ink me-2">View Projects</a>
-        <a href="assets/UJWAL WAGHRAY.docx" class="btn btn-outline-ink" download>Download Resume</a>
-      </div>
-    </div>
-  </header>
+    </div>
+  </section>
 
-  <!-- About -->
-  <section id="about-me" class="py-4">
-    <div class="container">
-      <div class="card-clean p-4 p-md-5">
-        <h2 class="h3 mb-3 text-center">About Me</h2>
-        <p class="lead mb-0 text-center">
-          I’m a robotics-focused engineer with experience spanning software, data, and embedded systems.
-          I build end-to-end solutions—from sensing and perception to autonomy and deployment—
-          using tools like ROS, Python, and modern ML frameworks. I enjoy solving practical problems
-          with a clean, systems approach and shipping things that actually work.
-        </p>
-      </div>
-    </div>
-  </section>
+ <section id="certifications" class="py-4">
+    <div class="container">
+      <h2 class="text-center display-6 mb-4">Certifications</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-3">
 
-  <footer class="text-center py-4">
-    <div class="container">
-      <p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p>
-    </div>
-  </footer>
+        <!-- 360DigiTMG -->
+        <div class="col">
+          <div class="card-clean p-4 h-100 cert-card">
+            <div class="logo-pad"><img src="assets/df4oebg-751682e5-6a04-42d9-bba1-c0dd6f6ce601.png" alt="360DigiTMG logo" /></div>
+            <h5 class="fw-bold mb-1">Data Science Certification</h5>
+            <h6 class="text-muted mb-2">360DigiTMG</h6>
+            <p class="mb-3" style="color:var(--muted)">Completed Data Science using Python & R Programming.</p>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/Certification/360dtmgCertification.pdf" href="#">View Certificate</a>
+          </div>
+        </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="download.js"></script>
+        <!-- fCC Data Analysis -->
+        <div class="col">
+          <div class="card-clean p-4 h-100 cert-card">
+            <div class="logo-pad"><img src="assets/FreeCodeCamp_logo.svg.png" alt="freeCodeCamp logo" /></div>
+            <h5 class="fw-bold mb-1">Data Analysis with Python</h5>
+            <h6 class="text-muted mb-2">freeCodeCamp</h6>
+            <p class="mb-3" style="color:var(--muted)">Data wrangling, visualization, and statistics in Python.</p>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/Certification/cert1_boai.pdf" href="#">View Certificate</a>
+          </div>
+        </div>
+
+        <!-- fCC College Algebra -->
+        <div class="col">
+          <div class="card-clean p-4 h-100 cert-card">
+            <div class="logo-pad"><img src="assets/FreeCodeCamp_logo.svg.png" alt="freeCodeCamp logo" /></div>
+            <h5 class="fw-bold mb-1">College Algebra with Python</h5>
+            <h6 class="text-muted mb-2">freeCodeCamp</h6>
+            <p class="mb-3" style="color:var(--muted)">Equations, functions, graphing, and applied algebra.</p>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/Certification/cert2_boai.pdf" href="#">View Certificate</a>
+          </div>
+        </div>
+
+        <!-- fCC Scientific Computing -->
+        <div class="col">
+          <div class="card-clean p-4 h-100 cert-card">
+            <div class="logo-pad"><img src="assets/FreeCodeCamp_logo.svg.png" alt="freeCodeCamp logo" /></div>
+            <h5 class="fw-bold mb-1">Scientific Computing with Python</h5>
+            <h6 class="text-muted mb-2">freeCodeCamp</h6>
+            <p class="mb-3" style="color:var(--muted)">Efficient algorithms and numerical computations.</p>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/Certification/cert3.pdf" href="#">View Certificate</a>
+          </div>
+        </div>
+
+       <!-- Google Cloud PMLE -->
+        <div class="col">
+          <div class="card-clean p-4 h-100 cert-card">
+            <div class="logo-pad"><img src="assets/Google_Cloud_logo.svg.png" alt="Google Cloud logo" /></div>
+            <h5 class="fw-bold mb-1">Professional Machine Learning Engineer</h5>
+            <h6 class="text-muted mb-2">Google Cloud</h6>
+            <p class="mb-3" style="color:var(--muted)">Building and deploying ML models on Google Cloud.</p>
+            <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets/5578703.png" href="#">View Certificate</a>
+          </div>
+        </div>
+
+        <!-- Innodatatics Internship Certification -->
+<div class="col">
+  <div class="card-clean p-4 h-100 cert-card">
+    <div class="logo-pad">
+      <img src="assets\innologo.png" alt="Innodatatics logo" />
+    </div>
+    <h5 class="fw-bold mb-1">Internship Certification</h5>
+    <h6 class="text-muted mb-2">Innodatatics Pvt. Ltd. (USA)</h6>
+    <p class="mb-3" style="color:var(--muted)">
+      Built a career transition recommendation system using Python
+    </p>
+    <a class="btn btn-outline-dark view-cert-btn" data-certificate-url="assets\Certificate - Innodatatics - Ujwal Waghray.jpg" href="#">
+      View Certificate
+    </a>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-4">
+    <div class="container"><p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p></div>
+  </footer>
+
+  <!-- START NEW MODAL HTML STRUCTURE -->
+  <div id="certificateModal" class="modal-viewer">
+    <div class="modal-content-viewer">
+      <div class="d-flex justify-content-end mb-2">
+        <button id="closeCertModal" class="btn btn-outline-danger btn-sm" aria-label="Close">
+          &times; Close Viewer
+        </button>
+      </div>
+      <!-- Iframe to display PDF/Image content -->
+      <iframe id="certIframe" style="width:100%; height:calc(100% - 45px); border:1px solid #ddd; border-radius:8px;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+    </div>
+  </div>
+  <!-- END NEW MODAL HTML STRUCTURE -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+ // MODAL SCRIPT FOR CERTIFICATE VIEWER
+
+const certModal = document.getElementById('certificateModal');
+const closeCertModal = document.getElementById('closeCertModal');
+const certIframe = document.getElementById('certIframe');
+// Select all buttons that are now meant to open the modal
+const viewCertButtons = document.querySelectorAll('.view-cert-btn'); 
+
+// 1. Open Modal and Load Content
+viewCertButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault(); // Stop the default link action (download/new tab)
+    // Get the URL from the new data attribute
+    const url = e.currentTarget.getAttribute('data-certificate-url');
+
+    if (url) {
+      // Set the iframe source to display the PDF or image
+      certIframe.src = url;
+      certModal.style.display = 'flex';
+      
+      // Optional: Log when the content is loaded
+      certIframe.onload = () => {
+        console.log("Certificate loaded.");
+      };
+    }
+  });
+});
+
+// 2. Close Modal and Clear Content
+closeCertModal.addEventListener('click', () => {
+  certModal.style.display = 'none';
+  // Clear the iframe source to stop video/audio playback and free resources
+  certIframe.src = ''; 
+});
+
+// 3. Close Modal on Escape Key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && certModal.style.display === 'flex') {
+    certModal.style.display = 'none';
+    certIframe.src = '';
+  }
+});
+</script>
+
 </body>
 </html>
