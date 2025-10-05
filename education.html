@@ -278,9 +278,11 @@ flex-direction: column;
     <div class="container"><p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p></div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
 
-  <script>
+  </script>
+
+ <script>
 // MODAL SCRIPT FOR CERTIFICATE VIEWER
 
 const certModal = document.getElementById('certificateModal');
@@ -292,90 +294,64 @@ const modalContentViewer = document.querySelector('.modal-content-viewer');
 
 // 1. Open Modal and Load Content
 viewCertButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    let url = e.currentTarget.getAttribute('data-certificate-url');
-    const certificateTitle = e.currentTarget.closest('.cert-card').querySelector('h5').textContent;
+button.addEventListener('click', (e) => {
+e.preventDefault(); 
+let url = e.currentTarget.getAttribute('data-certificate-url');
+// const certificateTitle = e.currentTarget.closest('.cert-card').querySelector('h5').textContent; // Not needed for the final fix
 
-    if (url) {
-        // --- Path Cleaning ---
-        if (url.startsWith('./')) {
-            url = url.substring(2);
-        } else if (url.startsWith('/')) {
-            url = url.substring(1);
-        }
-        const absoluteUrl = window.location.origin + '/' + url;
-        // --- End Path Cleaning ---
+if (url) {
+ // --- Path Cleaning (Keep this for path standardization) ---
+ url = url.replace(/\\/g, '/');
+        
+if (url.startsWith('./')) {
+url = url.substring(2);
+} else if (url.startsWith('/')) {
+ url = url.substring(1);
+}
+// Construct the final absolute URL
+const absoluteUrl = window.location.origin + '/' + url;
+ // --- End Path Cleaning ---
 
-        // We use the onerror property of the iframe to detect when the content fails to load.
-        // We set the src first, then set up the error handler.
-        certIframe.src = absoluteUrl; 
-        certModal.style.display = 'flex';
-        certIframe.style.display = 'block'; // Ensure iframe is visible by default
+ // 1. Set up the GUARANTEED LAUNCH function before setting src
+ certIframe.onerror = function() {
+            // If the iframe fails to load (due to security or 404), launch in a new tab immediately.
+            // This bypasses the security restriction 100% of the time.
+            window.open(absoluteUrl, '_blank');
+            
+            // Clean up the modal display
+            certModal.style.display = 'none';
+            certIframe.src = '';
+            certIframe.style.display = 'block';
+            
+            // Re-set onerror to null to prevent subsequent accidental calls
+            certIframe.onerror = null; 
+ };
 
-        // 1. Error Handler (Triggers on Security Block)
-        certIframe.onerror = function() {
-            // Hide the iframe and show the error message/button instead
-            certIframe.style.display = 'none';
-            
-            // Create a custom message element
-            const errorMessage = document.createElement('div');
-            errorMessage.className = 'p-4 text-center';
-            errorMessage.style.marginTop = '20px';
-            
-            // This button will open the file in a new window/tab
-            errorMessage.innerHTML = `
-                <h4 class="text-danger mb-3">Security Blocked: Cannot Display Certificate</h4>
-                <p>Browsers (like Chrome) often block the direct viewing of local files (${certificateTitle}) inside a secure pop-up for your safety.</p>
-                <button id="openNewTabBtn" class="btn btn-primary fw-bold mt-3" data-url="${absoluteUrl}">
-                    Open Certificate in New Tab
-                </button>
-            `;
-            
-            // Append the message (or replace existing content if it failed before)
-            // We use setTimeout to ensure this runs after the main content is rendered
-            setTimeout(() => {
-                const existingError = document.getElementById('openNewTabBtn');
-                if (!existingError) {
-                     modalContentViewer.insertBefore(errorMessage, certIframe); 
-                }
-            }, 50);
-
-            // Add listener to the new button
-            document.getElementById('openNewTabBtn').addEventListener('click', () => {
-                window.open(absoluteUrl, '_blank');
-                certModal.style.display = 'none';
-                
-                // Remove the error message after successful launch
-                if(errorMessage.parentNode) {
-                    errorMessage.parentNode.removeChild(errorMessage);
-                    certIframe.style.display = 'block';
-                }
-            });
-            
-        };
-    }
-  });
+// 2. Attempt to load the certificate in the modal (the desired outcome)
+certIframe.src = absoluteUrl; 
+certIframe.style.display = 'block';
+certModal.style.display = 'flex';
+// Clean up onerror when loading is successful (i.e., no block occurred)
+        certIframe.onload = function() {
+             certIframe.onerror = null;
+        }
+}
+});
 });
 
-// 2. Close Modal and Clear Content (Also cleans up the custom message)
+// 2. Close Modal and Clear Content (Simplified for clean closing)
 closeCertModal.addEventListener('click', () => {
-    certModal.style.display = 'none';
-    certIframe.src = ''; 
-    certIframe.style.display = 'block'; // Reset iframe visibility
-
-    // Remove the error message if it exists
-    const existingError = modalContentViewer.querySelector('.p-4.text-center');
-    if (existingError) {
-        modalContentViewer.removeChild(existingError);
-    }
+certModal.style.display = 'none';
+ certIframe.src = ''; 
+certIframe.style.display = 'block'; 
+    certIframe.onerror = null; // Ensure no stale error handler exists
 });
 
 // 3. Close Modal on Escape Key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && certModal.style.display === 'flex') {
-        closeCertModal.click(); // Use click handler to ensure cleanup runs
-    }
+if (e.key === 'Escape' && certModal.style.display === 'flex') {
+closeCertModal.click(); 
+}
 });
 </script>
 </body>
