@@ -280,6 +280,7 @@ flex-direction: column;
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+
 // MODAL SCRIPT FOR CERTIFICATE VIEWER
 
 const certModal = document.getElementById('certificateModal');
@@ -290,39 +291,43 @@ const viewCertButtons = document.querySelectorAll('.view-cert-btn');
 
 // 1. Open Modal and Load Content
 viewCertButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
- e.preventDefault(); // Stop the default link action (download/new tab)
+button.addEventListener('click', (e) => {
+e.preventDefault(); 
 // Get the URL from the new data attribute
-let url = e.currentTarget.getAttribute('data-certificate-url'); // <-- Changed to 'let'
+ let url = e.currentTarget.getAttribute('data-certificate-url'); 
 
- if (url) {
-        // --- START OF SNIPPET TO CHANGE/ADD ---
-        // FIX: Construct the absolute URL to bypass Same-Origin Policy conflicts.
-        // Remove leading slash if present to ensure correct concatenation.
-        if (url.startsWith('/')) {
-            url = url.substring(1);
-        }
-        const absoluteUrl = window.location.origin + '/' + url;
-        
-// Set the iframe source to display the PDF or image using the absolute path
- certIframe.src = absoluteUrl; // <-- Changed variable to absoluteUrl
-        // --- END OF SNIPPET TO CHANGE/ADD ---
+if (url) {
+ // --- START OF FINAL ROBUST FIX ---
 
- certModal.style.display = 'flex';
+// 1. Clean the URL by removing leading slashes/dots that confuse the browser sandbox
+if (url.startsWith('./')) {
+url = url.substring(2);
+} else if (url.startsWith('/')) {
+ url = url.substring(1);
+ }
+
+// 2. Construct the absolute URL using the window location
+const absoluteUrl = window.location.origin + '/' + url;
+
+// 3. Set the iframe source using the constructed absolute path
+certIframe.src = absoluteUrl; 
+// --- END OF FINAL ROBUST FIX ---
+
+certModal.style.display = 'flex';
 
 // Optional: Log when the content is loaded
  certIframe.onload = () => {
  console.log("Certificate loaded.");
- };
-}
+};
+ }
 });
 });
 
 // 2. Close Modal and Clear Content
 closeCertModal.addEventListener('click', () => {
-   certModal.style.display = 'none';
+certModal.style.display = 'none';
 // Clear the iframe source to stop video/audio playback and free resources
- certIframe.src = ''; 
+certIframe.src = ''; 
 });
 
 // 3. Close Modal on Escape Key
@@ -330,7 +335,7 @@ document.addEventListener('keydown', (e) => {
 if (e.key === 'Escape' && certModal.style.display === 'flex') {
 certModal.style.display = 'none';
 certIframe.src = '';
-}
+ }
 });
 </script>
 </body>
