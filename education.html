@@ -295,63 +295,64 @@ const modalContentViewer = document.querySelector('.modal-content-viewer');
 // 1. Open Modal and Load Content
 viewCertButtons.forEach(button => {
 button.addEventListener('click', (e) => {
-e.preventDefault(); 
+ e.preventDefault(); 
 let url = e.currentTarget.getAttribute('data-certificate-url');
-// const certificateTitle = e.currentTarget.closest('.cert-card').querySelector('h5').textContent; // Not needed for the final fix
 
-if (url) {
- // --- Path Cleaning (Keep this for path standardization) ---
+ if (url) {
+ // --- Path Cleaning (CRITICAL FOR GITHUB PAGES) ---
+ // Ensure URL is normalized to forward slashes
  url = url.replace(/\\/g, '/');
         
-if (url.startsWith('./')) {
-url = url.substring(2);
-} else if (url.startsWith('/')) {
- url = url.substring(1);
-}
+ // Remove leading slashes/dots
+ if (url.startsWith('./')) {
+ url = url.substring(2);
+ } else if (url.startsWith('/')) {
+url = url.substring(1);
+ }
 // Construct the final absolute URL
-const absoluteUrl = window.location.origin + '/' + url;
- // --- End Path Cleaning ---
+ const absoluteUrl = window.location.origin + '/' + url;
+// --- End Path Cleaning ---
 
- // 1. Set up the GUARANTEED LAUNCH function before setting src
- certIframe.onerror = function() {
-            // If the iframe fails to load (due to security or 404), launch in a new tab immediately.
-            // This bypasses the security restriction 100% of the time.
-            window.open(absoluteUrl, '_blank');
-            
-            // Clean up the modal display
-            certModal.style.display = 'none';
-            certIframe.src = '';
-            certIframe.style.display = 'block';
-            
-            // Re-set onerror to null to prevent subsequent accidental calls
-            certIframe.onerror = null; 
- };
+// 1. Set up the GUARANTEED LAUNCH function before setting src
+certIframe.onerror = function() {
+ // If the iframe fails due to a security block or 404, open in a new tab immediately.
+window.open(absoluteUrl, '_blank');
 
-// 2. Attempt to load the certificate in the modal (the desired outcome)
+ // Clean up the modal display to make the transition fast
+certModal.style.display = 'none';
+certIframe.src = '';
+certIframe.style.display = 'block';
+ 
+ // Turn off the error listener to prevent infinite loops
+certIframe.onerror = null; 
+};
+
+ // 2. Attempt to load the certificate in the modal (the desired outcome)
 certIframe.src = absoluteUrl; 
 certIframe.style.display = 'block';
 certModal.style.display = 'flex';
-// Clean up onerror when loading is successful (i.e., no block occurred)
-        certIframe.onload = function() {
-             certIframe.onerror = null;
-        }
-}
-});
+
+ // 3. Clean up onerror when loading is successful (i.e., no block occurred)
+certIframe.onload = function() {
+certIframe.onerror = null;
+ }
+ }
+ });
 });
 
 // 2. Close Modal and Clear Content (Simplified for clean closing)
 closeCertModal.addEventListener('click', () => {
 certModal.style.display = 'none';
- certIframe.src = ''; 
+certIframe.src = ''; 
 certIframe.style.display = 'block'; 
-    certIframe.onerror = null; // Ensure no stale error handler exists
+certIframe.onerror = null; // Ensure no stale error handler exists
 });
 
 // 3. Close Modal on Escape Key
 document.addEventListener('keydown', (e) => {
 if (e.key === 'Escape' && certModal.style.display === 'flex') {
-closeCertModal.click(); 
-}
+ closeCertModal.click(); 
+ }
 });
 </script>
 </body>
