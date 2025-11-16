@@ -21,6 +21,16 @@
   <!-- Fonts & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Spline 3D Library -->
+  <script type="module" src="https://unpkg.com/@splinetool/runtime@1.0.0/build/runtime.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- SplitType -->
+  <script src="https://unpkg.com/split-type"></script>
 
   <!-- Theme: Minimal B/W + blueprint accents -->
   <style>
@@ -40,7 +50,7 @@
     .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
 
     /* hero */
-    .hero{position:relative; padding:6rem 0}
+    .hero{position:relative; padding:6rem 0; z-index: 1}
     .hero .title{font-weight:800; letter-spacing:.3px}
     .hero .subtitle{color:var(--muted)}
     .profile-img{
@@ -64,6 +74,185 @@
 
     footer{border-top:1px solid var(--line); color:var(--muted); background:#fff}
 
+    /* 3D Robotics Animations */
+    .robotics-3d-container{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index: -1;
+      overflow:hidden;
+    }
+
+    .spline-scene{
+      position:absolute;
+      width:100%;
+      height:100%;
+      opacity:0.15;
+    }
+
+    .spline-scene-1{
+      top:10%;
+      right:5%;
+      width:300px;
+      height:300px;
+    }
+
+    .spline-scene-2{
+      bottom:15%;
+      left:5%;
+      width:250px;
+      height:250px;
+    }
+
+    .spline-scene-3{
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:400px;
+      height:400px;
+      opacity:0.08;
+    }
+
+    /* 3D Robotics Elements */
+    .robotics-3d-element{
+      position:absolute;
+      pointer-events:none;
+      transform-style:preserve-3d;
+      perspective:1000px;
+      z-index: -1;
+    }
+
+    /* Robotic Arm 3D - Random position */
+    .robotic-arm-3d{
+      width:250px;
+      height:300px;
+      opacity:0.12;
+    }
+
+    /* Rover 3D - Random position */
+    .rover-3d{
+      width:280px;
+      height:200px;
+      opacity:0.1;
+    }
+
+    /* Drone 3D - Random position */
+    .drone-3d{
+      width:220px;
+      height:220px;
+      opacity:0.11;
+    }
+
+    /* Lidar Scanner 3D - Random position */
+    .lidar-3d{
+      width:180px;
+      height:180px;
+      opacity:0.13;
+    }
+
+    /* Humanoid Robot 3D - Random position */
+    .humanoid-3d{
+      width:200px;
+      height:300px;
+      opacity:0.09;
+    }
+
+    /* Data Analytics 3D - Random position */
+    .data-analytics-3d{
+      width:280px;
+      height:220px;
+      opacity:0.11;
+    }
+
+    /* Neural Network 3D - Random position */
+    .neural-network-3d{
+      width:300px;
+      height:280px;
+      opacity:0.1;
+    }
+
+    /* 3D SVG Container */
+    .robotics-3d-svg{
+      width:100%;
+      height:100%;
+      transform-style:preserve-3d;
+    }
+
+    /* Wheel rotation animation */
+    .wheel-rotating{
+      transform-origin:0 0;
+      animation:wheelRotate 1.5s linear infinite;
+    }
+
+    @keyframes wheelRotate{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+
+    /* Robotic Arm Animations */
+    .arm-segment1-rotating{
+      transform-origin:0 0;
+      transform-box:fill-box;
+    }
+
+    .arm-segment2-rotating{
+      transform-origin:0 0;
+      transform-box:fill-box;
+    }
+
+    .gripper-rotating{
+      transform-origin:0 0;
+      transform-box:fill-box;
+    }
+
+    /* Split Text Animations */
+    .split-text-wrapper{
+      overflow:hidden;
+    }
+
+    .split-char{
+      display:inline-block;
+      opacity:0;
+      transform:translateY(100%);
+    }
+
+    .split-word{
+      display:inline-block;
+      overflow:hidden;
+    }
+
+    .split-line{
+      overflow:hidden;
+    }
+
+    /* Animated Robotics Text */
+    .robotics-title{
+      position:relative;
+      z-index:1;
+    }
+
+    .robotics-title .split-char{
+      will-change:transform, opacity;
+    }
+
+    /* Floating 3D Elements */
+    .floating-3d{
+      animation:float3d 6s ease-in-out infinite;
+    }
+
+    @keyframes float3d{
+      0%, 100%{transform:translateY(0) rotate(0deg)}
+      50%{transform:translateY(-20px) rotate(5deg)}
+    }
+
+    /* Scroll Reveal */
+    .reveal-element{
+      opacity:1; /* Start visible, will be animated */
+    }
+
+    .reveal-element.revealed{
+      opacity:1;
+    }
 
   .popup-overlay {
     display: none;
@@ -124,12 +313,331 @@
     </div>
   </nav>
 
+  <!-- 3D Robotics Background -->
+  <div class="robotics-3d-container">
+    <!-- Spline Canvas Containers (for actual Spline scenes) -->
+    <canvas id="spline-canvas-1" class="spline-scene spline-scene-1"></canvas>
+    <canvas id="spline-canvas-2" class="spline-scene spline-scene-2"></canvas>
+    <canvas id="spline-canvas-3" class="spline-scene spline-scene-3"></canvas>
+    
+    <!-- 3D Robotic Arm -->
+    <div class="robotics-3d-element robotic-arm-3d" id="roboticArm3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 250 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="arm3d" transform="translate(125, 250)">
+          <!-- Base -->
+          <g id="base3d">
+            <rect x="-30" y="0" width="60" height="40" rx="5" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.8"/>
+            <rect x="-25" y="5" width="50" height="30" rx="3" fill="none" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Joint 1 & Segment 1 Group -->
+          <g id="arm-segment1-group" transform="rotate(0)">
+            <!-- Joint 1 -->
+            <g id="joint1-3d">
+              <circle cx="0" cy="0" r="15" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="0" cy="0" r="3" fill="#0b1324" opacity="0.7"/>
+            </g>
+            <!-- Segment 1 -->
+            <g id="segment1-3d">
+              <line x1="0" y1="0" x2="0" y2="-80" stroke="#0b1324" stroke-width="4" opacity="0.7"/>
+              <rect x="-8" y="-80" width="16" height="80" fill="none" stroke="#0b1324" stroke-width="1" opacity="0.3"/>
+            </g>
+            <!-- Joint 2 & Segment 2 Group -->
+            <g id="arm-segment2-group" transform="translate(0, -80) rotate(0)">
+              <!-- Joint 2 -->
+              <g id="joint2-3d">
+                <circle cx="0" cy="0" r="12" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.8"/>
+                <circle cx="0" cy="0" r="6" fill="none" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+              </g>
+              <!-- Segment 2 -->
+              <g id="segment2-3d">
+                <line x1="0" y1="0" x2="60" y2="-60" stroke="#0b1324" stroke-width="3.5" opacity="0.7"/>
+                <rect x="-6" y="-60" width="12" height="85" fill="none" stroke="#0b1324" stroke-width="1" opacity="0.3" transform="rotate(45)"/>
+              </g>
+              <!-- Joint 3 & Gripper -->
+              <g id="gripper3d" transform="translate(60, -60)">
+                <circle cx="0" cy="0" r="10" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.8"/>
+                <!-- Gripper 1 (top finger) -->
+                <g id="gripper1-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="-15" stroke="#0b1324" stroke-width="3"/>
+                </g>
+                <!-- Gripper 2 (bottom finger) -->
+                <g id="gripper2-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="15" stroke="#0b1324" stroke-width="3"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Rover -->
+    <div class="robotics-3d-element rover-3d" id="rover3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+        <g id="rover3d" transform="translate(140, 150)">
+          <!-- Body -->
+          <rect x="-80" y="-40" width="160" height="50" rx="8" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-75" y="-35" width="150" height="40" rx="5" fill="none" stroke="#0b1324" stroke-width="1" opacity="0.4"/>
+          <!-- Wheels -->
+          <g id="wheel1-3d" transform="translate(-60, 10)">
+            <g id="wheel1-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="#0b1324" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="#0b1324" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel2-3d" transform="translate(0, 10)">
+            <g id="wheel2-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="#0b1324" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="#0b1324" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel3-3d" transform="translate(60, 10)">
+            <g id="wheel3-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="#0b1324" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="#0b1324" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <!-- Antenna -->
+          <line x1="0" y1="-40" x2="0" y2="-70" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-70" r="4" fill="#0b1324" opacity="0.6"/>
+          <!-- Camera/Sensor -->
+          <rect x="-15" y="-50" width="30" height="15" rx="3" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-42" r="5" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Drone -->
+    <div class="robotics-3d-element drone-3d" id="drone3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="drone3d" transform="translate(110, 110)">
+          <!-- Central Body -->
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+          <!-- Propellers -->
+          <g id="prop1-3d">
+            <circle cx="-60" cy="-60" r="20" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="-80" x2="-60" y2="-40" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="-60" x2="-40" y2="-60" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="-70" x2="-50" y2="-50" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="-70" x2="-70" y2="-50" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop2-3d">
+            <circle cx="60" cy="-60" r="20" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="-80" x2="60" y2="-40" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="-60" x2="80" y2="-60" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="-70" x2="70" y2="-50" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="-70" x2="50" y2="-50" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop3-3d">
+            <circle cx="-60" cy="60" r="20" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="40" x2="-60" y2="80" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="60" x2="-40" y2="60" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="50" x2="-50" y2="70" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="50" x2="-70" y2="70" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop4-3d">
+            <circle cx="60" cy="60" r="20" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="40" x2="60" y2="80" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="60" x2="80" y2="60" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="50" x2="70" y2="70" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="50" x2="50" y2="70" stroke="#0b1324" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Arms connecting to propellers -->
+          <line x1="-25" y1="-25" x2="-60" y2="-60" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="-25" x2="60" y2="-60" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+          <line x1="-25" y1="25" x2="-60" y2="60" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="25" x2="60" y2="60" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+          <!-- Camera/Gimbal -->
+          <circle cx="0" cy="15" r="8" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7"/>
+          <rect x="-6" y="23" width="12" height="8" rx="2" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Lidar Scanner -->
+    <div class="robotics-3d-element lidar-3d" id="lidar3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <g id="lidar3d" transform="translate(90, 90)">
+          <!-- Base -->
+          <rect x="-20" y="40" width="40" height="30" rx="5" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.8"/>
+          <!-- Scanner Unit -->
+          <circle cx="0" cy="0" r="35" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8" id="lidar-ring1"/>
+          <circle cx="0" cy="0" r="25" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.6" id="lidar-ring2"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.5"/>
+          <!-- Scan Lines -->
+          <line x1="0" y1="0" x2="0" y2="-50" stroke="#0b1324" stroke-width="2" opacity="0.7" id="scan-line1"/>
+          <line x1="0" y1="0" x2="50" y2="0" stroke="#0b1324" stroke-width="2" opacity="0.7" id="scan-line2"/>
+          <line x1="0" y1="0" x2="0" y2="50" stroke="#0b1324" stroke-width="2" opacity="0.7" id="scan-line3"/>
+          <line x1="0" y1="0" x2="-50" y2="0" stroke="#0b1324" stroke-width="2" opacity="0.7" id="scan-line4"/>
+          <!-- Detection Points -->
+          <circle cx="0" cy="-35" r="3" fill="#0b1324" opacity="0.8" id="detect-point1"/>
+          <circle cx="35" cy="0" r="3" fill="#0b1324" opacity="0.8" id="detect-point2"/>
+          <circle cx="0" cy="35" r="3" fill="#0b1324" opacity="0.8" id="detect-point3"/>
+          <circle cx="-35" cy="0" r="3" fill="#0b1324" opacity="0.8" id="detect-point4"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Humanoid Robot -->
+    <div class="robotics-3d-element humanoid-3d" id="humanoid3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="humanoid3d" transform="translate(100, 250)">
+          <!-- Head -->
+          <circle cx="0" cy="-120" r="25" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-15" y="-140" width="30" height="20" rx="3" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+          <!-- Torso -->
+          <rect x="-30" y="-100" width="60" height="80" rx="8" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-25" y="-95" width="50" height="70" rx="5" fill="none" stroke="#0b1324" stroke-width="1" opacity="0.4"/>
+          <!-- Arms -->
+          <g id="arm-left-3d">
+            <line x1="-30" y1="-80" x2="-60" y2="-40" stroke="#0b1324" stroke-width="3" opacity="0.7"/>
+            <circle cx="-60" cy="-40" r="8" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+            <line x1="-60" y1="-40" x2="-75" y2="-20" stroke="#0b1324" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="arm-right-3d">
+            <line x1="30" y1="-80" x2="60" y2="-40" stroke="#0b1324" stroke-width="3" opacity="0.7"/>
+            <circle cx="60" cy="-40" r="8" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.6"/>
+            <line x1="60" y1="-40" x2="75" y2="-20" stroke="#0b1324" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <!-- Legs -->
+          <g id="leg-left-3d">
+            <line x1="-15" y1="-20" x2="-20" y2="30" stroke="#0b1324" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="-20" cy="30" r="10" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="leg-right-3d">
+            <line x1="15" y1="-20" x2="20" y2="30" stroke="#0b1324" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="20" cy="30" r="10" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Data Analytics -->
+    <div class="robotics-3d-element data-analytics-3d" id="dataAnalytics3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="dataAnalytics3d" transform="translate(20, 200)">
+          <!-- Chart Background -->
+          <rect x="0" y="0" width="240" height="180" fill="none" stroke="#0b1324" stroke-width="1.5" opacity="0.2" rx="4"/>
+          
+          <!-- Grid Lines -->
+          <line x1="0" y1="0" x2="240" y2="0" stroke="#0b1324" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-45" x2="240" y2="-45" stroke="#0b1324" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-90" x2="240" y2="-90" stroke="#0b1324" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-135" x2="240" y2="-135" stroke="#0b1324" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-180" x2="240" y2="-180" stroke="#0b1324" stroke-width="0.5" opacity="0.15"/>
+          
+          <!-- Bar Chart Bars -->
+          <rect x="20" y="0" width="30" height="-40" fill="#0b1324" opacity="0.6" id="bar1"/>
+          <rect x="60" y="0" width="30" height="-80" fill="#0b1324" opacity="0.6" id="bar2"/>
+          <rect x="100" y="0" width="30" height="-120" fill="#0b1324" opacity="0.6" id="bar3"/>
+          <rect x="140" y="0" width="30" height="-100" fill="#0b1324" opacity="0.6" id="bar4"/>
+          <rect x="180" y="0" width="30" height="-140" fill="#0b1324" opacity="0.6" id="bar5"/>
+          <rect x="220" y="0" width="30" height="-90" fill="#0b1324" opacity="0.6" id="bar6"/>
+          
+          <!-- Line Graph -->
+          <polyline id="lineGraph" points="30,-40 70,-80 110,-120 150,-100 190,-140 230,-90" 
+                    fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+          
+          <!-- Data Points -->
+          <circle cx="30" cy="-40" r="4" fill="#0b1324" opacity="0.8" id="point1"/>
+          <circle cx="70" cy="-80" r="4" fill="#0b1324" opacity="0.8" id="point2"/>
+          <circle cx="110" cy="-120" r="4" fill="#0b1324" opacity="0.8" id="point3"/>
+          <circle cx="150" cy="-100" r="4" fill="#0b1324" opacity="0.8" id="point4"/>
+          <circle cx="190" cy="-140" r="4" fill="#0b1324" opacity="0.8" id="point5"/>
+          <circle cx="230" cy="-90" r="4" fill="#0b1324" opacity="0.8" id="point6"/>
+          
+          <!-- Animated Data Flow -->
+          <circle cx="0" cy="-90" r="3" fill="#0b1324" opacity="0.9" id="dataFlow1"/>
+          <circle cx="0" cy="-60" r="3" fill="#0b1324" opacity="0.9" id="dataFlow2"/>
+          <circle cx="0" cy="-30" r="3" fill="#0b1324" opacity="0.9" id="dataFlow3"/>
+          
+          <!-- Percentage Indicators -->
+          <text x="35" y="-45" font-family="Arial" font-size="10" fill="#0b1324" opacity="0.5" id="percent1">45%</text>
+          <text x="75" y="-85" font-family="Arial" font-size="10" fill="#0b1324" opacity="0.5" id="percent2">78%</text>
+          <text x="115" y="-125" font-family="Arial" font-size="10" fill="#0b1324" opacity="0.5" id="percent3">92%</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Neural Network -->
+    <div class="robotics-3d-element neural-network-3d" id="neuralNetwork3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+        <g id="neuralNetwork3d" transform="translate(150, 140)">
+          <!-- Input Layer Nodes -->
+          <circle cx="-100" cy="-80" r="12" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7" id="input1"/>
+          <circle cx="-100" cy="-40" r="12" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7" id="input2"/>
+          <circle cx="-100" cy="0" r="12" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7" id="input3"/>
+          <circle cx="-100" cy="40" r="12" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7" id="input4"/>
+          <circle cx="-100" cy="80" r="12" fill="none" stroke="#0b1324" stroke-width="2" opacity="0.7" id="input5"/>
+          
+          <!-- Hidden Layer 1 Nodes -->
+          <circle cx="0" cy="-60" r="14" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8" id="hidden1-1"/>
+          <circle cx="0" cy="-20" r="14" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8" id="hidden1-2"/>
+          <circle cx="0" cy="20" r="14" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8" id="hidden1-3"/>
+          <circle cx="0" cy="60" r="14" fill="none" stroke="#0b1324" stroke-width="2.5" opacity="0.8" id="hidden1-4"/>
+          
+          <!-- Hidden Layer 2 Nodes -->
+          <circle cx="100" cy="-40" r="16" fill="none" stroke="#0b1324" stroke-width="3" opacity="0.9" id="hidden2-1"/>
+          <circle cx="100" cy="0" r="16" fill="none" stroke="#0b1324" stroke-width="3" opacity="0.9" id="hidden2-2"/>
+          <circle cx="100" cy="40" r="16" fill="none" stroke="#0b1324" stroke-width="3" opacity="0.9" id="hidden2-3"/>
+          
+          <!-- Output Layer Nodes -->
+          <circle cx="200" cy="-20" r="18" fill="none" stroke="#0b1324" stroke-width="3.5" opacity="1" id="output1"/>
+          <circle cx="200" cy="20" r="18" fill="none" stroke="#0b1324" stroke-width="3.5" opacity="1" id="output2"/>
+          
+          <!-- Connections Input to Hidden 1 -->
+          <line x1="-88" y1="-80" x2="-14" y2="-60" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn1"/>
+          <line x1="-88" y1="-40" x2="-14" y2="-60" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn2"/>
+          <line x1="-88" y1="0" x2="-14" y2="-20" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn3"/>
+          <line x1="-88" y1="40" x2="-14" y2="20" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn4"/>
+          <line x1="-88" y1="80" x2="-14" y2="60" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn5"/>
+          <line x1="-88" y1="-80" x2="-14" y2="-20" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn6"/>
+          <line x1="-88" y1="-40" x2="-14" y2="20" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn7"/>
+          <line x1="-88" y1="0" x2="-14" y2="60" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn8"/>
+          <line x1="-88" y1="40" x2="-14" y2="-60" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn9"/>
+          <line x1="-88" y1="80" x2="-14" y2="-20" stroke="#0b1324" stroke-width="1" opacity="0.3" id="conn10"/>
+          
+          <!-- Connections Hidden 1 to Hidden 2 -->
+          <line x1="14" y1="-60" x2="84" y2="-40" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn11"/>
+          <line x1="14" y1="-20" x2="84" y2="-40" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn12"/>
+          <line x1="14" y1="20" x2="84" y2="0" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn13"/>
+          <line x1="14" y1="60" x2="84" y2="40" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn14"/>
+          <line x1="14" y1="-60" x2="84" y2="0" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn15"/>
+          <line x1="14" y1="-20" x2="84" y2="40" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn16"/>
+          <line x1="14" y1="20" x2="84" y2="-40" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn17"/>
+          <line x1="14" y1="60" x2="84" y2="0" stroke="#0b1324" stroke-width="1.2" opacity="0.4" id="conn18"/>
+          
+          <!-- Connections Hidden 2 to Output -->
+          <line x1="116" y1="-40" x2="182" y2="-20" stroke="#0b1324" stroke-width="1.5" opacity="0.5" id="conn19"/>
+          <line x1="116" y1="0" x2="182" y2="-20" stroke="#0b1324" stroke-width="1.5" opacity="0.5" id="conn20"/>
+          <line x1="116" y1="40" x2="182" y2="20" stroke="#0b1324" stroke-width="1.5" opacity="0.5" id="conn21"/>
+          <line x1="116" y1="-40" x2="182" y2="20" stroke="#0b1324" stroke-width="1.5" opacity="0.5" id="conn22"/>
+          <line x1="116" y1="0" x2="182" y2="20" stroke="#0b1324" stroke-width="1.5" opacity="0.5" id="conn23"/>
+          <line x1="116" y1="40" x2="182" y2="-20" stroke="#0b1324" stroke-width="1.5" opacity="0.5" id="conn24"/>
+          
+          <!-- Data Flow Particles -->
+          <circle cx="-100" cy="-80" r="2" fill="#0b1324" opacity="0.9" id="particle1"/>
+          <circle cx="-100" cy="-40" r="2" fill="#0b1324" opacity="0.9" id="particle2"/>
+          <circle cx="-100" cy="0" r="2" fill="#0b1324" opacity="0.9" id="particle3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <!-- Hero -->
   <header class="hero text-center">
     <div class="container">
-      <img src="assets/dp1(1)(1).jpg" alt="Ujwal Waghray portrait" class="profile-img mb-3">
-      <h1 class="display-5 title mb-2">Ujwal Waghray</h1>
-      <p class="lead subtitle mb-2">Robotics Engineer · Software Developer</p>
+      <img src="assets/dp1(1)(1).jpg" alt="Ujwal Waghray portrait" class="profile-img mb-3 reveal-element">
+      <h1 class="display-5 title mb-2 robotics-title">Ujwal Waghray</h1>
+      <p class="lead subtitle mb-2 robotics-subtitle">Robotics Engineer · Software Developer</p>
 
       <div class="chips">
         <span class="chip">ROS / Gazebo</span>
@@ -168,10 +676,10 @@
   <!-- About -->
   <section id="about-me" class="py-4">
     <div class="container">
-      <div class="card-clean p-4 p-md-5">
-        <h2 class="h3 mb-3 text-center">About Me</h2>
-        <p class="lead mb-0 text-center">
-          I’m a robotics-focused engineer with experience spanning software, data, and embedded systems.
+      <div class="card-clean p-4 p-md-5 reveal-element">
+        <h2 class="h3 mb-3 text-center about-title">About Me</h2>
+        <p class="lead mb-0 text-center about-text">
+          I'm a robotics-focused engineer with experience spanning software, data, and embedded systems.
           I build end-to-end solutions—from sensing and perception to autonomy and deployment—
           using tools like ROS, Python, and modern ML frameworks. I enjoy solving practical problems
           with a clean, systems approach and shipping things that actually work.
@@ -179,10 +687,6 @@
       </div>
     </div>
   </section>
-
-  <body>
-
-
 
 <footer class="text-center py-4">
  <div class="container">
@@ -200,44 +704,1179 @@
 </script>
 
 <script>
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Initialize Spline 3D Scenes
+  async function initSplineScenes() {
+    try {
+      const canvas1 = document.getElementById('spline-canvas-1');
+      const canvas2 = document.getElementById('spline-canvas-2');
+      const canvas3 = document.getElementById('spline-canvas-3');
+
+      // Replace these URLs with your actual Spline scene URLs
+      // To get a Spline scene URL:
+      // 1. Create/export your 3D robotics model in Spline
+      // 2. Export as .splinecode file or get the public URL
+      // 3. Replace the URLs below
+      const splineScenes = [
+        { canvas: canvas1, url: null }, // Add your robotic arm scene URL here
+        { canvas: canvas2, url: null }, // Add your rover/drone scene URL here
+        { canvas: canvas3, url: null }  // Add your lidar/sensor scene URL here
+      ];
+
+      // Load Spline scenes if URLs are provided
+      const { Application } = await import('https://unpkg.com/@splinetool/runtime@1.0.0/build/runtime.js');
+      
+      for (const scene of splineScenes) {
+        if (scene.canvas && scene.url) {
+          try {
+            const app = new Application(scene.canvas);
+            await app.load(scene.url);
+            
+            // Animate the loaded Spline scene with GSAP
+            gsap.to(scene.canvas, {
+              rotation: 360,
+              duration: 20,
+              ease: 'none',
+              repeat: -1,
+              transformOrigin: '50% 50%'
+            });
+          } catch (error) {
+            console.log('Error loading Spline scene:', error);
+          }
+        } else if (scene.canvas) {
+          // Fallback: Animate canvas containers while waiting for Spline URLs
+          if (scene.canvas === canvas1) {
+            gsap.to(scene.canvas, {
+              rotation: 360,
+              duration: 20,
+              ease: 'none',
+              repeat: -1,
+              transformOrigin: '50% 50%'
+            });
+          } else if (scene.canvas === canvas2) {
+            gsap.to(scene.canvas, {
+              y: '+=30',
+              duration: 3,
+              yoyo: true,
+              repeat: -1,
+              ease: 'power1.inOut'
+            });
+          } else if (scene.canvas === canvas3) {
+            gsap.to(scene.canvas, {
+              scale: 1.2,
+              duration: 4,
+              yoyo: true,
+              repeat: -1,
+              ease: 'power2.inOut'
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.log('Spline runtime loading:', error);
+      // Fallback animations if Spline fails to load
+      const canvas1 = document.getElementById('spline-canvas-1');
+      const canvas2 = document.getElementById('spline-canvas-2');
+      const canvas3 = document.getElementById('spline-canvas-3');
+      
+      if (canvas1) {
+        gsap.to(canvas1, {
+          rotation: 360,
+          duration: 20,
+          ease: 'none',
+          repeat: -1,
+          transformOrigin: '50% 50%'
+        });
+      }
+      
+      if (canvas2) {
+        gsap.to(canvas2, {
+          y: '+=30',
+          duration: 3,
+          yoyo: true,
+          repeat: -1,
+          ease: 'power1.inOut'
+        });
+      }
+
+      if (canvas3) {
+        gsap.to(canvas3, {
+          scale: 1.2,
+          duration: 4,
+          yoyo: true,
+          repeat: -1,
+          ease: 'power2.inOut'
+        });
+      }
+    }
+  }
+
+  // Text Splitting and Animation with SplitType
+  function initTextAnimations() {
+    // Animate main title
+    const title = document.querySelector('.robotics-title');
+    if (title && typeof SplitType !== 'undefined') {
+      const titleSplit = new SplitType(title, { types: 'chars,words' });
+      
+      gsap.from(titleSplit.chars, {
+        opacity: 0,
+        y: 50,
+        rotationX: -90,
+        duration: 0.8,
+        stagger: 0.02,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: title,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Animate subtitle
+    const subtitle = document.querySelector('.robotics-subtitle');
+    if (subtitle && typeof SplitType !== 'undefined') {
+      const subtitleSplit = new SplitType(subtitle, { types: 'words' });
+      
+      gsap.from(subtitleSplit.words, {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: subtitle,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Animate About section
+    const aboutTitle = document.querySelector('.about-title');
+    const aboutText = document.querySelector('.about-text');
+    
+    if (aboutTitle && typeof SplitType !== 'undefined') {
+      const aboutTitleSplit = new SplitType(aboutTitle, { types: 'chars' });
+      
+      gsap.from(aboutTitleSplit.chars, {
+        opacity: 0,
+        x: -30,
+        duration: 0.5,
+        stagger: 0.03,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: aboutTitle,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    if (aboutText && typeof SplitType !== 'undefined') {
+      const aboutTextSplit = new SplitType(aboutText, { types: 'words' });
+      
+      gsap.from(aboutTextSplit.words, {
+        opacity: 0,
+        y: 20,
+        duration: 0.4,
+        stagger: 0.05,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: aboutText,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Animate chips
+    const chips = document.querySelectorAll('.chip');
+    chips.forEach((chip, index) => {
+      if (typeof SplitType !== 'undefined') {
+        const chipSplit = new SplitType(chip, { types: 'chars' });
+        
+        gsap.from(chipSplit.chars, {
+          opacity: 0,
+          scale: 0,
+          duration: 0.3,
+          stagger: 0.02,
+          ease: 'back.out(1.7)',
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: chip,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
+    });
+  }
+
+  // Profile image reveal
+  const profileImg = document.querySelector('.profile-img');
+  if (profileImg) {
+    // Set initial state
+    gsap.set(profileImg, { opacity: 0, scale: 0.8, rotation: -10 });
+    // Animate in immediately on load
+    gsap.to(profileImg, {
+      opacity: 1,
+      scale: 1,
+      rotation: 0,
+      duration: 1,
+      ease: 'back.out(1.7)',
+      delay: 0.2
+    });
+  }
+
+  // Buttons animation
+  const buttons = document.querySelectorAll('.btn-outline-ink');
+  buttons.forEach((btn, index) => {
+    gsap.from(btn, {
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: index * 0.1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: btn,
+        start: 'top 90%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Hover effect with GSAP
+    btn.addEventListener('mouseenter', () => {
+      gsap.to(btn, {
+        scale: 1.05,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    });
+  });
+
+  // Card reveal animation
+  const card = document.querySelector('.card-clean');
+  if (card) {
+    // Set initial state
+    gsap.set(card, { opacity: 0, y: 50 });
+    // Animate in on scroll
+    gsap.to(card, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+  }
+
+  // Initialize all animations
+  initSplineScenes();
+  initTextAnimations();
+  initRobotics3DAnimations();
+
+  // Continuous floating animation for 3D elements
+  gsap.to('.spline-scene-1', {
+    y: '+=20',
+    duration: 3,
+    yoyo: true,
+    repeat: -1,
+    ease: 'power1.inOut'
+  });
+
+  gsap.to('.spline-scene-2', {
+    x: '+=15',
+    duration: 4,
+    yoyo: true,
+    repeat: -1,
+    ease: 'power1.inOut'
+  });
+});
+
+// 3D Robotics Animations
+function initRobotics3DAnimations() {
+  // Randomize positions of all robotics elements
+  function randomizeElementPosition(element, minTop = 5, maxTop = 85, minLeft = 2, maxLeft = 90) {
+    if (element) {
+      const top = minTop + Math.random() * (maxTop - minTop);
+      const left = minLeft + Math.random() * (maxLeft - minLeft);
+      element.style.top = top + '%';
+      element.style.left = left + '%';
+      element.style.right = 'auto';
+      element.style.bottom = 'auto';
+    }
+  }
+
+  // Restructured positions - symmetric layout avoiding hero content
+  // Hero section is centered (~25-45% top), animations frame around it
+  
+  // Top row - evenly spaced
+  randomizeElementPosition(document.getElementById('roboticArm3D'), 10, 20, 5, 18);      // Top-left
+  randomizeElementPosition(document.getElementById('drone3D'), 10, 20, 28, 42);        // Top-left-center
+  randomizeElementPosition(document.getElementById('rover3D'), 10, 20, 58, 72);       // Top-right-center
+  randomizeElementPosition(document.getElementById('lidar3D'), 10, 20, 82, 95);        // Top-right
+  
+  // Bottom row - evenly spaced
+  randomizeElementPosition(document.getElementById('humanoid3D'), 58, 72, 5, 22);      // Bottom-left
+  randomizeElementPosition(document.getElementById('neuralNetwork3D'), 58, 72, 38, 62); // Bottom-center
+  randomizeElementPosition(document.getElementById('dataAnalytics3D'), 58, 72, 78, 95); // Bottom-right
+
+  // Robotic Arm 3D Animation
+  const arm3D = document.getElementById('roboticArm3D');
+  const segment1Group = document.getElementById('arm-segment1-group');
+  const segment2Group = document.getElementById('arm-segment2-group');
+  const gripper1 = document.getElementById('gripper1-3d');
+  const gripper2 = document.getElementById('gripper2-3d');
+
+  if (arm3D && typeof gsap !== 'undefined' && segment1Group && segment2Group) {
+    // Function to update SVG transform attribute directly
+    function setSVGRotation(element, angle) {
+      if (element) {
+        const currentTransform = element.getAttribute('transform') || '';
+        // Remove existing rotation
+        const cleaned = currentTransform.replace(/rotate\([^)]*\)/g, '').trim();
+        // Add new rotation at the start
+        element.setAttribute('transform', `rotate(${angle}) ${cleaned}`.trim());
+      }
+    }
+
+    // Function to update gripper rotation
+    // Gripper lines: gripper1 goes to (20, -15) ≈ -37° from horizontal
+    //                gripper2 goes to (20, 15) ≈ +37° from horizontal
+    // Base angles: gripper1 base = -37°, gripper2 base = +37°
+    // To close: rotate gripper1 by +37° (to 0°), gripper2 by -37° (to 0°)
+    // To open: rotate further away from 0°
+    const GRIPPER1_BASE_ANGLE = -37; // atan2(-15, 20) ≈ -37°
+    const GRIPPER2_BASE_ANGLE = 37;  // atan2(15, 20) ≈ 37°
+    
+    function setGripperRotation(gripperElement, targetAngle, isGripper1) {
+      if (gripperElement) {
+        // targetAngle is the final angle from horizontal (0° = closed/horizontal)
+        // For gripper1: rotation = targetAngle - baseAngle = targetAngle - (-37) = targetAngle + 37
+        // For gripper2: rotation = targetAngle - baseAngle = targetAngle - 37
+        const baseAngle = isGripper1 ? GRIPPER1_BASE_ANGLE : GRIPPER2_BASE_ANGLE;
+        const rotation = targetAngle - baseAngle;
+        gripperElement.setAttribute('transform', `rotate(${rotation} 0 0)`);
+      }
+    }
+    
+    // Initialize grippers to closed position (horizontal/0°)
+    if (gripper1) setGripperRotation(gripper1, 0, true);
+    if (gripper2) setGripperRotation(gripper2, 0, false);
+
+    // Realistic robotic arm movement sequence using SVG transform attribute
+    const armTimeline = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+    
+    // Phase 1: Extend arm outward (lift and rotate base)
+    armTimeline
+      .to({}, {
+        duration: 2.5,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = progress * 45;
+          setSVGRotation(segment1Group, angle);
+        }
+      }, 0)
+      // Phase 2: Extend second segment downward to reach
+      .to({}, {
+        duration: 2,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = -progress * 60;
+          const currentTransform = segment2Group.getAttribute('transform') || '';
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          const translate = translateMatch ? translateMatch[0] : 'translate(0, -80)';
+          segment2Group.setAttribute('transform', `${translate} rotate(${angle})`);
+        }
+      }, 1)
+      // Phase 3: Fine adjustment - slight forward movement
+      .to({}, {
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = -60 - (progress * 10);
+          const currentTransform = segment2Group.getAttribute('transform') || '';
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          const translate = translateMatch ? translateMatch[0] : 'translate(0, -80)';
+          segment2Group.setAttribute('transform', `${translate} rotate(${angle})`);
+        }
+      }, 3)
+      // Phase 4: Open gripper to grasp
+      .to({}, {
+        duration: 0.5,
+        ease: 'power2.out',
+        onUpdate: function() {
+          const progress = this.progress();
+          // Open: gripper1 goes to -30°, gripper2 goes to +30° (from horizontal)
+          const targetAngle1 = -progress * 30;
+          const targetAngle2 = progress * 30;
+          setGripperRotation(gripper1, targetAngle1, true);
+          setGripperRotation(gripper2, targetAngle2, false);
+        }
+      }, 3.5)
+      // Phase 5: Close gripper (grasp)
+      .to({}, {
+        duration: 0.6,
+        ease: 'power2.in',
+        onUpdate: function() {
+          const progress = this.progress();
+          // Close: from -30° to 0° (horizontal/closed)
+          const targetAngle1 = -30 + (progress * 30);
+          const targetAngle2 = 30 - (progress * 30);
+          setGripperRotation(gripper1, targetAngle1, true);
+          setGripperRotation(gripper2, targetAngle2, false);
+        }
+      }, 4.2)
+      // Phase 6: Lift object - retract second segment
+      .to({}, {
+        duration: 2,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = -70 + (progress * 30);
+          const currentTransform = segment2Group.getAttribute('transform') || '';
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          const translate = translateMatch ? translateMatch[0] : 'translate(0, -80)';
+          segment2Group.setAttribute('transform', `${translate} rotate(${angle})`);
+        }
+      }, 5)
+      // Phase 7: Rotate base back
+      .to({}, {
+        duration: 2.5,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = 45 - (progress * 65);
+          setSVGRotation(segment1Group, angle);
+        }
+      }, 6)
+      // Phase 8: Extend to drop position
+      .to({}, {
+        duration: 1.5,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = -40 - (progress * 10);
+          const currentTransform = segment2Group.getAttribute('transform') || '';
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          const translate = translateMatch ? translateMatch[0] : 'translate(0, -80)';
+          segment2Group.setAttribute('transform', `${translate} rotate(${angle})`);
+        }
+      }, 7.5)
+      // Phase 9: Open gripper to release
+      .to({}, {
+        duration: 0.4,
+        ease: 'power2.out',
+        onUpdate: function() {
+          const progress = this.progress();
+          // Open: gripper1 goes to -30°, gripper2 goes to +30°
+          const targetAngle1 = -progress * 30;
+          const targetAngle2 = progress * 30;
+          setGripperRotation(gripper1, targetAngle1, true);
+          setGripperRotation(gripper2, targetAngle2, false);
+        }
+      }, 9)
+      // Phase 10: Close gripper
+      .to({}, {
+        duration: 0.4,
+        ease: 'power2.in',
+        onUpdate: function() {
+          const progress = this.progress();
+          // Close: from -30° to 0° (horizontal/closed)
+          const targetAngle1 = -30 + (progress * 30);
+          const targetAngle2 = 30 - (progress * 30);
+          setGripperRotation(gripper1, targetAngle1, true);
+          setGripperRotation(gripper2, targetAngle2, false);
+        }
+      }, 9.5)
+      // Phase 11: Return to home position
+      .to({}, {
+        duration: 2,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = -50 + (progress * 50);
+          const currentTransform = segment2Group.getAttribute('transform') || '';
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          const translate = translateMatch ? translateMatch[0] : 'translate(0, -80)';
+          segment2Group.setAttribute('transform', `${translate} rotate(${angle})`);
+        }
+      }, 10)
+      .to({}, {
+        duration: 2.5,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = -20 - (progress * 20);
+          setSVGRotation(segment1Group, angle);
+        }
+      }, 10.5)
+      .to({}, {
+        duration: 1.5,
+        ease: 'power1.inOut',
+        onUpdate: function() {
+          const progress = this.progress();
+          const angle = 0 - (progress * 0);
+          const currentTransform = segment2Group.getAttribute('transform') || '';
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          const translate = translateMatch ? translateMatch[0] : 'translate(0, -80)';
+          segment2Group.setAttribute('transform', `${translate} rotate(${angle})`);
+        }
+      }, 12);
+
+    // Subtle 3D perspective rotation
+    gsap.to(arm3D, {
+      rotationY: 10,
+      rotationX: -3,
+      duration: 5,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+  }
+
+  // Rover 3D Animation
+  const rover3D = document.getElementById('rover3D');
+  const wheelInners = ['wheel1-inner', 'wheel2-inner', 'wheel3-inner'];
+
+  if (rover3D && typeof gsap !== 'undefined') {
+    // Rotate each wheel around its own center axis using CSS animation
+    wheelInners.forEach((wheelInnerId) => {
+      const wheelInner = document.getElementById(wheelInnerId);
+      if (wheelInner) {
+        // Add CSS class for rotation
+        wheelInner.classList.add('wheel-rotating');
+        // Set transform origin to center
+        wheelInner.style.transformOrigin = '0 0';
+      }
+    });
+
+    // Create a timeline for synchronized movement
+    const roverTimeline = gsap.timeline({ repeat: -1 });
+    
+    // Forward movement
+    roverTimeline
+      .to(rover3D, {
+        x: '+=30',
+        duration: 2,
+        ease: 'power1.inOut'
+      })
+      // Backward movement
+      .to(rover3D, {
+        x: '-=30',
+        duration: 2,
+        ease: 'power1.inOut'
+      });
+
+    // Subtle 3D rotation for depth
+    gsap.to(rover3D, {
+      rotationY: 8,
+      rotationX: 1,
+      duration: 4,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+  }
+
+  // Drone 3D Animation
+  const drone3D = document.getElementById('drone3D');
+  const props = ['prop1-3d', 'prop2-3d', 'prop3-3d', 'prop4-3d'];
+
+  if (drone3D && typeof gsap !== 'undefined') {
+    // Rotate propellers
+    props.forEach((propId, index) => {
+      const prop = document.getElementById(propId);
+      if (prop) {
+        gsap.to(prop, {
+          rotation: 360,
+          duration: 0.3 + index * 0.05,
+          ease: 'none',
+          repeat: -1,
+          transformOrigin: 'center'
+        });
+      }
+    });
+
+    // Floating/hovering motion
+    gsap.to(drone3D, {
+      y: '-=25',
+      duration: 2.5,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+
+    // 3D tilt and rotation
+    gsap.to(drone3D, {
+      rotationX: 8,
+      rotationZ: 5,
+      duration: 3,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+  }
+
+  // Lidar 3D Animation
+  const lidar3D = document.getElementById('lidar3D');
+  const scanLines = ['scan-line1', 'scan-line2', 'scan-line3', 'scan-line4'];
+  const detectPoints = ['detect-point1', 'detect-point2', 'detect-point3', 'detect-point4'];
+
+  if (lidar3D && typeof gsap !== 'undefined') {
+    // Rotate scan lines around center (0, 0) of the lidar scanner
+    scanLines.forEach((lineId, index) => {
+      const line = document.getElementById(lineId);
+      if (line) {
+        // Lines start at (0, 0) and extend outward, so rotate around origin
+        gsap.set(line, { svgOrigin: '0 0' });
+        gsap.to(line, {
+          rotation: 360,
+          duration: 3,
+          delay: index * 0.1,
+          ease: 'none',
+          repeat: -1,
+          svgOrigin: '0 0'
+        });
+      }
+    });
+
+    // Pulse detection points
+    detectPoints.forEach((pointId, index) => {
+      const point = document.getElementById(pointId);
+      if (point) {
+        gsap.to(point, {
+          scale: 1.8,
+          opacity: 1,
+          duration: 0.6,
+          delay: index * 0.2,
+          yoyo: true,
+          repeat: -1,
+          ease: 'power2.inOut'
+        });
+      }
+    });
+
+    // Rotate lidar rings around center
+    const ring1 = document.getElementById('lidar-ring1');
+    const ring2 = document.getElementById('lidar-ring2');
+    if (ring1) {
+      // Ring center is at (0, 0) in SVG coordinates
+      gsap.set(ring1, { svgOrigin: '0 0' });
+      gsap.to(ring1, {
+        rotation: 360,
+        duration: 8,
+        ease: 'none',
+        repeat: -1,
+        svgOrigin: '0 0'
+      });
+    }
+    if (ring2) {
+      gsap.set(ring2, { svgOrigin: '0 0' });
+      gsap.to(ring2, {
+        rotation: -360,
+        duration: 6,
+        ease: 'none',
+        repeat: -1,
+        svgOrigin: '0 0'
+      });
+    }
+
+    // 3D rotation
+    gsap.to(lidar3D, {
+      rotationY: 20,
+      rotationX: -10,
+      duration: 4,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+  }
+
+  // Humanoid Robot 3D Animation
+  const humanoid3D = document.getElementById('humanoid3D');
+  const leftArm = document.getElementById('arm-left-3d');
+  const rightArm = document.getElementById('arm-right-3d');
+  const leftLeg = document.getElementById('leg-left-3d');
+  const rightLeg = document.getElementById('leg-right-3d');
+
+  if (humanoid3D && typeof gsap !== 'undefined') {
+    // Walking animation
+    const walkTimeline = gsap.timeline({ repeat: -1 });
+    
+    walkTimeline
+      .to(leftArm, {
+        rotation: -20,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        transformOrigin: 'top center'
+      }, 0)
+      .to(rightArm, {
+        rotation: 20,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        transformOrigin: 'top center'
+      }, 0)
+      .to(leftLeg, {
+        rotation: 15,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        transformOrigin: 'top center'
+      }, 0)
+      .to(rightLeg, {
+        rotation: -15,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        transformOrigin: 'top center'
+      }, 0)
+      .to(leftArm, {
+        rotation: 20,
+        duration: 0.8,
+        ease: 'power2.inOut'
+      })
+      .to(rightArm, {
+        rotation: -20,
+        duration: 0.8,
+        ease: 'power2.inOut'
+      })
+      .to(leftLeg, {
+        rotation: -15,
+        duration: 0.8,
+        ease: 'power2.inOut'
+      })
+      .to(rightLeg, {
+        rotation: 15,
+        duration: 0.8,
+        ease: 'power2.inOut'
+      });
+
+    // 3D body rotation
+    gsap.to(humanoid3D, {
+      rotationY: 15,
+      rotationX: -3,
+      duration: 4,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+
+    // Slight floating
+    gsap.to(humanoid3D, {
+      y: '-=10',
+      duration: 2,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut'
+    });
+  }
+
+  // Data Analytics 3D Animation
+  const dataAnalytics3D = document.getElementById('dataAnalytics3D');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  const bar4 = document.getElementById('bar4');
+  const bar5 = document.getElementById('bar5');
+  const bar6 = document.getElementById('bar6');
+  const lineGraph = document.getElementById('lineGraph');
+  const point1 = document.getElementById('point1');
+  const point2 = document.getElementById('point2');
+  const point3 = document.getElementById('point3');
+  const point4 = document.getElementById('point4');
+  const point5 = document.getElementById('point5');
+  const point6 = document.getElementById('point6');
+  const dataFlow1 = document.getElementById('dataFlow1');
+  const dataFlow2 = document.getElementById('dataFlow2');
+  const dataFlow3 = document.getElementById('dataFlow3');
+  const percent1 = document.getElementById('percent1');
+  const percent2 = document.getElementById('percent2');
+  const percent3 = document.getElementById('percent3');
+
+  if (dataAnalytics3D && typeof gsap !== 'undefined') {
+    // Initialize bars at height 0
+    const bars = [bar1, bar2, bar3, bar4, bar5, bar6];
+    bars.forEach(bar => {
+      if (bar) {
+        gsap.set(bar, { scaleY: 0, transformOrigin: 'bottom center' });
+      }
+    });
+
+    // Initialize line graph (hidden)
+    if (lineGraph) {
+      gsap.set(lineGraph, { opacity: 0 });
+    }
+
+    // Initialize data points (hidden)
+    const points = [point1, point2, point3, point4, point5, point6];
+    points.forEach(point => {
+      if (point) {
+        gsap.set(point, { scale: 0, opacity: 0 });
+      }
+    });
+
+    // Initialize percentage text (hidden)
+    const percents = [percent1, percent2, percent3];
+    percents.forEach(percent => {
+      if (percent) {
+        gsap.set(percent, { opacity: 0 });
+      }
+    });
+
+    // Main animation timeline
+    const analyticsTimeline = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+    // Animate bars growing up
+    analyticsTimeline
+      .to(bar1, { duration: 0.6, scaleY: 1, ease: 'power2.out' }, 0)
+      .to(bar2, { duration: 0.6, scaleY: 1, ease: 'power2.out' }, 0.1)
+      .to(bar3, { duration: 0.6, scaleY: 1, ease: 'power2.out' }, 0.2)
+      .to(bar4, { duration: 0.6, scaleY: 1, ease: 'power2.out' }, 0.3)
+      .to(bar5, { duration: 0.6, scaleY: 1, ease: 'power2.out' }, 0.4)
+      .to(bar6, { duration: 0.6, scaleY: 1, ease: 'power2.out' }, 0.5);
+
+    // Animate line graph appearing
+    if (lineGraph) {
+      analyticsTimeline.to(lineGraph, {
+        duration: 1.5,
+        opacity: 0.7,
+        ease: 'power1.inOut'
+      }, 0.8);
+    }
+
+    // Animate data points appearing
+    analyticsTimeline
+      .to(point1, { duration: 0.3, scale: 1, opacity: 0.8, ease: 'back.out(2)' }, 1.2)
+      .to(point2, { duration: 0.3, scale: 1, opacity: 0.8, ease: 'back.out(2)' }, 1.3)
+      .to(point3, { duration: 0.3, scale: 1, opacity: 0.8, ease: 'back.out(2)' }, 1.4)
+      .to(point4, { duration: 0.3, scale: 1, opacity: 0.8, ease: 'back.out(2)' }, 1.5)
+      .to(point5, { duration: 0.3, scale: 1, opacity: 0.8, ease: 'back.out(2)' }, 1.6)
+      .to(point6, { duration: 0.3, scale: 1, opacity: 0.8, ease: 'back.out(2)' }, 1.7);
+
+    // Animate percentage text appearing
+    analyticsTimeline
+      .to(percent1, { duration: 0.4, opacity: 0.5, ease: 'power2.out' }, 2)
+      .to(percent2, { duration: 0.4, opacity: 0.5, ease: 'power2.out' }, 2.1)
+      .to(percent3, { duration: 0.4, opacity: 0.5, ease: 'power2.out' }, 2.2);
+
+    // Data flow animation (circles moving across)
+    if (dataFlow1 && dataFlow2 && dataFlow3) {
+      const flowTimeline = gsap.timeline({ repeat: -1 });
+      flowTimeline
+        .to(dataFlow1, {
+          duration: 2,
+          x: 240,
+          ease: 'power1.inOut'
+        })
+        .to(dataFlow2, {
+          duration: 2,
+          x: 240,
+          ease: 'power1.inOut'
+        }, 0.3)
+        .to(dataFlow3, {
+          duration: 2,
+          x: 240,
+          ease: 'power1.inOut'
+        }, 0.6)
+        .set([dataFlow1, dataFlow2, dataFlow3], { x: 0 });
+    }
+
+    // Pulsing effect on data points
+    points.forEach(point => {
+      if (point) {
+        gsap.to(point, {
+          scale: 1.3,
+          duration: 1,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          delay: 2.5
+        });
+      }
+    });
+
+    // Subtle 3D rotation
+    gsap.to(dataAnalytics3D, {
+      rotationY: 3,
+      rotationX: 2,
+      duration: 5,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+      transformStyle: 'preserve-3d'
+    });
+  }
+
+  // Neural Network 3D Animation
+  const neuralNetwork3D = document.getElementById('neuralNetwork3D');
+  const inputNodes = ['input1', 'input2', 'input3', 'input4', 'input5'].map(id => document.getElementById(id));
+  const hidden1Nodes = ['hidden1-1', 'hidden1-2', 'hidden1-3', 'hidden1-4'].map(id => document.getElementById(id));
+  const hidden2Nodes = ['hidden2-1', 'hidden2-2', 'hidden2-3'].map(id => document.getElementById(id));
+  const outputNodes = ['output1', 'output2'].map(id => document.getElementById(id));
+  const connections = Array.from({ length: 24 }, (_, i) => document.getElementById(`conn${i + 1}`));
+  const particles = ['particle1', 'particle2', 'particle3'].map(id => document.getElementById(id));
+
+  if (neuralNetwork3D && typeof gsap !== 'undefined') {
+    // Initialize connections (hidden)
+    connections.forEach(conn => {
+      if (conn) {
+        gsap.set(conn, { opacity: 0 });
+      }
+    });
+
+    // Initialize particles (hidden)
+    particles.forEach(particle => {
+      if (particle) {
+        gsap.set(particle, { scale: 0, opacity: 0 });
+      }
+    });
+
+    // Main animation timeline
+    const neuralTimeline = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
+
+    // Animate connections appearing (staggered)
+    connections.forEach((conn, index) => {
+      if (conn) {
+        neuralTimeline.to(conn, {
+          duration: 0.3,
+          opacity: 0.3 + (index % 3) * 0.1,
+          ease: 'power1.out'
+        }, index * 0.05);
+      }
+    });
+
+    // Pulse input nodes
+    inputNodes.forEach((node, index) => {
+      if (node) {
+        gsap.to(node, {
+          scale: 1.3,
+          duration: 1,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          delay: index * 0.2
+        });
+      }
+    });
+
+    // Pulse hidden layer 1 nodes
+    hidden1Nodes.forEach((node, index) => {
+      if (node) {
+        gsap.to(node, {
+          scale: 1.25,
+          duration: 1.2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          delay: 0.5 + index * 0.15
+        });
+      }
+    });
+
+    // Pulse hidden layer 2 nodes
+    hidden2Nodes.forEach((node, index) => {
+      if (node) {
+        gsap.to(node, {
+          scale: 1.2,
+          duration: 1.4,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          delay: 1 + index * 0.2
+        });
+      }
+    });
+
+    // Pulse output nodes
+    outputNodes.forEach((node, index) => {
+      if (node) {
+        gsap.to(node, {
+          scale: 1.15,
+          duration: 1.6,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          delay: 1.5 + index * 0.3
+        });
+      }
+    });
+
+    // Animate data particles flowing through network
+    if (particles[0]) {
+      const particle1Path = gsap.timeline({ repeat: -1 });
+      particle1Path
+        .to(particles[0], { duration: 0.3, scale: 1, opacity: 0.9, ease: 'power2.out' })
+        .to(particles[0], { duration: 1.2, x: 100, y: 20, ease: 'power1.inOut' })
+        .to(particles[0], { duration: 1, x: 200, y: -20, ease: 'power1.inOut' })
+        .to(particles[0], { duration: 0.2, scale: 0, opacity: 0 })
+        .set(particles[0], { x: -100, y: -80 });
+    }
+
+    if (particles[1]) {
+      const particle2Path = gsap.timeline({ repeat: -1, delay: 0.4 });
+      particle2Path
+        .to(particles[1], { duration: 0.3, scale: 1, opacity: 0.9, ease: 'power2.out' })
+        .to(particles[1], { duration: 1.2, x: 100, y: 0, ease: 'power1.inOut' })
+        .to(particles[1], { duration: 1, x: 200, y: 20, ease: 'power1.inOut' })
+        .to(particles[1], { duration: 0.2, scale: 0, opacity: 0 })
+        .set(particles[1], { x: -100, y: -40 });
+    }
+
+    if (particles[2]) {
+      const particle3Path = gsap.timeline({ repeat: -1, delay: 0.8 });
+      particle3Path
+        .to(particles[2], { duration: 0.3, scale: 1, opacity: 0.9, ease: 'power2.out' })
+        .to(particles[2], { duration: 1.2, x: 100, y: -20, ease: 'power1.inOut' })
+        .to(particles[2], { duration: 1, x: 200, y: -20, ease: 'power1.inOut' })
+        .to(particles[2], { duration: 0.2, scale: 0, opacity: 0 })
+        .set(particles[2], { x: -100, y: 0 });
+    }
+
+    // Animate connection lines (pulsing)
+    connections.forEach((conn, index) => {
+      if (conn) {
+        gsap.to(conn, {
+          strokeWidth: 1.5 + (index % 2) * 0.5,
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          delay: index * 0.1
+        });
+      }
+    });
+
+    // Subtle 3D rotation
+    gsap.to(neuralNetwork3D, {
+      rotationY: -4,
+      rotationX: 3,
+      duration: 6,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+      transformStyle: 'preserve-3d'
+    });
+  }
+}
+
+// Modal functionality
 const modal = document.getElementById("resumeModal");
 const resumeBtn = document.getElementById("resumeBtn");
 const closeModal = document.getElementById("closeModal");
 const form = document.getElementById("resumeForm");
 
-// Show popup
-resumeBtn.addEventListener("click", () => {
- modal.style.display = "flex";
-});
+// Show popup with GSAP animation
+if (resumeBtn && modal) {
+  resumeBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    gsap.from(modal.querySelector('div'), {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.3,
+      ease: 'back.out(1.7)'
+    });
+  });
+}
 
 // Close popup
-closeModal.addEventListener("click", () => {
-   modal.style.display = "none"; });
+if (closeModal && modal) {
+  closeModal.addEventListener("click", () => {
+    gsap.to(modal.querySelector('div'), {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power2.in',
+      onComplete: () => {
+        modal.style.display = "none";
+      }
+    });
+  });
+
+  // Close on outside click
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      gsap.to(modal.querySelector('div'), {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in',
+        onComplete: () => {
+          modal.style.display = "none";
+        }
+      });
+    }
+  });
+}
 
 // Handle form submission and send email
-form.addEventListener('submit', function(e) {
- e.preventDefault();
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-// 1. Collect form data using the robust FormData API
- const formData = new FormData(form);
- const data = Object.fromEntries(formData.entries());
+    // 1. Collect form data using the robust FormData API
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
- // 2. Send the email using the Service ID and Template ID
- emailjs.send(
- "service_izgcccl", // Confirmed Service ID
- "template_ujh8ghf",  // Confirmed Template ID
- data // Form data object
-)
-.then(() => {
-alert("Thank you! Your request has been submitted. You’ll receive the resume after approval.");
-modal.style.display = "none";
-form.reset();
- }, (error) => {
- // General error handling if the API call fails
- alert("Oops! Something went wrong. Please try again. Check the browser console for details.");
- console.error("EmailJS Error:", error);
- });
- });
+    // 2. Send the email using the Service ID and Template ID
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send(
+        "service_izgcccl", // Confirmed Service ID
+        "template_ujh8ghf",  // Confirmed Template ID
+        data // Form data object
+      )
+      .then(() => {
+        // Success animation
+        gsap.to(form, {
+          scale: 1.05,
+          duration: 0.2,
+          yoyo: true,
+          repeat: 1,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            alert("Thank you! Your request has been submitted. You'll receive the resume after approval.");
+            if (modal) {
+              gsap.to(modal.querySelector('div'), {
+                scale: 0.8,
+                opacity: 0,
+                duration: 0.2,
+                ease: 'power2.in',
+                onComplete: () => {
+                  modal.style.display = "none";
+                }
+              });
+            }
+            form.reset();
+          }
+        });
+      }, (error) => {
+        // General error handling if the API call fails
+        alert("Oops! Something went wrong. Please try again. Check the browser console for details.");
+        console.error("EmailJS Error:", error);
+      });
+    } else {
+      alert("Email service is not available. Please try again later.");
+    }
+  });
+}
 </script>
 
 </body>
