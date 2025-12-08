@@ -206,32 +206,36 @@
           </article>
         </div>
 
-        <!-- Project 4: Digital Twin Farm -->
+        <!-- Project 4: Hand Gesture Robot Control -->
         <div class="col-12">
           <article class="card-clean p-4">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
               <div>
-                <h5 class="mb-1">Digital Twin of an Automated Farm</h5>
-                <p class="mb-2" style="color:var(--muted)">CoppeliaSim + ROS simulation with multiple robots: TurtleBot fetch, robotic arm loading, UGV field ops (seeding, sowing, weeding).</p>
+                <h5 class="mb-1">Hand Gesture Robot Control</h5>
+                <p class="mb-2" style="color:var(--muted)">Control a TurtleBot3 robot in Gazebo using hand gestures from your webcam. Real-time gesture recognition with 98% accuracy using SigLIP vision model.</p>
                 <div class="chips">
                   <span class="chip">ROS</span>
-                  <span class="chip">CoppeliaSim</span>
                   <span class="chip">Gazebo</span>
-                  <span class="chip">URDF</span>
                   <span class="chip">Python</span>
+                  <span class="chip">OpenCV</span>
+                  <span class="chip">Flask</span>
+                  <span class="chip">SigLIP</span>
+                  <span class="chip">TurtleBot3</span>
                 </div>
               </div>
               <div class="project-links">
-                <a href="https://github.com/ujwalwag/DigitalFarm" target="_blank" rel="noopener">Code</a>
+                <a href="https://github.com/ujwalwag/r_action_m" target="_blank" rel="noopener">Code</a>
               </div>
             </div>
             <hr/>
             <details>
               <summary><span class="twist">▶</span> View details</summary>
               <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Interactive environment for automated farming tasks.</li>
-                <li>UGV + robotic arm simulation for seeding/harvesting flows.</li>
-                <li>Navigation algorithms for route optimization.</li>
+                <li>Recognizes 19 different hand gestures with 98% accuracy using SigLIP vision transformer model.</li>
+                <li>Real-time gesture-to-robot control: open palm (forward), OK sign (backward), one finger (left), two fingers (right), fist (stop).</li>
+                <li>Cross-platform camera streaming (Windows/Mac) with Flask server for WSL2 integration.</li>
+                <li>Frame-by-frame analysis with 10-frame smoothing for stable gesture recognition.</li>
+                <li>Publishes velocity commands to TurtleBot3 via ROS /cmd_vel topic.</li>
               </ul>
             </details>
           </article>
