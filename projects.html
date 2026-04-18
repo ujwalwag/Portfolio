@@ -57,8 +57,17 @@
     details[open] summary .twist{transform:rotate(90deg)}
     .twist{display:inline-block; transition:transform .15s ease}
 
-    .project-links a{border:1px solid var(--ink); border-radius:12px; padding:.5rem .8rem; display:inline-block}
-    .project-links a + a{margin-left:.5rem}
+    /* Title + body column can shrink so Code / Video stay on one row beside copy (md+) */
+    .card-clean > .d-flex.flex-md-row > div:first-child{flex:1 1 auto; min-width:0}
+    .project-links{
+      display:flex; flex-wrap:wrap; gap:.5rem;
+      align-items:center; justify-content:flex-start;
+      flex-shrink:0;
+    }
+    @media (min-width: 768px){
+      .project-links{justify-content:flex-end; align-self:flex-start}
+    }
+    .project-links a{border:1px solid var(--ink); border-radius:12px; padding:.5rem .8rem; display:inline-block; white-space:nowrap}
 
     footer{border-top:1px solid var(--line); color:var(--muted)}
   </style>
@@ -106,6 +115,71 @@
       <h2 class="text-center display-5 mb-4">Projects</h2>
 
       <div class="row g-3">
+        <!-- Driftbot — Autonomous Tidying Robot -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Driftbot — Autonomous Tidying Robot</h5>
+                <p class="mb-2" style="color:var(--muted)">ROS 2 Jazzy + Gazebo Harmonic simulation: a four‑wheeled differential‑drive robot with a three‑joint magnetic arm picks up scattered objects in a two‑room home world and drops them in a collection bin.</p>
+                <div class="chips">
+                  <span class="chip">ROS 2</span>
+                  <span class="chip">Gazebo Harmonic</span>
+                  <span class="chip">ros_gz_bridge</span>
+                  <span class="chip">URDF / Xacro</span>
+                  <span class="chip">Bug2</span>
+                  <span class="chip">Python</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/driftbot_assignment" target="_blank" rel="noopener">Code</a>
+                <a href="https://www.youtube.com/watch?v=e_FANwnThCs" target="_blank" rel="noopener">Video</a>
+              </div>
+            </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>Simulated home with a small robot that drives around, picks up loose items with a magnetic arm, and drops them in a collection bin.</li>
+                <li>You can follow along in RViz and a camera window while a mission runs.</li>
+                <li>Mission 1: drives straight to a toy block, picks it up, turns around, drives back, and drops it in the collection bin.</li>
+                <li>Mission 2: uses Bug2 logic to weave around furniture, reach two more blocks one at a time, pick each up, and bring it back to the bin.</li>
+                <li>Mission 3 (under development): random exploration paired with computer vision to find and tidy objects.</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+
+        <!-- Soil Fertility Rover -->
+        <div class="col-12">
+          <article class="card-clean p-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+              <div>
+                <h5 class="mb-1">Soil Fertility Rover</h5>
+                <p class="mb-2" style="color:var(--muted)">A ROS 2 Jazzy simulation of a differential‑drive farm rover with an arm and sensors in Gazebo Harmonic: Nav2‑oriented navigation, PyQt GUI, and stubs for field coverage and arm control; real hardware is only stubbed for later bringup.</p>
+                <div class="chips">
+                  <span class="chip">ROS 2</span>
+                  <span class="chip">Gazebo Harmonic</span>
+                  <span class="chip">Nav2</span>
+                  <span class="chip">PyQt</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ujwalwag/soil-fertility-rover" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+            <hr/>
+            <details>
+              <summary><span class="twist">▶</span> View details</summary>
+              <ul class="mt-2 mb-0" style="color:var(--muted)">
+                <li>Organized as several ROS 2 packages (robot description, simulation worlds and bridges, navigation configs, arm bringup stubs, GUI, and top‑level launches).</li>
+                <li>Launch options include simulation only, sim with GUI, and full sim with Nav2.</li>
+                <li>The PyQt GUI supports two modes: autonomous operation and remote control for driving the rover in sim.</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+
         <!-- Project 1: UGV Soil Health -->
         <div class="col-12">
           <article class="card-clean p-4">
@@ -159,6 +233,7 @@
               </div>
               <div class="project-links">
                 <a href="https://github.com/ujwalwag/LeafDiseaseDetectionSys" target="_blank" rel="noopener">Code</a>
+                <a href="https://leafdiseasedetectionsys.onrender.com/" target="_blank" rel="noopener">Live</a>
               </div>
             </div>
             <hr/>
