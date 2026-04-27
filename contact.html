@@ -58,6 +58,12 @@
     .contact-card i, .contact-card img{
       filter:grayscale(100%);
     }
+    .contact-card .contact-brand-icon{
+      width:3rem;
+      height:3rem;
+      margin:0 auto 1rem;
+      display:block;
+    }
     .contact-card .card-body{padding:22px}
 
     footer{border-top:1px solid var(--line); color:var(--muted); background:#fff}
@@ -105,7 +111,7 @@
   <header class="text-center py-5">
     <div class="container">
       <h1 class="display-5 mb-2">Contact Me</h1>
-      <p class="lead">I'd love to connect! Reach out through any of the platforms below.</p>
+      <p class="lead">Choose a channel below.</p>
     </div>
   </header>
 
@@ -113,11 +119,12 @@
   <section id="contact-info" class="container pb-5">
     <div class="row g-3 justify-content-center">
       <div class="col-sm-6 col-md-4">
-        <a href="mailto:waghray.ujwal@outlook.com" class="contact-card d-block text-dark" aria-label="Email Ujwal Waghray">
+        <a href="mailto:waghray.ujwal@outlook.com" class="contact-card d-block text-dark" aria-label="Send email to Ujwal Waghray">
           <div class="card-body">
             <i class="fas fa-envelope fa-3x mb-3"></i>
             <h5 class="card-title mb-1">Email</h5>
-            <p class="mb-0">waghray.ujwal@outlook.com</p>
+            <p class="mb-0">Say hi.</p>
+            <span class="visually-hidden">waghray.ujwal@outlook.com</span>
           </div>
         </a>
       </div>
@@ -126,7 +133,7 @@
           <div class="card-body">
             <i class="fab fa-github fa-3x mb-3"></i>
             <h5 class="card-title mb-1">GitHub</h5>
-            <p class="mb-0">Explore my repositories</p>
+            <p class="mb-0">Code &amp; repos.</p>
           </div>
         </a>
       </div>
@@ -135,7 +142,7 @@
           <div class="card-body">
             <i class="fab fa-linkedin fa-3x mb-3"></i>
             <h5 class="card-title mb-1">LinkedIn</h5>
-            <p class="mb-0">Connect with me</p>
+            <p class="mb-0">Career &amp; connect.</p>
           </div>
         </a>
       </div>
@@ -147,7 +154,8 @@
           <div class="card-body">
             <i class="fas fa-phone fa-3x mb-3"></i>
             <h5 class="card-title mb-1">Phone</h5>
-            <p class="mb-0">+1 (919) 903-6159</p>
+            <p class="mb-0">Call or text.</p>
+            <span class="visually-hidden">+1 (919) 903-6159</span>
           </div>
         </a>
       </div>
@@ -156,16 +164,16 @@
           <div class="card-body">
             <i class="fab fa-youtube fa-3x mb-3"></i>
             <h5 class="card-title mb-1">YouTube</h5>
-            <p class="mb-0">Watch my videos</p>
+            <p class="mb-0">Videos &amp; demos.</p>
           </div>
         </a>
       </div>
       <div class="col-sm-6 col-md-4">
-        <a href="https://lovedebtandrobots.blogspot.com/" target="_blank" rel="noopener noreferrer" class="contact-card d-block text-dark" aria-label="Blog">
+        <a href="https://substack.com/@lovedebtplusrobots" target="_blank" rel="noopener noreferrer" class="contact-card d-block text-dark" aria-label="Substack newsletter">
           <div class="card-body">
-            <i class="fab fa-blogger fa-3x mb-3"></i>
-            <h5 class="card-title mb-1">Blogger</h5>
-            <p class="mb-0">Read my blogs</p>
+            <img src="assets/substack.svg" alt="" class="contact-brand-icon" width="48" height="48" />
+            <h5 class="card-title mb-1">Substack</h5>
+            <p class="mb-0">Posts &amp; essays.</p>
           </div>
         </a>
       </div>
