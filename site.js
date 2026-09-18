@@ -94,18 +94,26 @@
   if (bar) {
     var items = Array.prototype.slice.call(document.querySelectorAll('[data-tags]'));
     var countEl = document.querySelector('[data-filter-count]');
+    // Reused by the experience page, which counts roles and has no "All" button.
+    var noun = bar.getAttribute('data-filter-noun') || 'projects';
+    var fallback = bar.getAttribute('data-filter-default') || 'all';
 
-    function apply(tag) {
+    function apply(tag, force) {
       var shown = 0;
       items.forEach(function (item) {
         var tags = (item.getAttribute('data-tags') || '').split(/\s+/);
         var match = tag === 'all' || tags.indexOf(tag) !== -1;
         item.hidden = !match;
-        if (match) shown++;
+        if (match) {
+          shown++;
+          // A card hidden at load never intersected, so it would fade in from
+          // nothing on the click that reveals it. Show it outright instead.
+          if (force) { item.classList.add('is-visible'); revealNow(item); }
+        }
       });
       if (countEl) {
         countEl.textContent = shown === items.length
-          ? items.length + ' projects'
+          ? items.length + ' ' + noun
           : shown + ' of ' + items.length;
       }
     }
@@ -114,15 +122,15 @@
       var buttons = bar.querySelectorAll('[data-filter]');
       var found = false;
       buttons.forEach(function (b) { if (b.getAttribute('data-filter') === tag) found = true; });
-      if (!found) tag = 'all';
+      if (!found) tag = fallback;
       buttons.forEach(function (b) {
         var on = b.getAttribute('data-filter') === tag;
         b.classList.toggle('is-active', on);
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
-      apply(tag);
+      apply(tag, push);
       if (push) {
-        history.replaceState(null, '', tag === 'all'
+        history.replaceState(null, '', tag === fallback
           ? window.location.pathname
           : window.location.pathname + '?filter=' + encodeURIComponent(tag));
       }
@@ -133,7 +141,7 @@
       if (btn) select(btn.getAttribute('data-filter'), true);
     });
 
-    select(new URLSearchParams(window.location.search).get('filter') || 'all', false);
+    select(new URLSearchParams(window.location.search).get('filter') || fallback, false);
   }
 
   /* ---------- Deep links ---------- */
@@ -143,8 +151,12 @@
     try { el = document.querySelector(window.location.hash); } catch (e) { return; }
     if (!el) return;
     if (el.hidden) {
-      var all = document.querySelector('[data-filter="all"]');
-      if (all) all.click();
+      var tags = (el.getAttribute('data-tags') || '').split(/\s+/);
+      var btn = document.querySelector('[data-filter="all"]');
+      for (var i = 0; i < tags.length && !btn; i++) {
+        btn = document.querySelector('[data-filter="' + tags[i] + '"]');
+      }
+      if (btn) btn.click();
     }
     var d = el.querySelector('details');
     if (d) d.open = true;

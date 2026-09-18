@@ -455,8 +455,15 @@
 
     <section class="section" style="padding-top:clamp(1.5rem,3vw,2.5rem)">
       <div class="wrap">
+        <div class="filters" data-filter-bar data-filter-default="jobs" data-filter-noun="roles" role="group" aria-label="Filter experience">
+          <button class="filter is-active" type="button" data-filter="jobs" aria-pressed="true">Jobs</button>
+          <button class="filter" type="button" data-filter="freelance" aria-pressed="false">Freelance</button>
+          <button class="filter" type="button" data-filter="startup" aria-pressed="false">Startup</button>
+          <span class="meta" data-filter-count style="margin-left:auto">7 roles</span>
+        </div>
+
         <div class="timeline">
-          <div class="tl-item is-current reveal">
+          <div class="tl-item is-current reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/robot-com-logo.webp" alt="Robot.com logo" loading="lazy" decoding="async" /></div>
@@ -482,7 +489,7 @@
               </div>
             </div>
           </div>
-          <div class="tl-item reveal">
+          <div class="tl-item reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/community_dreams_foundation.webp" alt="Community Dreams Foundation logo" loading="lazy" decoding="async" /></div>
@@ -508,7 +515,7 @@
               </div>
             </div>
           </div>
-          <div class="tl-item reveal">
+          <div class="tl-item reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/University-at-Buffalo-logo-300x300.webp" alt="WINGS Lab, SUNY Buffalo logo" loading="lazy" decoding="async" /></div>
@@ -531,7 +538,7 @@
               </div>
             </div>
           </div>
-          <div class="tl-item reveal">
+          <div class="tl-item reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/thoughtworks-logo-freelogovectors.net_.webp" alt="ThoughtWorks Technologies logo" loading="lazy" decoding="async" /></div>
@@ -555,7 +562,7 @@
               </div>
             </div>
           </div>
-          <div class="tl-item reveal">
+          <div class="tl-item reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/inno.webp" alt="Innodatatics logo" loading="lazy" decoding="async" /></div>
@@ -578,7 +585,7 @@
               </div>
             </div>
           </div>
-          <div class="tl-item reveal">
+          <div class="tl-item reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/cda-removebg-preview.webp" alt="Casa De Aura logo" loading="lazy" decoding="async" /></div>
@@ -600,7 +607,7 @@
               </div>
             </div>
           </div>
-          <div class="tl-item reveal">
+          <div class="tl-item reveal" data-tags="jobs">
             <div class="card card-hover">
               <div style="display:flex; gap:1rem; align-items:flex-start">
                 <div class="tl-logo"><img src="assets/Amazon_logo.svg.webp" alt="Amazon Development Centre logo" loading="lazy" decoding="async" /></div>
@@ -616,6 +623,53 @@
                   <li class="chip">Support</li>
                   <li class="chip">Diagnostics</li>
                   <li class="chip">RCA</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal" data-tags="freelance">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/3dotsfarm-logo.webp" alt="3dotsfarm logo" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Freelance Web Developer</h3>
+                  <p class="role-org">3dotsfarm</p>
+                  <p class="role-dates">Apr 2026 &mdash; Jul 2026 &middot; Farmstay site, rural Maharashtra</p>
+                  <ul class="points">
+                  <li>Designed and shipped the public site for a working farmstay, covering stays, workshops, farm produce, recipes and a blog.</li>
+                  <li>Built the booking system end to end &mdash; a validated date-range request form backed by an authenticated API route, so enquiries reach the owners directly instead of a platform taking a commission per stay.</li>
+                  <li>Built in Next.js App Router with server components and Tailwind, deployed on Vercel; a keyed asset route lets the owners swap seasonal photography without a redeploy.</li>
+                  <li>Tuned the image pipeline and responsive layout for small screens and slow rural connections, where most of the traffic actually lands.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Next.js</li>
+                  <li class="chip">React</li>
+                  <li class="chip">Tailwind</li>
+                  <li class="chip">API Routes</li>
+                  <li class="chip">Vercel</li>
+                  <li class="chip chip-leaf">Freelance</li>
+                  </ul>
+                  <div class="actions" style="margin-top:1rem">
+                    <a class="btn btn-leaf btn-sm" href="https://3dots-ruby.vercel.app/" target="_blank" rel="noopener">Visit 3dotsfarm</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item is-current reveal" data-tags="startup">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/projects/placeholder.svg" alt="" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Founder</h3>
+                  <p class="role-org">Boids</p>
+                  <p class="role-dates">2026 &mdash; Present &middot; Early stage</p>
+                  <ul class="points">
+                  <li>Early stage, and quiet about it for now. Details once it stops falling over.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip chip-leaf">In the making</li>
                   </ul>
                 </div>
               </div>
