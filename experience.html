@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ujwal Waghray | Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Experience &mdash; Ujwal Waghray</title>
+  <meta name="description" content="Professional experience - robotics operations, research, software development and data science." />
 
   <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
@@ -12,315 +13,658 @@
     function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
   </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#f8f9f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c110f" media="(prefers-color-scheme: dark)" />
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Ujwal Waghray — Experience" />
-  <meta property="og:description" content="Professional experience presented in a minimal black & white robotics/AI theme." />
+  <!-- Sharing -->
+  <meta property="og:title" content="Experience &mdash; Ujwal Waghray" />
+  <meta property="og:description" content="Professional experience - robotics operations, research, software development and data science." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/dp1(1)(1).jpg" />
+  <meta property="og:site_name" content="Ujwal Waghray" />
   <meta property="og:url" content="https://ujwalwaghray.dev/experience.html" />
+  <meta property="og:image" content="https://ujwalwaghray.dev/assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://ujwalwaghray.dev/assets/og-cover.jpg" />
+  <link rel="canonical" href="https://ujwalwaghray.dev/experience.html" />
 
-  <!-- Minimal black & white + blueprint accents -->
-  <style>
-    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; }
-    html,body{height:100%}
-    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:var(--ink); text-decoration:none}
-    
-    /* sticky, translucent navbar */
-    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
-    .navbar-brand{font-weight:800}
-    .navbar-light .nav-link{color:#111827}
-    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
-
-    /* decorative blueprint grid */
-    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
-    .grid-bg svg{width:100%; height:100%; display:block}
-
-    /* cards */
-    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff; transition:transform .18s ease, box-shadow .18s ease}
-    .card-clean:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.06)}
-
-    /* timeline spine */
-    .timeline{position:relative}
-    .timeline:before{content:""; position:absolute; left:22px; top:0; bottom:0; width:2px; background:#e5e7eb}
-
-    .exp-item{position:relative; padding-left:56px}
-    .exp-item + .exp-item{margin-top:18px}
-    .exp-pin{position:absolute; left:12px; top:.6rem; width:20px; height:20px; border-radius:6px; border:1px solid var(--ink); background:#fff}
-
-    .logo{width:56px; height:56px; border-radius:14px; border:1px solid var(--line); display:grid; place-items:center; background:#fff}
-    .logo img{max-width:42px; max-height:42px}
-
-    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
-    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.85rem; border-radius:999px; padding:.35rem .6rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
-
-    /* compact skill cards under chips */
-    .skill-card{border:1px solid var(--line); border-radius:12px; background:#fff; padding:.6rem .5rem; text-align:center; transition:transform .18s ease, box-shadow .18s ease}
-    .skill-card:hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.06)}
-    .skill-card .label{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.85rem; color:#111827}
-
-    footer{border-top:1px solid var(--line); color:var(--muted)}
-  </style>
+  <!-- Theme before first paint, so there is no flash. -->
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('theme');
+        if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+      }catch(e){}
+    })();
+  </script>
 </head>
 <body>
-  <!-- blueprint background -->
-  <div class="grid-bg" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
-        </pattern>
-        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
-          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" />
-      <rect width="100%" height="100%" fill="url(#gridBold)" />
-    </svg>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Backdrop: blueprint grid, sun, drifting motes -->
+  <div class="backdrop" aria-hidden="true" data-motes>
+    <div class="grid-layer">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="gridFine" width="38" height="38" patternUnits="userSpaceOnUse">
+            <path class="grid-fine" d="M 38 0 L 0 0 0 38" fill="none" stroke-width="1" />
+          </pattern>
+          <pattern id="gridBold" width="190" height="190" patternUnits="userSpaceOnUse">
+            <path class="grid-bold" d="M 190 0 L 0 0 0 190" fill="none" stroke-width="1.1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#gridFine)" />
+        <rect width="100%" height="100%" fill="url(#gridBold)" />
+      </svg>
+    </div>
+
+    <div class="sun">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="46" stroke-width="1.4" />
+        <circle cx="100" cy="100" r="62" stroke-width=".8" stroke-dasharray="3 7" />
+        <g class="sun-spin" stroke-width="1.2">
+          <circle cx="100" cy="100" r="80" stroke-dasharray="1.5 12" />
+          <circle cx="100" cy="100" r="94" stroke-dasharray="1 20" />
+        </g>
+      </svg>
+    </div>
+
   </div>
 
-  <!-- Nav -->
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="experience.html">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+  <!-- Robotics line-art layer -->
+  <div class="robotics-3d-container" aria-hidden="true">
+<!-- 3D Robotic Arm -->
+    <div class="robotics-3d-element robotic-arm-3d" id="roboticArm3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 250 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="arm3d" transform="translate(125, 250)">
+          <!-- Base -->
+          <g id="base3d">
+            <rect x="-30" y="0" width="60" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+            <rect x="-25" y="5" width="50" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Joint 1 & Segment 1 Group -->
+          <g id="arm-segment1-group" transform="rotate(0)">
+            <!-- Joint 1 -->
+            <g id="joint1-3d">
+              <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="0" cy="0" r="3" fill="currentColor" opacity="0.7"/>
+            </g>
+            <!-- Segment 1 -->
+            <g id="segment1-3d">
+              <line x1="0" y1="0" x2="0" y2="-80" stroke="currentColor" stroke-width="4" opacity="0.7"/>
+              <rect x="-8" y="-80" width="16" height="80" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </g>
+            <!-- Joint 2 & Segment 2 Group -->
+            <g id="arm-segment2-group" transform="translate(0, -80) rotate(0)">
+              <!-- Joint 2 -->
+              <g id="joint2-3d">
+                <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+                <circle cx="0" cy="0" r="6" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+              <!-- Segment 2 -->
+              <g id="segment2-3d">
+                <line x1="0" y1="0" x2="60" y2="-60" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+                <rect x="-6" y="-60" width="12" height="85" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" transform="rotate(45)"/>
+              </g>
+              <!-- Joint 3 & Gripper -->
+              <g id="gripper3d" transform="translate(60, -60)">
+                <circle cx="0" cy="0" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+                <!-- Gripper 1 (top finger) -->
+                <g id="gripper1-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="-15" stroke="currentColor" stroke-width="3"/>
+                </g>
+                <!-- Gripper 2 (bottom finger) -->
+                <g id="gripper2-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="15" stroke="currentColor" stroke-width="3"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
     </div>
-  </nav>
 
-  <!-- Experience -->
-  <section id="experience" class="py-5">
-    <div class="container">
-      <h2 class="text-center display-5 mb-4">Professional Experience</h2>
+    <!-- 3D Rover -->
+    <div class="robotics-3d-element rover-3d" id="rover3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+        <g id="rover3d" transform="translate(140, 150)">
+          <!-- Body -->
+          <rect x="-80" y="-40" width="160" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-75" y="-35" width="150" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <!-- Wheels -->
+          <g id="wheel1-3d" transform="translate(-60, 10)">
+            <g id="wheel1-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel2-3d" transform="translate(0, 10)">
+            <g id="wheel2-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel3-3d" transform="translate(60, 10)">
+            <g id="wheel3-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <!-- Antenna -->
+          <line x1="0" y1="-40" x2="0" y2="-70" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-70" r="4" fill="currentColor" opacity="0.6"/>
+          <!-- Camera/Sensor -->
+          <rect x="-15" y="-50" width="30" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-42" r="5" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
 
-      <div class="timeline">
+    <!-- 3D Drone -->
+    <div class="robotics-3d-element drone-3d" id="drone3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="drone3d" transform="translate(110, 110)">
+          <!-- Central Body -->
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Propellers -->
+          <g id="prop1-3d">
+            <circle cx="-60" cy="-60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="-80" x2="-60" y2="-40" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="-60" x2="-40" y2="-60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="-70" x2="-50" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="-70" x2="-70" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop2-3d">
+            <circle cx="60" cy="-60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="-80" x2="60" y2="-40" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="-60" x2="80" y2="-60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="-70" x2="70" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="-70" x2="50" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop3-3d">
+            <circle cx="-60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="40" x2="-60" y2="80" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="60" x2="-40" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="50" x2="-50" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="50" x2="-70" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop4-3d">
+            <circle cx="60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="40" x2="60" y2="80" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="60" x2="80" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="50" x2="70" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="50" x2="50" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Arms connecting to propellers -->
+          <line x1="-25" y1="-25" x2="-60" y2="-60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="-25" x2="60" y2="-60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="-25" y1="25" x2="-60" y2="60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="25" x2="60" y2="60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Camera/Gimbal -->
+          <circle cx="0" cy="15" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <rect x="-6" y="23" width="12" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
 
-        <!-- Robot.com -->
-<div class="exp-item">
-  <div class="exp-pin"></div>
-  <div class="card-clean p-3 p-md-4">
-    <div class="d-flex gap-3 align-items-start">
-      <div class="logo" aria-hidden="true">
-        <img src="assets\robot-com-logo.webp" alt="Robot.com logo" />
-      </div>
-      <div class="flex-grow-1">
-        <h5 class="mb-1">Robotics Operations and Maintenance Analyst (Campus Operations) — Robot.com</h5>
-        <h6 class="text-muted mb-2">Sep 2026 — Present</h6>
-     <ul class="mb-2" style="color:var(--muted)">
-  <li>Served as primary campus operations lead, overseeing daily fleet deployment, inventory management, and partner integrations while delivering fleet performance reporting.</li>
-  <li>Managed parts procurement, and cellular card tracking logs to ensure network connectivity and supply chain continuity.</li>
-  <li>Monitored autonomous fleet performance via telemetry dashboards and Linux CLI, executing remote software middleware interventions and root-cause failure analysis for connectivity dropouts.</li>
-  <li>Executed on-site hardware interventions, component-level overhauls, sensor calibrations, and OTA software deployments across edge devices while analyzing console logs to isolate failure modes and propose system design improvements.</li>
-</ul>
-        <div class="chips">
+    <!-- 3D Lidar Scanner -->
+    <div class="robotics-3d-element lidar-3d" id="lidar3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <g id="lidar3d" transform="translate(90, 90)">
+          <!-- Base -->
+          <rect x="-20" y="40" width="40" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+          <!-- Scanner Unit -->
+          <circle cx="0" cy="0" r="35" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="lidar-ring1"/>
+          <circle cx="0" cy="0" r="25" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6" id="lidar-ring2"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+          <!-- Scan Lines -->
+          <line x1="0" y1="0" x2="0" y2="-50" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line1"/>
+          <line x1="0" y1="0" x2="50" y2="0" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line2"/>
+          <line x1="0" y1="0" x2="0" y2="50" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line3"/>
+          <line x1="0" y1="0" x2="-50" y2="0" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line4"/>
+          <!-- Detection Points -->
+          <circle cx="0" cy="-35" r="3" fill="currentColor" opacity="0.8" id="detect-point1"/>
+          <circle cx="35" cy="0" r="3" fill="currentColor" opacity="0.8" id="detect-point2"/>
+          <circle cx="0" cy="35" r="3" fill="currentColor" opacity="0.8" id="detect-point3"/>
+          <circle cx="-35" cy="0" r="3" fill="currentColor" opacity="0.8" id="detect-point4"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Humanoid Robot -->
+    <div class="robotics-3d-element humanoid-3d" id="humanoid3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="humanoid3d" transform="translate(100, 250)">
+          <!-- Head -->
+          <circle cx="0" cy="-120" r="25" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-15" y="-140" width="30" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Torso -->
+          <rect x="-30" y="-100" width="60" height="80" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-25" y="-95" width="50" height="70" rx="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <!-- Arms -->
+          <g id="arm-left-3d">
+            <line x1="-30" y1="-80" x2="-60" y2="-40" stroke="currentColor" stroke-width="3" opacity="0.7"/>
+            <circle cx="-60" cy="-40" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+            <line x1="-60" y1="-40" x2="-75" y2="-20" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="arm-right-3d">
+            <line x1="30" y1="-80" x2="60" y2="-40" stroke="currentColor" stroke-width="3" opacity="0.7"/>
+            <circle cx="60" cy="-40" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+            <line x1="60" y1="-40" x2="75" y2="-20" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <!-- Legs -->
+          <g id="leg-left-3d">
+            <line x1="-15" y1="-20" x2="-20" y2="30" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="-20" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="leg-right-3d">
+            <line x1="15" y1="-20" x2="20" y2="30" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="20" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Data Analytics -->
+    <div class="robotics-3d-element data-analytics-3d" id="dataAnalytics3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="dataAnalytics3d" transform="translate(20, 200)">
+          <!-- Chart Background -->
+          <rect x="0" y="0" width="240" height="180" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.2" rx="4"/>
           
-          <span class="chip">Linux</span>
-          <span class="chip">Fleet Telemetry</span>
-          <span class="chip">Hardware Diagnostics</span>
-          <span class="chip">OTA Updates</span>
-        
-          <span class="chip">Field Operations</span>
-        </div>
-      </div>
+          <!-- Grid Lines -->
+          <line x1="0" y1="0" x2="240" y2="0" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-45" x2="240" y2="-45" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-90" x2="240" y2="-90" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-135" x2="240" y2="-135" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-180" x2="240" y2="-180" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          
+          <!-- Bar Chart Bars -->
+          <rect x="20" y="0" width="30" height="-40" fill="currentColor" opacity="0.6" id="bar1"/>
+          <rect x="60" y="0" width="30" height="-80" fill="currentColor" opacity="0.6" id="bar2"/>
+          <rect x="100" y="0" width="30" height="-120" fill="currentColor" opacity="0.6" id="bar3"/>
+          <rect x="140" y="0" width="30" height="-100" fill="currentColor" opacity="0.6" id="bar4"/>
+          <rect x="180" y="0" width="30" height="-140" fill="currentColor" opacity="0.6" id="bar5"/>
+          <rect x="220" y="0" width="30" height="-90" fill="currentColor" opacity="0.6" id="bar6"/>
+          
+          <!-- Line Graph -->
+          <polyline id="lineGraph" points="30,-40 70,-80 110,-120 150,-100 190,-140 230,-90" 
+                    fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+          
+          <!-- Data Points -->
+          <circle cx="30" cy="-40" r="4" fill="currentColor" opacity="0.8" id="point1"/>
+          <circle cx="70" cy="-80" r="4" fill="currentColor" opacity="0.8" id="point2"/>
+          <circle cx="110" cy="-120" r="4" fill="currentColor" opacity="0.8" id="point3"/>
+          <circle cx="150" cy="-100" r="4" fill="currentColor" opacity="0.8" id="point4"/>
+          <circle cx="190" cy="-140" r="4" fill="currentColor" opacity="0.8" id="point5"/>
+          <circle cx="230" cy="-90" r="4" fill="currentColor" opacity="0.8" id="point6"/>
+          
+          <!-- Animated Data Flow -->
+          <circle cx="0" cy="-90" r="3" fill="currentColor" opacity="0.9" id="dataFlow1"/>
+          <circle cx="0" cy="-60" r="3" fill="currentColor" opacity="0.9" id="dataFlow2"/>
+          <circle cx="0" cy="-30" r="3" fill="currentColor" opacity="0.9" id="dataFlow3"/>
+          
+          <!-- Percentage Indicators -->
+          <text x="35" y="-45" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent1">45%</text>
+          <text x="75" y="-85" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent2">78%</text>
+          <text x="115" y="-125" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent3">92%</text>
+        </g>
+      </svg>
     </div>
+
+    <!-- 3D Neural Network -->
+    <div class="robotics-3d-element neural-network-3d" id="neuralNetwork3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+        <g id="neuralNetwork3d" transform="translate(150, 140)">
+          <!-- Input Layer Nodes -->
+          <circle cx="-100" cy="-80" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input1"/>
+          <circle cx="-100" cy="-40" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input2"/>
+          <circle cx="-100" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input3"/>
+          <circle cx="-100" cy="40" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input4"/>
+          <circle cx="-100" cy="80" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input5"/>
+          
+          <!-- Hidden Layer 1 Nodes -->
+          <circle cx="0" cy="-60" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-1"/>
+          <circle cx="0" cy="-20" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-2"/>
+          <circle cx="0" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-3"/>
+          <circle cx="0" cy="60" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-4"/>
+          
+          <!-- Hidden Layer 2 Nodes -->
+          <circle cx="100" cy="-40" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-1"/>
+          <circle cx="100" cy="0" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-2"/>
+          <circle cx="100" cy="40" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-3"/>
+          
+          <!-- Output Layer Nodes -->
+          <circle cx="200" cy="-20" r="18" fill="none" stroke="currentColor" stroke-width="3.5" opacity="1" id="output1"/>
+          <circle cx="200" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="3.5" opacity="1" id="output2"/>
+          
+          <!-- Connections Input to Hidden 1 -->
+          <line x1="-88" y1="-80" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn1"/>
+          <line x1="-88" y1="-40" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn2"/>
+          <line x1="-88" y1="0" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn3"/>
+          <line x1="-88" y1="40" x2="-14" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn4"/>
+          <line x1="-88" y1="80" x2="-14" y2="60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn5"/>
+          <line x1="-88" y1="-80" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn6"/>
+          <line x1="-88" y1="-40" x2="-14" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn7"/>
+          <line x1="-88" y1="0" x2="-14" y2="60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn8"/>
+          <line x1="-88" y1="40" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn9"/>
+          <line x1="-88" y1="80" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn10"/>
+          
+          <!-- Connections Hidden 1 to Hidden 2 -->
+          <line x1="14" y1="-60" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn11"/>
+          <line x1="14" y1="-20" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn12"/>
+          <line x1="14" y1="20" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn13"/>
+          <line x1="14" y1="60" x2="84" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn14"/>
+          <line x1="14" y1="-60" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn15"/>
+          <line x1="14" y1="-20" x2="84" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn16"/>
+          <line x1="14" y1="20" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn17"/>
+          <line x1="14" y1="60" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn18"/>
+          
+          <!-- Connections Hidden 2 to Output -->
+          <line x1="116" y1="-40" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn19"/>
+          <line x1="116" y1="0" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn20"/>
+          <line x1="116" y1="40" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn21"/>
+          <line x1="116" y1="-40" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn22"/>
+          <line x1="116" y1="0" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn23"/>
+          <line x1="116" y1="40" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn24"/>
+          
+          <!-- Data Flow Particles -->
+          <circle cx="-100" cy="-80" r="2" fill="currentColor" opacity="0.9" id="particle1"/>
+          <circle cx="-100" cy="-40" r="2" fill="currentColor" opacity="0.9" id="particle2"/>
+          <circle cx="-100" cy="0" r="2" fill="currentColor" opacity="0.9" id="particle3"/>
+        </g>
+      </svg>
+    </div>
+
   </div>
-</div>
-        <!-- Community Dreams Foundation -->
-        <div class="exp-item">
-          <div class="exp-pin"></div>
-          <div class="card-clean p-3 p-md-4">
-            <div class="d-flex gap-3 align-items-start">
-              <div class="logo" aria-hidden="true">
-                <img src="assets\community_dreams_foundation.png" alt="Community Dreams Foundation logo" />
-              </div>
-              <div class="flex-grow-1">
-                <h5 class="mb-1">Volunteer — Community Dreams Foundation</h5>
-                <h6 class="text-muted mb-2">Nov 2025 —  Aug 2026</h6>
-                <ul class="mb-2" style="color:var(--muted)">
-                  <li>Helped with UAV-based air quality monitoring tasks, including basic sensor setup and data collection support.</li>
-                  <li>Assisted with mission prep and flight checks, and reviewed collected telemetry for reporting.</li>
-                </ul>
-                <div class="chips">
-                  <span class="chip">UAV</span>
-                  <span class="chip">AQI</span>
-                  <span class="chip">MAVLink</span>
-                  <span class="chip">ROS 2</span>
-                  <span class="chip">Telemetry</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- WINGS Lab UB -->
-        <div class="exp-item">
-          <div class="exp-pin"></div>
-          <div class="card-clean p-3 p-md-4">
-            <div class="d-flex gap-3 align-items-start">
-              <div class="logo" aria-hidden="true">
-                <img src="assets\University-at-Buffalo-logo-300x300.png" alt="UB logo" />
-              </div>
-              <div class="flex-grow-1">
-                <h5 class="mb-1">Research Assistant — WINGS Lab, SUNY Buffalo</h5>
-                <h6 class="text-muted mb-2">Jan 2025 — July 2025</h6>
-                <ul class="mb-2" style="color:var(--muted)">
-                  <li>Developed ROS 2 based autonomous rover systems using a simulation first approach, integrating Gazebo, RViz, ros2_control, and Nav2 for navigation and control.</li>
-                  <li>Designed and implemented a dashboard for supervisory control and monitoring, enabling teleoperation, rover and arm interaction, and real time visualization of robot state and sensor data.</li>
-                  <li>Conducted system-level experimentation and analysis, evaluating navigation robustness, localization accuracy, communication reliability, and safety considerations in simulated missions.</li>
-                </ul>
-                <div class="chips">
-                  <span class="chip">ROS 2</span>
-                  <span class="chip">Gazebo</span>
-                  <span class="chip">Nav2</span>
-                  <span class="chip">ros2_control</span>
-                </div>
-                
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ThoughtWorks -->
-        <div class="exp-item">
-          <div class="exp-pin"></div>
-          <div class="card-clean p-3 p-md-4">
-            <div class="d-flex gap-3 align-items-start">
-              <div class="logo" aria-hidden="true">
-                <img src="assets\thoughtworks-logo-freelogovectors.net_.png" alt="ThoughtWorks logo" />
-              </div>
-              <div class="flex-grow-1">
-                <h5 class="mb-1">Software Developer — ThoughtWorks Technologies Pvt Ltd</h5>
-                <h6 class="text-muted mb-2">Oct 2022 — Dec 2023</h6>
-                <ul class="mb-2" style="color:var(--muted)">
-                  <li><strong>VR POC (Innovation Labs):</strong> Developed immersive VR environments for fashion retail using Unity3D and Blender, implementing interactive functionality using Three JS, and deploying the web application on Meta Oculus Quest 2.</li>
-                  <li><strong>Polaris (Front-End):</strong> Designed a responsive UI using HTML5, CSS, and React.JS for an internal asset tracking system.</li>
-                  <li><strong>Catalyst (Infrastructure):</strong> Automated deployment pipelines using Terraform and Azure DevOps. Explored Argo CD for continuous deployment.</li>
-                  <li><strong>Crop Recommendation Engine (Innofest):</strong> Led a team for a tech fest within the organization to build a machine learning engine recommending crops using SVM, KNN, and Naïve Bayes, addressing challenges for underprivileged farmers.</li>
-                </ul>
-                <div class="chips">
-                  <span class="chip">Unity3D</span>
-                  <span class="chip">React.JS</span>
-                  <span class="chip">Terraform</span>
-                  <span class="chip">Azure DevOps</span>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Innodatatics -->
-        <div class="exp-item">
-          <div class="exp-pin"></div>
-          <div class="card-clean p-3 p-md-4">
-            <div class="d-flex gap-3 align-items-start">
-              <div class="logo" aria-hidden="true">
-                <img src="assets/inno.jpg" alt="Innodatatics logo" />
-              </div>
-              <div class="flex-grow-1">
-                <h5 class="mb-1">Data Science Intern — Innodatatics Pvt Ltd</h5>
-                <h6 class="text-muted mb-2">Jan 2022 — Apr 2022</h6>
-                <ul class="mb-2" style="color:var(--muted)">
-                  <li>Developed a personalized job recommendation system using collaborative filtering and Scikit-learn.</li>
-                  <li>Visualized market trends using Matplotlib and Seaborn.</li>
-                  <li>Built a Flask based web interface for seamless user interaction.</li>
-                </ul>
-                <div class="chips">
-                  <span class="chip">scikit‑learn</span>
-                  <span class="chip">Matplotlib</span>
-                  <span class="chip">Seaborn</span>
-                  <span class="chip">Flask</span>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Casa De Aura -->
-        <div class="exp-item">
-          <div class="exp-pin"></div>
-          <div class="card-clean p-3 p-md-4">
-            <div class="d-flex gap-3 align-items-start">
-              <div class="logo" aria-hidden="true">
-                <img src="assets\cda-removebg-preview.png" alt="Casa De Aura logo" />
-              </div>
-              <div class="flex-grow-1">
-                <h5 class="mb-1">Project Manager (Real Estate Development) — Family Owned Real Estate Venture (Casa De Aura)</h5>
-                <h6 class="text-muted mb-2">Jan 2020 — Dec 2021</h6>
-                <ul class="mb-2" style="color:var(--muted)">
-                  <li>Managed end to end execution of a residential real estate project, coordinating with contractors including electricians, builders, and plumbing teams.</li>
-                  <li>Oversaw regulatory approvals, permits, vendor onboarding, budgeting, and scheduling, ensuring compliance with local regulations.</li>
-                  <li>Led sales coordination and client interactions, bridging technical execution with business and customer requirements.</li>
-                </ul>
-                <div class="chips">
-                  <span class="chip">Project Management</span>
-                  <span class="chip">Vendor Coordination</span>
-                  <span class="chip">Regulatory Compliance</span>
-                  <span class="chip">Client Relations</span>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Amazon -->
-        <div class="exp-item">
-          <div class="exp-pin"></div>
-          <div class="card-clean p-3 p-md-4">
-            <div class="d-flex gap-3 align-items-start">
-              <div class="logo" aria-hidden="true">
-                <img src="assets/Amazon_logo.svg.png" alt="Amazon logo" />
-              </div>
-              <div class="flex-grow-1">
-                <h5 class="mb-1">Device & Alexa Support Associate — Amazon Development Centre Pvt Ltd</h5>
-                <h6 class="text-muted mb-2">Sep 2019 — Dec 2019</h6>
-                <ul class="mb-2" style="color:var(--muted)">
-                  <li>Delivered multi-tier technical support for Alexa-enabled devices, diagnosing hardware, software, and connectivity issues.</li>
-                  <li>Conducted root cause analysis on recurring problems, improving resolution efficiency and customer satisfaction.</li>
-                </ul>
-                <div class="chips">
-                  <span class="chip">Support</span>
-                  <span class="chip">Diagnostics</span>
-                  <span class="chip">RCA</span>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <header class="site-head">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">Ujwal Waghray</a>
+      <nav aria-label="Main">
+        <ul class="nav" id="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experience.html" aria-current="page">Experience</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between light and dark">
+        <svg class="sun-i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
-  </section>
+  </header>
 
-  <footer class="text-center py-4">
-    <div class="container">
-      <p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p>
+  <main id="main">
+    <section class="section" style="padding-bottom:0">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:2rem">
+          <p class="eyebrow">Career</p>
+          <h1>Experience</h1>
+        </div>
+        <div class="story reveal" style="margin-bottom:2.5rem">
+          <div class="prose">
+            <p>
+              My path into robotics was not a straight line, and I have stopped apologising for that.
+              Electronics and instrumentation taught me control theory before I ever wrote a ROS node.
+              Two years at ThoughtWorks taught me how software actually ships &mdash; VR one quarter,
+              Terraform pipelines the next. A year managing a building site taught me that a schedule
+              is a technical document.
+            </p>
+            <p>
+              Then the master's at Buffalo, a research post building simulation-first rovers, and now
+              the job that has taught me the most: keeping a real autonomous fleet alive on a campus
+              where nothing is a controlled environment.
+            </p>
+          </div>
+          <div class="story-aside">
+            <p class="eyebrow">What carried over</p>
+            <p>
+              Diagnostics from Amazon support. Delivery discipline from ThoughtWorks. Coordinating
+              contractors turns out to be good practice for coordinating a fleet, a vendor and a
+              firmware rollout in the same week.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:clamp(1.5rem,3vw,2.5rem)">
+      <div class="wrap">
+        <div class="timeline">
+          <div class="tl-item is-current reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/robot-com-logo.webp" alt="Robot.com logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Robotics Operations &amp; Maintenance Analyst</h3>
+                  <p class="role-org">Robot.com</p>
+                  <p class="role-dates">Sep 2026 &mdash; Present &middot; Autonomous fleet operations</p>
+                  <ul class="points">
+                  <li>Primary campus operations lead, overseeing daily fleet deployment, inventory and partner integrations while delivering fleet performance reporting.</li>
+                  <li>Managed parts procurement and cellular card tracking logs to keep network connectivity and supply chain continuity.</li>
+                  <li>Monitored fleet performance through telemetry dashboards and the Linux CLI, running remote middleware interventions and root-cause analysis on connectivity dropouts.</li>
+                  <li>Carried out on-site hardware interventions, component overhauls, sensor calibrations and OTA deployments across edge devices, reading console logs to isolate failure modes.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Linux</li>
+                  <li class="chip">Fleet Telemetry</li>
+                  <li class="chip">Hardware Diagnostics</li>
+                  <li class="chip">OTA Updates</li>
+                  <li class="chip">Field Operations</li>
+                  <li class="chip chip-leaf">Current</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/community_dreams_foundation.webp" alt="Community Dreams Foundation logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Volunteer</h3>
+                  <p class="role-org">Community Dreams Foundation</p>
+                  <p class="role-dates">Nov 2025 &mdash; Aug 2026 &middot; UAV simulation pipelines</p>
+                  <ul class="points">
+                  <li>Built simulation pipelines for the foundation's UAV in Gazebo and ROS, so flights could be rehearsed and sensor payloads validated before anything went airborne.</li>
+                  <li>Modelled the airframe and its sensors in simulation, and wired the telemetry path through to the ground station.</li>
+                  <li>Supported UAV-based air quality monitoring, including sensor setup and data collection.</li>
+                  <li>Assisted with mission preparation and flight checks, and reviewed collected telemetry for reporting.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Gazebo</li>
+                  <li class="chip">ROS</li>
+                  <li class="chip">UAV</li>
+                  <li class="chip">MAVLink</li>
+                  <li class="chip">Telemetry</li>
+                  <li class="chip">AQI</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/University-at-Buffalo-logo-300x300.webp" alt="WINGS Lab, SUNY Buffalo logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Research Assistant</h3>
+                  <p class="role-org">WINGS Lab, SUNY Buffalo</p>
+                  <p class="role-dates">Jan 2025 &mdash; Jul 2025 &middot; Simulation-first autonomous rovers</p>
+                  <ul class="points">
+                  <li>Developed ROS 2 autonomous rover systems with a simulation-first approach, integrating Gazebo, RViz, ros2_control and Nav2 for navigation and control.</li>
+                  <li>Designed a dashboard for supervisory control and monitoring, covering teleoperation, rover and arm interaction, and real-time visualisation of robot state and sensor data.</li>
+                  <li>Ran system-level experiments on navigation robustness, localisation accuracy, communication reliability and safety in simulated missions.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">ROS 2</li>
+                  <li class="chip">Gazebo</li>
+                  <li class="chip">Nav2</li>
+                  <li class="chip">ros2_control</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/thoughtworks-logo-freelogovectors.net_.webp" alt="ThoughtWorks Technologies logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Software Developer</h3>
+                  <p class="role-org">ThoughtWorks Technologies</p>
+                  <p class="role-dates">Oct 2022 &mdash; Dec 2023 &middot; VR, front-end and infrastructure</p>
+                  <ul class="points">
+                  <li><strong>VR POC, Innovation Labs:</strong> immersive VR environments for fashion retail in Unity3D and Blender, with Three.js interaction, deployed to Meta Oculus Quest 2.</li>
+                  <li><strong>Polaris:</strong> a responsive React front-end for an internal asset tracking system.</li>
+                  <li><strong>Catalyst:</strong> automated deployment pipelines in Terraform and Azure DevOps, with Argo CD explored for continuous deployment.</li>
+                  <li><strong>Crop Recommendation Engine:</strong> led a team building an ML engine using SVM, KNN and Na&iuml;ve Bayes, aimed at underprivileged farmers.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Unity3D</li>
+                  <li class="chip">React</li>
+                  <li class="chip">Terraform</li>
+                  <li class="chip">Azure DevOps</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/inno.webp" alt="Innodatatics logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Data Science Intern</h3>
+                  <p class="role-org">Innodatatics</p>
+                  <p class="role-dates">Jan 2022 &mdash; Apr 2022 &middot; Recommendation systems</p>
+                  <ul class="points">
+                  <li>Built a personalised job recommendation system using collaborative filtering and scikit-learn.</li>
+                  <li>Visualised market trends with Matplotlib and Seaborn.</li>
+                  <li>Wrapped the model in a Flask web interface.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">scikit-learn</li>
+                  <li class="chip">Matplotlib</li>
+                  <li class="chip">Seaborn</li>
+                  <li class="chip">Flask</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/cda-removebg-preview.webp" alt="Casa De Aura logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Project Manager</h3>
+                  <p class="role-org">Casa De Aura</p>
+                  <p class="role-dates">Jan 2020 &mdash; Dec 2021 &middot; Family real estate venture</p>
+                  <ul class="points">
+                  <li>Managed end-to-end execution of a residential development, coordinating electricians, builders and plumbing teams.</li>
+                  <li>Oversaw approvals, permits, vendor onboarding, budgeting and scheduling under local regulation.</li>
+                  <li>Led sales coordination and client interaction, bridging technical execution and business need.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Project Management</li>
+                  <li class="chip">Vendor Coordination</li>
+                  <li class="chip">Regulatory Compliance</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="card card-hover">
+              <div style="display:flex; gap:1rem; align-items:flex-start">
+                <div class="tl-logo"><img src="assets/Amazon_logo.svg.webp" alt="Amazon Development Centre logo" loading="lazy" decoding="async" /></div>
+                <div style="flex:1 1 auto; min-width:0">
+                  <h3 class="role-title">Device &amp; Alexa Support Associate</h3>
+                  <p class="role-org">Amazon Development Centre</p>
+                  <p class="role-dates">Sep 2019 &mdash; Dec 2019 &middot; Multi-tier technical support</p>
+                  <ul class="points">
+                  <li>Delivered multi-tier support for Alexa-enabled devices, diagnosing hardware, software and connectivity faults.</li>
+                  <li>Ran root cause analysis on recurring problems, improving resolution efficiency.</li>
+                  </ul>
+                  <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Support</li>
+                  <li class="chip">Diagnostics</li>
+                  <li class="chip">RCA</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p class="brand" style="margin:0 0 .6rem">Ujwal Waghray</p>
+          <p class="dim" style="max-width:34ch; font-size:.95rem">
+            Robotics engineer building autonomous ground systems &mdash; machines that help things grow.
+          </p>
+        </div>
+        <div>
+          <p class="foot-head">Pages</p>
+          <ul class="foot-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="foot-head">Profiles</p>
+          <ul class="foot-list">
+            <li><a href="https://github.com/ujwalwag" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/ujwalwaghray" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://youtube.com/@waghrayujwal" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://lovedebtplusrobots.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="meta">&copy; 2026 Ujwal Waghray</span>
+        <span class="meta">Norfolk, Virginia</span>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="robots.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>

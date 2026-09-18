@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ujwal Waghray | Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Projects &mdash; Ujwal Waghray</title>
+  <meta name="description" content="Robotics, machine learning and embedded projects - ROS 2 autonomy, vision models and field hardware." />
 
   <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
@@ -12,433 +13,706 @@
     function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
   </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#f8f9f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c110f" media="(prefers-color-scheme: dark)" />
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Ujwal Waghray — Projects" />
-  <meta property="og:description" content="Robotics, AI, and systems projects in a clean, minimal theme." />
+  <!-- Sharing -->
+  <meta property="og:title" content="Projects &mdash; Ujwal Waghray" />
+  <meta property="og:description" content="Robotics, machine learning and embedded projects - ROS 2 autonomy, vision models and field hardware." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/dp1(1)(1).jpg" />
+  <meta property="og:site_name" content="Ujwal Waghray" />
   <meta property="og:url" content="https://ujwalwaghray.dev/projects.html" />
+  <meta property="og:image" content="https://ujwalwaghray.dev/assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://ujwalwaghray.dev/assets/og-cover.jpg" />
+  <link rel="canonical" href="https://ujwalwaghray.dev/projects.html" />
 
-  <!-- Minimal black & white + blueprint accents -->
-  <style>
-    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; --chip:#eef6ff; }
-    html,body{height:100%}
-    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:var(--ink); text-decoration:none}
-
-    /* sticky, translucent navbar */
-    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
-    .navbar-brand{font-weight:800}
-    .navbar-light .nav-link{color:#111827}
-    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
-
-    /* decorative blueprint grid */
-    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
-    .grid-bg svg{width:100%; height:100%; display:block}
-
-    /* project cards */
-    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff; transition:transform .18s ease, box-shadow .18s ease}
-    .card-clean:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.06)}
-
-    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
-    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.85rem; border-radius:999px; padding:.35rem .6rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
-
-    /* details/summary */
-    details summary{list-style:none; cursor:pointer; font-weight:700; display:inline-flex; align-items:center; gap:.5rem}
-    details summary::marker{display:none}
-    details[open] summary .twist{transform:rotate(90deg)}
-    .twist{display:inline-block; transition:transform .15s ease}
-
-    /* Title + body column can shrink so Code / Video stay on one row beside copy (md+) */
-    .card-clean > .d-flex.flex-md-row > div:first-child{flex:1 1 auto; min-width:0}
-    .project-links{
-      display:flex; flex-wrap:wrap; gap:.5rem;
-      align-items:center; justify-content:flex-start;
-      flex-shrink:0;
-    }
-    @media (min-width: 768px){
-      .project-links{justify-content:flex-end; align-self:flex-start}
-    }
-    .project-links a{border:1px solid var(--ink); border-radius:12px; padding:.5rem .8rem; display:inline-block; white-space:nowrap}
-
-    .project-media{
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background:linear-gradient(145deg,#f8fafc,#eef2f7);
-      aspect-ratio:16/10;
-    }
-    .project-media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    footer{border-top:1px solid var(--line); color:var(--muted)}
-  </style>
+  <!-- Theme before first paint, so there is no flash. -->
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('theme');
+        if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+      }catch(e){}
+    })();
+  </script>
 </head>
 <body>
-  <!-- blueprint background -->
-  <div class="grid-bg" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
-        </pattern>
-        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
-          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" />
-      <rect width="100%" height="100%" fill="url(#gridBold)" />
-    </svg>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Backdrop: blueprint grid, sun, drifting motes -->
+  <div class="backdrop" aria-hidden="true" data-motes>
+    <div class="grid-layer">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="gridFine" width="38" height="38" patternUnits="userSpaceOnUse">
+            <path class="grid-fine" d="M 38 0 L 0 0 0 38" fill="none" stroke-width="1" />
+          </pattern>
+          <pattern id="gridBold" width="190" height="190" patternUnits="userSpaceOnUse">
+            <path class="grid-bold" d="M 190 0 L 0 0 0 190" fill="none" stroke-width="1.1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#gridFine)" />
+        <rect width="100%" height="100%" fill="url(#gridBold)" />
+      </svg>
+    </div>
+
+    <div class="sun">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="46" stroke-width="1.4" />
+        <circle cx="100" cy="100" r="62" stroke-width=".8" stroke-dasharray="3 7" />
+        <g class="sun-spin" stroke-width="1.2">
+          <circle cx="100" cy="100" r="80" stroke-dasharray="1.5 12" />
+          <circle cx="100" cy="100" r="94" stroke-dasharray="1 20" />
+        </g>
+      </svg>
+    </div>
+
   </div>
 
-  <!-- Nav -->
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+  <!-- Robotics line-art layer -->
+  <div class="robotics-3d-container" aria-hidden="true">
+<!-- 3D Robotic Arm -->
+    <div class="robotics-3d-element robotic-arm-3d" id="roboticArm3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 250 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="arm3d" transform="translate(125, 250)">
+          <!-- Base -->
+          <g id="base3d">
+            <rect x="-30" y="0" width="60" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+            <rect x="-25" y="5" width="50" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Joint 1 & Segment 1 Group -->
+          <g id="arm-segment1-group" transform="rotate(0)">
+            <!-- Joint 1 -->
+            <g id="joint1-3d">
+              <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="0" cy="0" r="3" fill="currentColor" opacity="0.7"/>
+            </g>
+            <!-- Segment 1 -->
+            <g id="segment1-3d">
+              <line x1="0" y1="0" x2="0" y2="-80" stroke="currentColor" stroke-width="4" opacity="0.7"/>
+              <rect x="-8" y="-80" width="16" height="80" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </g>
+            <!-- Joint 2 & Segment 2 Group -->
+            <g id="arm-segment2-group" transform="translate(0, -80) rotate(0)">
+              <!-- Joint 2 -->
+              <g id="joint2-3d">
+                <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+                <circle cx="0" cy="0" r="6" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+              <!-- Segment 2 -->
+              <g id="segment2-3d">
+                <line x1="0" y1="0" x2="60" y2="-60" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+                <rect x="-6" y="-60" width="12" height="85" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" transform="rotate(45)"/>
+              </g>
+              <!-- Joint 3 & Gripper -->
+              <g id="gripper3d" transform="translate(60, -60)">
+                <circle cx="0" cy="0" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+                <!-- Gripper 1 (top finger) -->
+                <g id="gripper1-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="-15" stroke="currentColor" stroke-width="3"/>
+                </g>
+                <!-- Gripper 2 (bottom finger) -->
+                <g id="gripper2-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="15" stroke="currentColor" stroke-width="3"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Rover -->
+    <div class="robotics-3d-element rover-3d" id="rover3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+        <g id="rover3d" transform="translate(140, 150)">
+          <!-- Body -->
+          <rect x="-80" y="-40" width="160" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-75" y="-35" width="150" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <!-- Wheels -->
+          <g id="wheel1-3d" transform="translate(-60, 10)">
+            <g id="wheel1-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel2-3d" transform="translate(0, 10)">
+            <g id="wheel2-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel3-3d" transform="translate(60, 10)">
+            <g id="wheel3-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <!-- Antenna -->
+          <line x1="0" y1="-40" x2="0" y2="-70" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-70" r="4" fill="currentColor" opacity="0.6"/>
+          <!-- Camera/Sensor -->
+          <rect x="-15" y="-50" width="30" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-42" r="5" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Drone -->
+    <div class="robotics-3d-element drone-3d" id="drone3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="drone3d" transform="translate(110, 110)">
+          <!-- Central Body -->
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Propellers -->
+          <g id="prop1-3d">
+            <circle cx="-60" cy="-60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="-80" x2="-60" y2="-40" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="-60" x2="-40" y2="-60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="-70" x2="-50" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="-70" x2="-70" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop2-3d">
+            <circle cx="60" cy="-60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="-80" x2="60" y2="-40" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="-60" x2="80" y2="-60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="-70" x2="70" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="-70" x2="50" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop3-3d">
+            <circle cx="-60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="40" x2="-60" y2="80" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="60" x2="-40" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="50" x2="-50" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="50" x2="-70" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop4-3d">
+            <circle cx="60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="40" x2="60" y2="80" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="60" x2="80" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="50" x2="70" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="50" x2="50" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Arms connecting to propellers -->
+          <line x1="-25" y1="-25" x2="-60" y2="-60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="-25" x2="60" y2="-60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="-25" y1="25" x2="-60" y2="60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="25" x2="60" y2="60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Camera/Gimbal -->
+          <circle cx="0" cy="15" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <rect x="-6" y="23" width="12" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Lidar Scanner -->
+    <div class="robotics-3d-element lidar-3d" id="lidar3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <g id="lidar3d" transform="translate(90, 90)">
+          <!-- Base -->
+          <rect x="-20" y="40" width="40" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+          <!-- Scanner Unit -->
+          <circle cx="0" cy="0" r="35" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="lidar-ring1"/>
+          <circle cx="0" cy="0" r="25" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6" id="lidar-ring2"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+          <!-- Scan Lines -->
+          <line x1="0" y1="0" x2="0" y2="-50" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line1"/>
+          <line x1="0" y1="0" x2="50" y2="0" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line2"/>
+          <line x1="0" y1="0" x2="0" y2="50" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line3"/>
+          <line x1="0" y1="0" x2="-50" y2="0" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line4"/>
+          <!-- Detection Points -->
+          <circle cx="0" cy="-35" r="3" fill="currentColor" opacity="0.8" id="detect-point1"/>
+          <circle cx="35" cy="0" r="3" fill="currentColor" opacity="0.8" id="detect-point2"/>
+          <circle cx="0" cy="35" r="3" fill="currentColor" opacity="0.8" id="detect-point3"/>
+          <circle cx="-35" cy="0" r="3" fill="currentColor" opacity="0.8" id="detect-point4"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Humanoid Robot -->
+    <div class="robotics-3d-element humanoid-3d" id="humanoid3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="humanoid3d" transform="translate(100, 250)">
+          <!-- Head -->
+          <circle cx="0" cy="-120" r="25" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-15" y="-140" width="30" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Torso -->
+          <rect x="-30" y="-100" width="60" height="80" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-25" y="-95" width="50" height="70" rx="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <!-- Arms -->
+          <g id="arm-left-3d">
+            <line x1="-30" y1="-80" x2="-60" y2="-40" stroke="currentColor" stroke-width="3" opacity="0.7"/>
+            <circle cx="-60" cy="-40" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+            <line x1="-60" y1="-40" x2="-75" y2="-20" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="arm-right-3d">
+            <line x1="30" y1="-80" x2="60" y2="-40" stroke="currentColor" stroke-width="3" opacity="0.7"/>
+            <circle cx="60" cy="-40" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+            <line x1="60" y1="-40" x2="75" y2="-20" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <!-- Legs -->
+          <g id="leg-left-3d">
+            <line x1="-15" y1="-20" x2="-20" y2="30" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="-20" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="leg-right-3d">
+            <line x1="15" y1="-20" x2="20" y2="30" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="20" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Data Analytics -->
+    <div class="robotics-3d-element data-analytics-3d" id="dataAnalytics3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="dataAnalytics3d" transform="translate(20, 200)">
+          <!-- Chart Background -->
+          <rect x="0" y="0" width="240" height="180" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.2" rx="4"/>
+          
+          <!-- Grid Lines -->
+          <line x1="0" y1="0" x2="240" y2="0" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-45" x2="240" y2="-45" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-90" x2="240" y2="-90" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-135" x2="240" y2="-135" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-180" x2="240" y2="-180" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          
+          <!-- Bar Chart Bars -->
+          <rect x="20" y="0" width="30" height="-40" fill="currentColor" opacity="0.6" id="bar1"/>
+          <rect x="60" y="0" width="30" height="-80" fill="currentColor" opacity="0.6" id="bar2"/>
+          <rect x="100" y="0" width="30" height="-120" fill="currentColor" opacity="0.6" id="bar3"/>
+          <rect x="140" y="0" width="30" height="-100" fill="currentColor" opacity="0.6" id="bar4"/>
+          <rect x="180" y="0" width="30" height="-140" fill="currentColor" opacity="0.6" id="bar5"/>
+          <rect x="220" y="0" width="30" height="-90" fill="currentColor" opacity="0.6" id="bar6"/>
+          
+          <!-- Line Graph -->
+          <polyline id="lineGraph" points="30,-40 70,-80 110,-120 150,-100 190,-140 230,-90" 
+                    fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+          
+          <!-- Data Points -->
+          <circle cx="30" cy="-40" r="4" fill="currentColor" opacity="0.8" id="point1"/>
+          <circle cx="70" cy="-80" r="4" fill="currentColor" opacity="0.8" id="point2"/>
+          <circle cx="110" cy="-120" r="4" fill="currentColor" opacity="0.8" id="point3"/>
+          <circle cx="150" cy="-100" r="4" fill="currentColor" opacity="0.8" id="point4"/>
+          <circle cx="190" cy="-140" r="4" fill="currentColor" opacity="0.8" id="point5"/>
+          <circle cx="230" cy="-90" r="4" fill="currentColor" opacity="0.8" id="point6"/>
+          
+          <!-- Animated Data Flow -->
+          <circle cx="0" cy="-90" r="3" fill="currentColor" opacity="0.9" id="dataFlow1"/>
+          <circle cx="0" cy="-60" r="3" fill="currentColor" opacity="0.9" id="dataFlow2"/>
+          <circle cx="0" cy="-30" r="3" fill="currentColor" opacity="0.9" id="dataFlow3"/>
+          
+          <!-- Percentage Indicators -->
+          <text x="35" y="-45" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent1">45%</text>
+          <text x="75" y="-85" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent2">78%</text>
+          <text x="115" y="-125" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent3">92%</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Neural Network -->
+    <div class="robotics-3d-element neural-network-3d" id="neuralNetwork3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+        <g id="neuralNetwork3d" transform="translate(150, 140)">
+          <!-- Input Layer Nodes -->
+          <circle cx="-100" cy="-80" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input1"/>
+          <circle cx="-100" cy="-40" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input2"/>
+          <circle cx="-100" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input3"/>
+          <circle cx="-100" cy="40" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input4"/>
+          <circle cx="-100" cy="80" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input5"/>
+          
+          <!-- Hidden Layer 1 Nodes -->
+          <circle cx="0" cy="-60" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-1"/>
+          <circle cx="0" cy="-20" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-2"/>
+          <circle cx="0" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-3"/>
+          <circle cx="0" cy="60" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-4"/>
+          
+          <!-- Hidden Layer 2 Nodes -->
+          <circle cx="100" cy="-40" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-1"/>
+          <circle cx="100" cy="0" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-2"/>
+          <circle cx="100" cy="40" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-3"/>
+          
+          <!-- Output Layer Nodes -->
+          <circle cx="200" cy="-20" r="18" fill="none" stroke="currentColor" stroke-width="3.5" opacity="1" id="output1"/>
+          <circle cx="200" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="3.5" opacity="1" id="output2"/>
+          
+          <!-- Connections Input to Hidden 1 -->
+          <line x1="-88" y1="-80" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn1"/>
+          <line x1="-88" y1="-40" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn2"/>
+          <line x1="-88" y1="0" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn3"/>
+          <line x1="-88" y1="40" x2="-14" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn4"/>
+          <line x1="-88" y1="80" x2="-14" y2="60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn5"/>
+          <line x1="-88" y1="-80" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn6"/>
+          <line x1="-88" y1="-40" x2="-14" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn7"/>
+          <line x1="-88" y1="0" x2="-14" y2="60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn8"/>
+          <line x1="-88" y1="40" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn9"/>
+          <line x1="-88" y1="80" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn10"/>
+          
+          <!-- Connections Hidden 1 to Hidden 2 -->
+          <line x1="14" y1="-60" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn11"/>
+          <line x1="14" y1="-20" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn12"/>
+          <line x1="14" y1="20" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn13"/>
+          <line x1="14" y1="60" x2="84" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn14"/>
+          <line x1="14" y1="-60" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn15"/>
+          <line x1="14" y1="-20" x2="84" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn16"/>
+          <line x1="14" y1="20" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn17"/>
+          <line x1="14" y1="60" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn18"/>
+          
+          <!-- Connections Hidden 2 to Output -->
+          <line x1="116" y1="-40" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn19"/>
+          <line x1="116" y1="0" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn20"/>
+          <line x1="116" y1="40" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn21"/>
+          <line x1="116" y1="-40" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn22"/>
+          <line x1="116" y1="0" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn23"/>
+          <line x1="116" y1="40" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn24"/>
+          
+          <!-- Data Flow Particles -->
+          <circle cx="-100" cy="-80" r="2" fill="currentColor" opacity="0.9" id="particle1"/>
+          <circle cx="-100" cy="-40" r="2" fill="currentColor" opacity="0.9" id="particle2"/>
+          <circle cx="-100" cy="0" r="2" fill="currentColor" opacity="0.9" id="particle3"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+
+  <header class="site-head">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">Ujwal Waghray</a>
+      <nav aria-label="Main">
+        <ul class="nav" id="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-      </div>
+      </nav>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between light and dark">
+        <svg class="sun-i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- Projects -->
-  <section id="projects" class="py-5">
-    <div class="container">
-      <h2 class="text-center display-5 mb-4">Projects</h2>
-
-      <div class="row g-3">
-        <!-- Driftbot — Autonomous Tidying Robot -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets/projects/driftbot.png" alt="Driftbot — autonomous tidying robot in simulation" width="640" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">Driftbot — Autonomous Tidying Robot</h5>
-                <p class="mb-2" style="color:var(--muted)">ROS 2 Jazzy + Gazebo Harmonic simulation: a four‑wheeled differential‑drive robot with a three‑joint magnetic arm picks up scattered objects in a two‑room home world and drops them in a collection bin.</p>
-                <div class="chips">
-                  <span class="chip">ROS 2</span>
-                  <span class="chip">Gazebo Harmonic</span>
-                  <span class="chip">ros_gz_bridge</span>
-                  <span class="chip">URDF / Xacro</span>
-                  <span class="chip">Bug2</span>
-                  <span class="chip">Python</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/driftbot_assignment" target="_blank" rel="noopener">Code</a>
-                <a href="https://www.youtube.com/watch?v=e_FANwnThCs" target="_blank" rel="noopener">Video</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Simulated home with a small robot that drives around, picks up loose items with a magnetic arm, and drops them in a collection bin.</li>
-                <li>You can follow along in RViz and a camera window while a mission runs.</li>
-                <li>Mission 1: drives straight to a toy block, picks it up, turns around, drives back, and drops it in the collection bin.</li>
-                <li>Mission 2: uses Bug2 logic to weave around furniture, reach two more blocks one at a time, pick each up, and bring it back to the bin.</li>
-                <li>Mission 3 (under development): random exploration paired with computer vision to find and tidy objects.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
+  <main id="main">
+    <section class="section" style="padding-bottom:0">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:2rem">
+          <p class="eyebrow">Selected work</p>
+          <h1>Projects</h1>
+          <p class="lede" style="margin-top:1rem">
+            Autonomy stacks, perception models, and hardware that had to survive a field.
+          </p>
         </div>
-
-        <!-- Soil Fertility Detection Rover -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets\projects\sfdr.png" alt="Soil fertility rover in Gazebo simulation" width="640" height="400" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">Autonomous Rover for Soil Fertility Detection Simulation</h5>
-                <p class="mb-2" style="color:var(--muted)">A ROS 2 Jazzy simulation of a differential‑drive farm rover with an arm and sensors in Gazebo Harmonic: Nav2‑oriented navigation, PyQt GUI, and stubs for field coverage and arm control; real hardware is only stubbed for later bringup.</p>
-                <div class="chips">
-                  <span class="chip">ROS 2</span>
-                  <span class="chip">Gazebo Harmonic</span>
-                  <span class="chip">Nav2</span>
-                  <span class="chip">PyQt</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/soil-fertility-rover" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Organized as several ROS 2 packages (robot description, simulation worlds and bridges, navigation configs, arm bringup stubs, GUI, and top‑level launches).</li>
-                <li>Launch options include simulation only, sim with GUI, and full sim with Nav2.</li>
-                <li>The PyQt GUI supports two modes: autonomous operation and remote control for driving the rover in sim.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
+        <div class="story reveal" style="margin-bottom:2.5rem">
+          <div class="prose">
+            <p>
+              These are not seven unrelated demos. Four of them are the same problem approached from
+              different angles: how does a machine sense what soil and crops need, and then act on it
+              without a person steering? The rest are the supporting skills &mdash; a vision model that
+              has to be right, a gesture interface that makes teleop feel less like flying a drone, a
+              tidying robot that has to plan around furniture.
+            </p>
+          </div>
+          <div class="story-aside">
+            <p class="eyebrow">Reading these</p>
+            <p>
+              Every card has a <strong>How it works</strong> panel with the parts worth knowing, and
+              links straight to the source. Filter by area if you only care about one thread.
+            </p>
+          </div>
         </div>
-
-        <!-- Project 1: UGV Soil Health -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets/projects/ugvrecon.png" alt="IoT UGV robot for remote soil health sensing" width="640" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">IoT‑based UGV Robot for Remote Soil Health Sensing</h5>
-                <p class="mb-2" style="color:var(--muted)">End‑to‑end autonomous system for precision agriculture: UGV collects soil/env/GPS data and streams to a local base for real‑time analysis and storage.</p>
-                <div class="chips">
-                  <span class="chip">Raspberry Pi</span>
-                  <span class="chip">Arduino Nano</span>
-                  <span class="chip">NRF24</span>
-                  <span class="chip">GPS</span>
-                  <span class="chip">NPK/DHT11</span>
-                  <span class="chip">Matplotlib</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/UGVRECON" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Designed a UGV for soil data collection and reconnaissance.</li>
-                <li>Integrated NPK, temperature, and humidity sensors with GPS tracking.</li>
-                <li>Configured NRF24 wireless link from UGV to base station.</li>
-                <li>Built a Python pipeline to process, visualize, and store CSV sensor streams.</li>
-                <li>Local dashboard for UGV status, sensor readings, and location.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Project 2: Leaf Disease Detection -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets/projects/leaf-disease.png" alt="Leaf disease detection system interface or sample" width="640" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">Leaf Disease Detection System</h5>
-                <p class="mb-2" style="color:var(--muted)">DL system to detect and classify plant leaf diseases; trained on PlantVillage and deployed on an autonomous rover.</p>
-                <div class="chips">
-                  <span class="chip">PyTorch</span>
-                  <span class="chip">OpenCV</span>
-                  <span class="chip">ResNet</span>
-                  <span class="chip">EfficientNet</span>
-                  <span class="chip">ViT</span>
-                  <span class="chip">Flask</span>
-                  <span class="chip">Tkinter</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/LeafDiseaseDetectionSys" target="_blank" rel="noopener">Code</a>
-                <a href="https://leafdiseasedetectionsys.onrender.com/" target="_blank" rel="noopener">Live</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Transfer learning on PlantVillage dataset.</li>
-                <li>Real‑time classification and disease prediction.</li>
-                <li>Deployed on a rover for smart farming.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Project 3: Multimodal Movie Genre Classification -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets/projects/multimodal-movie.png" alt="Multimodal movie genre classification web app" width="640" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">Multimodal Movie Genre Classification Website</h5>
-                <p class="mb-2" style="color:var(--muted)">Web app that predicts movie genres using text (overview) + image (poster) features with DL models.</p>
-                <div class="chips">
-                  <span class="chip">PyTorch</span>
-                  <span class="chip">Flask</span>
-                  <span class="chip">HTML</span>
-                  <span class="chip">NLP</span>
-                  <span class="chip">CNN</span>
-                  <span class="chip">CSS</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/MultiModalMovieGenreClassificationSys" target="_blank" rel="noopener">Code</a>
-                <a href="https://multimodalmoviegenreclassificationsys.onrender.com" target="_blank" rel="noopener">Live</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>CNN for posters + NLP for overviews; early/late fusion variants.</li>
-                <li>Flask backend + React frontend for interactive predictions.</li>
-                <li>Ensemble techniques to boost multi‑label accuracy.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Project 4: Hand Gesture Robot Control -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets/projects/hand-gesture-robot.png" alt="Hand gesture control with TurtleBot3 in Gazebo" width="640" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">Hand Gesture Robot Control</h5>
-                <p class="mb-2" style="color:var(--muted)">Control a TurtleBot3 robot in Gazebo using hand gestures from your webcam. Real-time gesture recognition with 98% accuracy using SigLIP vision model.</p>
-                <div class="chips">
-                  <span class="chip">ROS</span>
-                  <span class="chip">Gazebo</span>
-                  <span class="chip">Python</span>
-                  <span class="chip">OpenCV</span>
-                  <span class="chip">Flask</span>
-                  <span class="chip">SigLIP</span>
-                  <span class="chip">TurtleBot3</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/r_action_m" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Recognizes 19 different hand gestures with 98% accuracy using SigLIP vision transformer model.</li>
-                <li>Real-time gesture-to-robot control: open palm (forward), OK sign (backward), one finger (left), two fingers (right), fist (stop).</li>
-                <li>Cross-platform camera streaming (Windows/Mac) with Flask server for WSL2 integration.</li>
-                <li>Frame-by-frame analysis with 10-frame smoothing for stable gesture recognition.</li>
-                <li>Publishes velocity commands to TurtleBot3 via ROS /cmd_vel topic.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Project 6: CNC Potting Machine -->
-        <div class="col-12">
-          <article class="card-clean p-4">
-            <div class="row g-3 g-md-4 align-items-start">
-              <div class="col-12 col-md-4 col-lg-3">
-                <div class="project-media">
-                  <img src="assets/projects/cnc-potting.png" alt="Automated CNC potting machine hardware" width="640" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 col-lg-9">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
-              <div>
-                <h5 class="mb-1">Automated CNC Potting Machine </h5>
-                <p class="mb-2" style="color:var(--muted)">An open-source, scalable precision farming system to automate crop manufacturing and nurturing.</p>
-                <div class="chips">
-                  <span class="chip">Arduino Mega 2560</span>
-                  <span class="chip">Soil Moisture Sensors</span>
-                  <span class="chip">IR Sensors</span>
-                  <span class="chip">NEMA 17</span>
-                  <span class="chip">A4988 Drivers</span>
-                  <span class="chip">Open-Source</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/ujwalwag/Automated-CNC-Plotting-Machine" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-            <hr/>
-            <details>
-              <summary><span class="twist">▶</span> View details</summary>
-              <ul class="mt-2 mb-0" style="color:var(--muted)">
-                <li>Orchestrates farming functions with an Arduino Mega 2560 microcontroller.</li>
-                <li>Monitors soil conditions and tray positions in real-time using soil moisture and IR sensors.</li>
-                <li>Enables intelligent, data-driven decisions for plowing, seeding, and watering.</li>
-                <li>Uses NEMA 17 stepper motorsand A4988 drivers for precise tool control.</li>
-                <li>Features a flexible, scalable, and open-source design adaptable to various crops and pot sizes.</li>
-              </ul>
-            </details>
-              </div>
-            </div>
-          </article>
-        </div>
-
-
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="text-center py-4">
-    <div class="container">
-      <p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p>
+    <section class="section" style="padding-top:clamp(1.5rem,3vw,2.5rem)">
+      <div class="wrap">
+        <div class="filters" data-filter-bar role="group" aria-label="Filter projects">
+          <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="ros2" aria-pressed="false">Robotics</button>
+          <button class="filter" type="button" data-filter="ml" aria-pressed="false">Machine learning</button>
+          <button class="filter" type="button" data-filter="embedded" aria-pressed="false">Embedded</button>
+          <button class="filter" type="button" data-filter="grow" aria-pressed="false">Agriculture</button>
+          <span class="meta" data-filter-count style="margin-left:auto">7 projects</span>
+        </div>
+        <div class="grid">
+          <article class="card card-hover project reveal" id="driftbot" data-tags="ros2">
+            <div class="project-media">
+              <span class="badge">Autonomy</span>
+              <img src="assets/projects/driftbot.webp" alt="Driftbot, an autonomous tidying robot, in a simulated home" width="1000" height="563" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>Driftbot &mdash; Autonomous Tidying Robot</h3>
+              <p class="summary">A four-wheeled differential-drive robot with a three-joint magnetic arm that finds objects scattered across a two-room home and returns them to a collection bin.</p>
+              <ul class="chips">
+                <li class="chip">ROS 2 Jazzy</li>
+                <li class="chip">Gazebo Harmonic</li>
+                <li class="chip">ros_gz_bridge</li>
+                <li class="chip">URDF / Xacro</li>
+                <li class="chip">Bug2</li>
+                <li class="chip">Python</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>Mission 1 drives straight to a toy block, lifts it, turns around and drops it in the bin.</li>
+                  <li>Mission 2 uses Bug2 logic to weave around furniture, reaching two further blocks one at a time.</li>
+                  <li>Mission 3, in progress, pairs random exploration with computer vision to decide what to tidy.</li>
+                  <li>Runs are followed live in RViz beside a camera feed.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/driftbot_assignment" target="_blank" rel="noopener">View code</a>
+                <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=e_FANwnThCs" target="_blank" rel="noopener">Watch demo</a>
+              </div>
+            </div>
+          </article>
+          <article class="card card-hover project reveal" id="soil-rover" data-tags="ros2 grow">
+            <div class="project-media">
+              <span class="badge">Agriculture</span>
+              <img src="assets/projects/sfdr.webp" alt="Soil fertility rover in a Gazebo farm simulation" width="1000" height="563" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>Soil Fertility Detection Rover</h3>
+              <p class="summary">A differential-drive farm rover with an arm and sensor suite, simulated in Gazebo Harmonic with Nav2-oriented navigation and driven from a PyQt supervisory GUI.</p>
+              <ul class="chips">
+                <li class="chip">ROS 2</li>
+                <li class="chip">Gazebo Harmonic</li>
+                <li class="chip">Nav2</li>
+                <li class="chip">PyQt</li>
+                <li class="chip">ros2_control</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>Split into ROS 2 packages: robot description, worlds and bridges, navigation configs, arm bringup, GUI and top-level launches.</li>
+                  <li>Launch profiles for simulation only, simulation with GUI, and full simulation with Nav2.</li>
+                  <li>The GUI runs either autonomous missions or manual teleop.</li>
+                  <li>Hardware paths are stubbed and waiting for bringup.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/soil-fertility-rover" target="_blank" rel="noopener">View code</a>
+              </div>
+            </div>
+          </article>
+          <article class="card card-hover project reveal" id="gesture-control" data-tags="ros2 ml">
+            <div class="project-media">
+              <span class="badge">Perception</span>
+              <img src="assets/projects/hand-gesture-robot.webp" alt="Controlling a TurtleBot3 in Gazebo with hand gestures" width="1000" height="563" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>Hand Gesture Robot Control</h3>
+              <p class="summary">Drive a TurtleBot3 around a Gazebo world with hand gestures from a webcam, recognised in real time at 98% accuracy by a SigLIP vision transformer.</p>
+              <ul class="chips">
+                <li class="chip">ROS</li>
+                <li class="chip">Gazebo</li>
+                <li class="chip">SigLIP</li>
+                <li class="chip">OpenCV</li>
+                <li class="chip">Flask</li>
+                <li class="chip">TurtleBot3</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>Nineteen distinct gestures, smoothed across ten frames so the robot does not twitch.</li>
+                  <li>Open palm forward, OK sign reverse, one finger left, two fingers right, fist stop.</li>
+                  <li>Camera streaming on Windows and macOS through a Flask bridge into WSL2.</li>
+                  <li>Publishes velocity commands on the ROS <code>/cmd_vel</code> topic.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/r_action_m" target="_blank" rel="noopener">View code</a>
+              </div>
+            </div>
+          </article>
+          <article class="card card-hover project reveal" id="ugv-recon" data-tags="embedded grow">
+            <div class="project-media">
+              <span class="badge">Field hardware</span>
+              <img src="assets/projects/ugvrecon.webp" alt="IoT ground vehicle for remote soil health sensing" width="1000" height="563" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>IoT UGV for Remote Soil Health Sensing</h3>
+              <p class="summary">An end-to-end precision agriculture rig: the vehicle gathers soil, environmental and GPS readings in the field and streams them back to a base station for analysis.</p>
+              <ul class="chips">
+                <li class="chip">Raspberry Pi</li>
+                <li class="chip">Arduino Nano</li>
+                <li class="chip">NRF24</li>
+                <li class="chip">GPS</li>
+                <li class="chip">NPK / DHT11</li>
+                <li class="chip">Matplotlib</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>NPK, temperature and humidity sensors integrated alongside GPS tracking.</li>
+                  <li>An NRF24 radio link carries readings from the vehicle back to base.</li>
+                  <li>A Python pipeline processes, plots and stores the incoming CSV streams.</li>
+                  <li>A local dashboard reports vehicle status, sensor values and position.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/UGVRECON" target="_blank" rel="noopener">View code</a>
+              </div>
+            </div>
+          </article>
+          <article class="card card-hover project reveal" id="leaf-disease" data-tags="ml grow">
+            <div class="project-media">
+              <span class="badge">Deep learning</span>
+              <img src="assets/projects/leaf-disease.webp" alt="Leaf disease detection interface" width="1000" height="563" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>Leaf Disease Detection System</h3>
+              <p class="summary">A deep learning system that spots and classifies plant leaf disease, trained on PlantVillage and deployed onto an autonomous rover for use in the field.</p>
+              <ul class="chips">
+                <li class="chip">PyTorch</li>
+                <li class="chip">OpenCV</li>
+                <li class="chip">ResNet</li>
+                <li class="chip">EfficientNet</li>
+                <li class="chip">ViT</li>
+                <li class="chip">Flask</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>Transfer learning on PlantVillage across several backbones, compared head to head.</li>
+                  <li>Real-time classification from the rover's own camera.</li>
+                  <li>A Flask interface for inspecting predictions away from the robot.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/LeafDiseaseDetectionSys" target="_blank" rel="noopener">View code</a>
+                <a class="btn btn-ink btn-sm" href="https://leafdiseasedetectionsys.onrender.com/" target="_blank" rel="noopener">Live demo</a>
+              </div>
+            </div>
+          </article>
+          <article class="card card-hover project reveal" id="multimodal-movie" data-tags="ml">
+            <div class="project-media">
+              <span class="badge">Multimodal</span>
+              <img src="assets/projects/multimodal-movie.webp" alt="Multimodal movie genre classification web app" width="1000" height="563" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>Multimodal Movie Genre Classification</h3>
+              <p class="summary">A web app that predicts a film's genres by fusing what the poster looks like with what the synopsis says, comparing early against late fusion.</p>
+              <ul class="chips">
+                <li class="chip">PyTorch</li>
+                <li class="chip">Flask</li>
+                <li class="chip">NLP</li>
+                <li class="chip">CNN</li>
+                <li class="chip">React</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>A CNN reads posters while an NLP model reads overviews, combined two different ways.</li>
+                  <li>Flask backend with a React frontend for interactive prediction.</li>
+                  <li>Ensembling lifts multi-label accuracy above either modality alone.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/MultiModalMovieGenreClassificationSys" target="_blank" rel="noopener">View code</a>
+                <a class="btn btn-ink btn-sm" href="https://multimodalmoviegenreclassificationsys.onrender.com" target="_blank" rel="noopener">Live demo</a>
+              </div>
+            </div>
+          </article>
+          <article class="card card-hover project reveal" id="cnc-potting" data-tags="embedded grow">
+            <div class="project-media">
+              <span class="badge">Open source</span>
+              <img src="assets/projects/cnc-potting.webp" alt="Automated CNC potting machine hardware" width="1000" height="563" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/projects/placeholder.svg';" />
+            </div>
+            <div class="project-body">
+              <h3>Automated CNC Potting Machine</h3>
+              <p class="summary">An open-source precision farming rig on a CNC gantry that automates plowing, seeding and watering, designed to scale across crops and pot sizes.</p>
+              <ul class="chips">
+                <li class="chip">Arduino Mega 2560</li>
+                <li class="chip">NEMA 17</li>
+                <li class="chip">A4988</li>
+                <li class="chip">Soil Moisture</li>
+                <li class="chip">IR Sensors</li>
+              </ul>
+              <details>
+                <summary><span class="sign" aria-hidden="true"></span> How it works</summary>
+                <ul>
+                  <li>An Arduino Mega 2560 orchestrates the whole planting routine.</li>
+                  <li>Moisture and IR sensors track soil condition and tray position in real time.</li>
+                  <li>NEMA 17 steppers with A4988 drivers give precise tool positioning.</li>
+                  <li>Open design, adaptable to different crops and pot sizes.</li>
+                </ul>
+              </details>
+              <div class="actions">
+                <a class="btn btn-leaf btn-sm" href="https://github.com/ujwalwag/Automated-CNC-Plotting-Machine" target="_blank" rel="noopener">View code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p class="brand" style="margin:0 0 .6rem">Ujwal Waghray</p>
+          <p class="dim" style="max-width:34ch; font-size:.95rem">
+            Robotics engineer building autonomous ground systems &mdash; machines that help things grow.
+          </p>
+        </div>
+        <div>
+          <p class="foot-head">Pages</p>
+          <ul class="foot-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="foot-head">Profiles</p>
+          <ul class="foot-list">
+            <li><a href="https://github.com/ujwalwag" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/ujwalwaghray" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://youtube.com/@waghrayujwal" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://lovedebtplusrobots.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="meta">&copy; 2026 Ujwal Waghray</span>
+        <span class="meta">Norfolk, Virginia</span>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="robots.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>

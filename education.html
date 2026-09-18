@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ujwal Waghray | Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Education &mdash; Ujwal Waghray</title>
+  <meta name="description" content="Degrees and certifications - MS Robotics at SUNY Buffalo, BTech Electronics and Instrumentation." />
 
   <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-951E7GVLKD"></script>
@@ -12,264 +13,588 @@
     function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-951E7GVLKD');
   </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/gptdp.png" sizes="32x32" />
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#f8f9f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c110f" media="(prefers-color-scheme: dark)" />
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
 
-  <!-- Styles -->
-  <style>
+  <!-- Sharing -->
+  <meta property="og:title" content="Education &mdash; Ujwal Waghray" />
+  <meta property="og:description" content="Degrees and certifications - MS Robotics at SUNY Buffalo, BTech Electronics and Instrumentation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ujwal Waghray" />
+  <meta property="og:url" content="https://ujwalwaghray.dev/education.html" />
+  <meta property="og:image" content="https://ujwalwaghray.dev/assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://ujwalwaghray.dev/assets/og-cover.jpg" />
+  <link rel="canonical" href="https://ujwalwaghray.dev/education.html" />
 
-    :root{ --ink:#0b1324; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; }
-    html,body{height:100%}
-    body{background:var(--bg); color:var(--ink); font-family:Manrope,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:var(--ink); text-decoration:none}
-
-    /* sticky, translucent navbar */
-    .navbar{background:rgba(255,255,255,.86)!important; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid var(--line)}
-    .navbar-brand{font-weight:800}
-    .navbar-light .nav-link{color:#111827}
-    .navbar-light .nav-link.active{font-weight:600; text-decoration:underline}
-
-    /* blueprint background */
-    .grid-bg{position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:-1}
-    .grid-bg svg{width:100%; height:100%; display:block}
-
-    /* cards */
-    .card-clean{border:1px solid var(--line); border-radius:18px; background:#fff; transition:transform .18s ease, box-shadow .18s ease}
-    .card-clean:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.06)}
-
-    /* edu layout */
-    .edu-item{display:flex; gap:16px; align-items:center}
-    .edu-logo{flex:0 0 auto; width:88px; height:88px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; background:#fff}
-    .edu-logo img{max-width:64px; max-height:64px}
-
-    /* chips */
-    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
-    .chip{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.85rem; border-radius:999px; padding:.35rem .6rem; background:#fff; border:1px dashed #d1d5db; color:#111827}
-
-    /* cert grid fix */
-    .cert-card{display:flex; flex-direction:column; align-items:center; height:100%}
-    .cert-card .logo-pad{margin-bottom:.75rem}
-    .cert-card .btn{margin-top:auto}
-
-    .logo-pad img{max-width:160px; max-height:160px}
-    footer{border-top:1px solid var(--line); color:var(--muted)}
-
-    /* START NEW MODAL CSS */
-.modal-viewer {
-display: none;
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.8);
-backdrop-filter: blur(4px);
-justify-content: center;
-align-items: center;
-z-index: 2000;
-}
-.modal-content-viewer {
-width: 95%;
-max-width: 1000px;
-height: 95vh;
-background: #fff;
-padding: 10px;
-border-radius: 12px;
-display: flex;
-flex-direction: column;
-}
-@media (max-width: 768px) {
-.modal-content-viewer {
- height: 90vh;
- }
-}
-/* END NEW MODAL CSS */
-  </style>
+  <!-- Theme before first paint, so there is no flash. -->
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('theme');
+        if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+      }catch(e){}
+    })();
+  </script>
 </head>
 <body>
-  <!-- blueprint background -->
-  <div class="grid-bg" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1" />
-        </pattern>
-        <pattern id="gridBold" width="200" height="200" patternUnits="userSpaceOnUse">
-          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#e5e7eb" stroke-width="1.2" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" />
-      <rect width="100%" height="100%" fill="url(#gridBold)" />
-    </svg>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Backdrop: blueprint grid, sun, drifting motes -->
+  <div class="backdrop" aria-hidden="true" data-motes>
+    <div class="grid-layer">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="gridFine" width="38" height="38" patternUnits="userSpaceOnUse">
+            <path class="grid-fine" d="M 38 0 L 0 0 0 38" fill="none" stroke-width="1" />
+          </pattern>
+          <pattern id="gridBold" width="190" height="190" patternUnits="userSpaceOnUse">
+            <path class="grid-bold" d="M 190 0 L 0 0 0 190" fill="none" stroke-width="1.1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#gridFine)" />
+        <rect width="100%" height="100%" fill="url(#gridBold)" />
+      </svg>
+    </div>
+
+    <div class="sun">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="46" stroke-width="1.4" />
+        <circle cx="100" cy="100" r="62" stroke-width=".8" stroke-dasharray="3 7" />
+        <g class="sun-spin" stroke-width="1.2">
+          <circle cx="100" cy="100" r="80" stroke-dasharray="1.5 12" />
+          <circle cx="100" cy="100" r="94" stroke-dasharray="1 20" />
+        </g>
+      </svg>
+    </div>
+
   </div>
 
-  <!-- Nav -->
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Ujwal Waghray</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="education.html">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+  <!-- Robotics line-art layer -->
+  <div class="robotics-3d-container" aria-hidden="true">
+<!-- 3D Robotic Arm -->
+    <div class="robotics-3d-element robotic-arm-3d" id="roboticArm3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 250 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="arm3d" transform="translate(125, 250)">
+          <!-- Base -->
+          <g id="base3d">
+            <rect x="-30" y="0" width="60" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+            <rect x="-25" y="5" width="50" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Joint 1 & Segment 1 Group -->
+          <g id="arm-segment1-group" transform="rotate(0)">
+            <!-- Joint 1 -->
+            <g id="joint1-3d">
+              <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="0" cy="0" r="3" fill="currentColor" opacity="0.7"/>
+            </g>
+            <!-- Segment 1 -->
+            <g id="segment1-3d">
+              <line x1="0" y1="0" x2="0" y2="-80" stroke="currentColor" stroke-width="4" opacity="0.7"/>
+              <rect x="-8" y="-80" width="16" height="80" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </g>
+            <!-- Joint 2 & Segment 2 Group -->
+            <g id="arm-segment2-group" transform="translate(0, -80) rotate(0)">
+              <!-- Joint 2 -->
+              <g id="joint2-3d">
+                <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+                <circle cx="0" cy="0" r="6" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+              <!-- Segment 2 -->
+              <g id="segment2-3d">
+                <line x1="0" y1="0" x2="60" y2="-60" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+                <rect x="-6" y="-60" width="12" height="85" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" transform="rotate(45)"/>
+              </g>
+              <!-- Joint 3 & Gripper -->
+              <g id="gripper3d" transform="translate(60, -60)">
+                <circle cx="0" cy="0" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+                <!-- Gripper 1 (top finger) -->
+                <g id="gripper1-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="-15" stroke="currentColor" stroke-width="3"/>
+                </g>
+                <!-- Gripper 2 (bottom finger) -->
+                <g id="gripper2-3d" transform-origin="0 0">
+                  <line x1="0" y1="0" x2="20" y2="15" stroke="currentColor" stroke-width="3"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Rover -->
+    <div class="robotics-3d-element rover-3d" id="rover3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+        <g id="rover3d" transform="translate(140, 150)">
+          <!-- Body -->
+          <rect x="-80" y="-40" width="160" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-75" y="-35" width="150" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <!-- Wheels -->
+          <g id="wheel1-3d" transform="translate(-60, 10)">
+            <g id="wheel1-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel2-3d" transform="translate(0, 10)">
+            <g id="wheel2-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <g id="wheel3-3d" transform="translate(60, 10)">
+            <g id="wheel3-inner">
+              <circle cx="0" cy="0" r="18" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <line x1="0" y1="-18" x2="0" y2="18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              <line x1="-18" y1="0" x2="18" y2="0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </g>
+          </g>
+          <!-- Antenna -->
+          <line x1="0" y1="-40" x2="0" y2="-70" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-70" r="4" fill="currentColor" opacity="0.6"/>
+          <!-- Camera/Sensor -->
+          <rect x="-15" y="-50" width="30" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <circle cx="0" cy="-42" r="5" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Drone -->
+    <div class="robotics-3d-element drone-3d" id="drone3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="drone3d" transform="translate(110, 110)">
+          <!-- Central Body -->
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Propellers -->
+          <g id="prop1-3d">
+            <circle cx="-60" cy="-60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="-80" x2="-60" y2="-40" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="-60" x2="-40" y2="-60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="-70" x2="-50" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="-70" x2="-70" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop2-3d">
+            <circle cx="60" cy="-60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="-80" x2="60" y2="-40" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="-60" x2="80" y2="-60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="-70" x2="70" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="-70" x2="50" y2="-50" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop3-3d">
+            <circle cx="-60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="-60" y1="40" x2="-60" y2="80" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-80" y1="60" x2="-40" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="-70" y1="50" x2="-50" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="-50" y1="50" x2="-70" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g id="prop4-3d">
+            <circle cx="60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+            <line x1="60" y1="40" x2="60" y2="80" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="40" y1="60" x2="80" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="50" x2="70" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="70" y1="50" x2="50" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          </g>
+          <!-- Arms connecting to propellers -->
+          <line x1="-25" y1="-25" x2="-60" y2="-60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="-25" x2="60" y2="-60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="-25" y1="25" x2="-60" y2="60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <line x1="25" y1="25" x2="60" y2="60" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Camera/Gimbal -->
+          <circle cx="0" cy="15" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+          <rect x="-6" y="23" width="12" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Lidar Scanner -->
+    <div class="robotics-3d-element lidar-3d" id="lidar3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <g id="lidar3d" transform="translate(90, 90)">
+          <!-- Base -->
+          <rect x="-20" y="40" width="40" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+          <!-- Scanner Unit -->
+          <circle cx="0" cy="0" r="35" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="lidar-ring1"/>
+          <circle cx="0" cy="0" r="25" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6" id="lidar-ring2"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+          <!-- Scan Lines -->
+          <line x1="0" y1="0" x2="0" y2="-50" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line1"/>
+          <line x1="0" y1="0" x2="50" y2="0" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line2"/>
+          <line x1="0" y1="0" x2="0" y2="50" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line3"/>
+          <line x1="0" y1="0" x2="-50" y2="0" stroke="currentColor" stroke-width="2" opacity="0.7" id="scan-line4"/>
+          <!-- Detection Points -->
+          <circle cx="0" cy="-35" r="3" fill="currentColor" opacity="0.8" id="detect-point1"/>
+          <circle cx="35" cy="0" r="3" fill="currentColor" opacity="0.8" id="detect-point2"/>
+          <circle cx="0" cy="35" r="3" fill="currentColor" opacity="0.8" id="detect-point3"/>
+          <circle cx="-35" cy="0" r="3" fill="currentColor" opacity="0.8" id="detect-point4"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Humanoid Robot -->
+    <div class="robotics-3d-element humanoid-3d" id="humanoid3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <g id="humanoid3d" transform="translate(100, 250)">
+          <!-- Head -->
+          <circle cx="0" cy="-120" r="25" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-15" y="-140" width="30" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Torso -->
+          <rect x="-30" y="-100" width="60" height="80" rx="8" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+          <rect x="-25" y="-95" width="50" height="70" rx="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <!-- Arms -->
+          <g id="arm-left-3d">
+            <line x1="-30" y1="-80" x2="-60" y2="-40" stroke="currentColor" stroke-width="3" opacity="0.7"/>
+            <circle cx="-60" cy="-40" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+            <line x1="-60" y1="-40" x2="-75" y2="-20" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="arm-right-3d">
+            <line x1="30" y1="-80" x2="60" y2="-40" stroke="currentColor" stroke-width="3" opacity="0.7"/>
+            <circle cx="60" cy="-40" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+            <line x1="60" y1="-40" x2="75" y2="-20" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <!-- Legs -->
+          <g id="leg-left-3d">
+            <line x1="-15" y1="-20" x2="-20" y2="30" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="-20" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+          <g id="leg-right-3d">
+            <line x1="15" y1="-20" x2="20" y2="30" stroke="currentColor" stroke-width="3.5" opacity="0.7"/>
+            <circle cx="20" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Data Analytics -->
+    <div class="robotics-3d-element data-analytics-3d" id="dataAnalytics3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+        <g id="dataAnalytics3d" transform="translate(20, 200)">
+          <!-- Chart Background -->
+          <rect x="0" y="0" width="240" height="180" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.2" rx="4"/>
+          
+          <!-- Grid Lines -->
+          <line x1="0" y1="0" x2="240" y2="0" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-45" x2="240" y2="-45" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-90" x2="240" y2="-90" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-135" x2="240" y2="-135" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="-180" x2="240" y2="-180" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          
+          <!-- Bar Chart Bars -->
+          <rect x="20" y="0" width="30" height="-40" fill="currentColor" opacity="0.6" id="bar1"/>
+          <rect x="60" y="0" width="30" height="-80" fill="currentColor" opacity="0.6" id="bar2"/>
+          <rect x="100" y="0" width="30" height="-120" fill="currentColor" opacity="0.6" id="bar3"/>
+          <rect x="140" y="0" width="30" height="-100" fill="currentColor" opacity="0.6" id="bar4"/>
+          <rect x="180" y="0" width="30" height="-140" fill="currentColor" opacity="0.6" id="bar5"/>
+          <rect x="220" y="0" width="30" height="-90" fill="currentColor" opacity="0.6" id="bar6"/>
+          
+          <!-- Line Graph -->
+          <polyline id="lineGraph" points="30,-40 70,-80 110,-120 150,-100 190,-140 230,-90" 
+                    fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+          
+          <!-- Data Points -->
+          <circle cx="30" cy="-40" r="4" fill="currentColor" opacity="0.8" id="point1"/>
+          <circle cx="70" cy="-80" r="4" fill="currentColor" opacity="0.8" id="point2"/>
+          <circle cx="110" cy="-120" r="4" fill="currentColor" opacity="0.8" id="point3"/>
+          <circle cx="150" cy="-100" r="4" fill="currentColor" opacity="0.8" id="point4"/>
+          <circle cx="190" cy="-140" r="4" fill="currentColor" opacity="0.8" id="point5"/>
+          <circle cx="230" cy="-90" r="4" fill="currentColor" opacity="0.8" id="point6"/>
+          
+          <!-- Animated Data Flow -->
+          <circle cx="0" cy="-90" r="3" fill="currentColor" opacity="0.9" id="dataFlow1"/>
+          <circle cx="0" cy="-60" r="3" fill="currentColor" opacity="0.9" id="dataFlow2"/>
+          <circle cx="0" cy="-30" r="3" fill="currentColor" opacity="0.9" id="dataFlow3"/>
+          
+          <!-- Percentage Indicators -->
+          <text x="35" y="-45" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent1">45%</text>
+          <text x="75" y="-85" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent2">78%</text>
+          <text x="115" y="-125" font-family="Arial" font-size="10" fill="currentColor" opacity="0.5" id="percent3">92%</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 3D Neural Network -->
+    <div class="robotics-3d-element neural-network-3d" id="neuralNetwork3D">
+      <svg class="robotics-3d-svg" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+        <g id="neuralNetwork3d" transform="translate(150, 140)">
+          <!-- Input Layer Nodes -->
+          <circle cx="-100" cy="-80" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input1"/>
+          <circle cx="-100" cy="-40" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input2"/>
+          <circle cx="-100" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input3"/>
+          <circle cx="-100" cy="40" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input4"/>
+          <circle cx="-100" cy="80" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" id="input5"/>
+          
+          <!-- Hidden Layer 1 Nodes -->
+          <circle cx="0" cy="-60" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-1"/>
+          <circle cx="0" cy="-20" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-2"/>
+          <circle cx="0" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-3"/>
+          <circle cx="0" cy="60" r="14" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.8" id="hidden1-4"/>
+          
+          <!-- Hidden Layer 2 Nodes -->
+          <circle cx="100" cy="-40" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-1"/>
+          <circle cx="100" cy="0" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-2"/>
+          <circle cx="100" cy="40" r="16" fill="none" stroke="currentColor" stroke-width="3" opacity="0.9" id="hidden2-3"/>
+          
+          <!-- Output Layer Nodes -->
+          <circle cx="200" cy="-20" r="18" fill="none" stroke="currentColor" stroke-width="3.5" opacity="1" id="output1"/>
+          <circle cx="200" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="3.5" opacity="1" id="output2"/>
+          
+          <!-- Connections Input to Hidden 1 -->
+          <line x1="-88" y1="-80" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn1"/>
+          <line x1="-88" y1="-40" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn2"/>
+          <line x1="-88" y1="0" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn3"/>
+          <line x1="-88" y1="40" x2="-14" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn4"/>
+          <line x1="-88" y1="80" x2="-14" y2="60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn5"/>
+          <line x1="-88" y1="-80" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn6"/>
+          <line x1="-88" y1="-40" x2="-14" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn7"/>
+          <line x1="-88" y1="0" x2="-14" y2="60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn8"/>
+          <line x1="-88" y1="40" x2="-14" y2="-60" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn9"/>
+          <line x1="-88" y1="80" x2="-14" y2="-20" stroke="currentColor" stroke-width="1" opacity="0.3" id="conn10"/>
+          
+          <!-- Connections Hidden 1 to Hidden 2 -->
+          <line x1="14" y1="-60" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn11"/>
+          <line x1="14" y1="-20" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn12"/>
+          <line x1="14" y1="20" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn13"/>
+          <line x1="14" y1="60" x2="84" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn14"/>
+          <line x1="14" y1="-60" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn15"/>
+          <line x1="14" y1="-20" x2="84" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn16"/>
+          <line x1="14" y1="20" x2="84" y2="-40" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn17"/>
+          <line x1="14" y1="60" x2="84" y2="0" stroke="currentColor" stroke-width="1.2" opacity="0.4" id="conn18"/>
+          
+          <!-- Connections Hidden 2 to Output -->
+          <line x1="116" y1="-40" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn19"/>
+          <line x1="116" y1="0" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn20"/>
+          <line x1="116" y1="40" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn21"/>
+          <line x1="116" y1="-40" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn22"/>
+          <line x1="116" y1="0" x2="182" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn23"/>
+          <line x1="116" y1="40" x2="182" y2="-20" stroke="currentColor" stroke-width="1.5" opacity="0.5" id="conn24"/>
+          
+          <!-- Data Flow Particles -->
+          <circle cx="-100" cy="-80" r="2" fill="currentColor" opacity="0.9" id="particle1"/>
+          <circle cx="-100" cy="-40" r="2" fill="currentColor" opacity="0.9" id="particle2"/>
+          <circle cx="-100" cy="0" r="2" fill="currentColor" opacity="0.9" id="particle3"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+
+  <header class="site-head">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">Ujwal Waghray</a>
+      <nav aria-label="Main">
+        <ul class="nav" id="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html" aria-current="page">Education</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-      </div>
+      </nav>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between light and dark">
+        <svg class="sun-i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- Degrees -->
-  <section id="education" class="py-5">
-    <div class="container">
-      <h2 class="text-center display-5 mb-4 section-title">Degrees</h2>
+  <main id="main">
+    <section class="section" style="padding-bottom:0">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:2rem">
+          <p class="eyebrow">Background</p>
+          <h1>Education</h1>
+        </div>
+        <div class="story reveal" style="margin-bottom:2.5rem">
+          <div class="prose">
+            <p>
+              I studied electronics and instrumentation before robotics was the plan. That order turned
+              out to matter: sensors, signals and control loops were the vocabulary long before ROS was,
+              and it means I tend to look at a misbehaving robot as an instrumentation problem first.
+            </p>
+            <p>
+              The master's at Buffalo filled in what that background could not &mdash; SLAM, modern
+              perception, planning under uncertainty &mdash; and gave me a lab where simulation-first
+              development was the house style. The certifications in between are mostly me shoring up
+              the mathematics and the cloud side on my own time.
+            </p>
+          </div>
+          <div class="story-aside">
+            <p class="eyebrow">Useful accident</p>
+            <p>
+              Five years between the bachelor's and the master's, spent shipping software and running a
+              construction project. I would not trade them &mdash; they are why I care whether a robot
+              can actually be maintained.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="row justify-content-center g-3">
-        <!-- SUNY Buffalo -->
-        <div class="col-12 col-lg-10">
-          <div class="card-clean p-4">
-            <div class="edu-item">
-              <div class="edu-logo" aria-hidden="true">
-                <img src="assets/suny.png" alt="SUNY Buffalo logo" />
-              </div>
+    <section class="section" style="padding-top:clamp(1.5rem,3vw,2.5rem)">
+      <div class="wrap">
+        <div class="grid g2" style="gap:1.5rem">
+          <div class="card card-accent card-hover reveal">
+            <div style="display:flex; gap:1rem; align-items:flex-start">
+              <div class="tl-logo"><img src="assets/suny.webp" alt="SUNY Buffalo logo" loading="lazy" decoding="async" /></div>
               <div>
-                <h5 class="fw-bold mb-1">Master of Science in Engineering Sciences (Robotics)</h5>
-                <h6 class="text-muted mb-2">SUNY Buffalo · 2024 — 2025</h6>
-                <p class="mb-2" style="color:var(--muted)">Focus on advanced robotics, machine learning, computer vision, and autonomous systems.</p>
-                <div class="chips">
-                  <span class="chip">SLAM</span>
-                  <span class="chip">Perception</span>
-                  <span class="chip">Controls</span>
-                  <span class="chip">ROS/ROS2</span>
-                </div>
+                <h3>MS, Engineering Sciences (Robotics)</h3>
+                <p class="role-org">SUNY Buffalo</p>
+                <p class="role-dates">2024 &mdash; 2025</p>
+                <p class="dim" style="margin-top:.8rem; font-size:.96rem">
+                  Advanced robotics, machine learning, computer vision and autonomous systems.
+                </p>
+                <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip chip-leaf">SLAM</li>
+                  <li class="chip chip-circuit">Perception</li>
+                  <li class="chip">Controls</li>
+                  <li class="chip chip-leaf">ROS / ROS 2</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card card-accent card-hover reveal">
+            <div style="display:flex; gap:1rem; align-items:flex-start">
+              <div class="tl-logo"><img src="assets/srm.webp" alt="SRM University logo" loading="lazy" decoding="async" /></div>
+              <div>
+                <h3>BTech, Electronics &amp; Instrumentation</h3>
+                <p class="role-org">SRM University</p>
+                <p class="role-dates">2013 &mdash; 2018</p>
+                <p class="dim" style="margin-top:.8rem; font-size:.96rem">
+                  Electronics, control systems, automation and instrumentation, with hands-on control design.
+                </p>
+                <ul class="chips" style="margin-top:.9rem">
+                  <li class="chip">Control Systems</li>
+                  <li class="chip">Instrumentation</li>
+                  <li class="chip">Automation</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- SRM University -->
-        <div class="col-12 col-lg-10">
-          <div class="card-clean p-4">
-            <div class="edu-item">
-              <div class="edu-logo" aria-hidden="true">
-                <img src="assets/srm.webp" alt="SRM University logo" />
-              </div>
-              <div>
-                <h5 class="fw-bold mb-1">Bachelor of Technology in Electronics & Instrumentation</h5>
-                <h6 class="text-muted mb-2">SRM University · 2013 — 2018</h6>
-                <p class="mb-2" style="color:var(--muted)">Specialization in electronics, control systems, automation, and instrumentation with hands‑on control system design.</p>
-                <div class="chips">
-                  <span class="chip">Control Systems</span>
-                  <span class="chip">Instrumentation</span>
-                  <span class="chip">Automation</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:1.5rem">
+          <p class="eyebrow">Credentials</p>
+          <h2>Certifications</h2>
+        </div>
+        <div class="rows">
+          <a class="row-card reveal" href="assets/certification_360.webp" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">&#10003;</span>
+            <span class="grow">
+              <span class="t">Data Science Certification</span>
+              <span class="s">360DigiTMG</span>
+            </span>
+            <span class="go" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="row-card reveal" href="assets/5578703.webp" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">&#10003;</span>
+            <span class="grow">
+              <span class="t">Professional Machine Learning Engineer</span>
+              <span class="s">Google Cloud</span>
+            </span>
+            <span class="go" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="row-card reveal" href="assets/certificate_inno.webp" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">&#10003;</span>
+            <span class="grow">
+              <span class="t">Internship Certification</span>
+              <span class="s">Innodatatics</span>
+            </span>
+            <span class="go" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="row-card reveal" href="assets/cert1_boai.webp" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">&#10003;</span>
+            <span class="grow">
+              <span class="t">Data Analysis with Python</span>
+              <span class="s">freeCodeCamp</span>
+            </span>
+            <span class="go" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="row-card reveal" href="assets/cert3_boai.webp" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">&#10003;</span>
+            <span class="grow">
+              <span class="t">Scientific Computing with Python</span>
+              <span class="s">freeCodeCamp</span>
+            </span>
+            <span class="go" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="row-card reveal" href="assets/cert2_boai.webp" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">&#10003;</span>
+            <span class="grow">
+              <span class="t">College Algebra with Python</span>
+              <span class="s">freeCodeCamp</span>
+            </span>
+            <span class="go" aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
- <section id="certifications" class="py-4">
-    <div class="container">
-      <h2 class="text-center display-6 mb-4">Certifications</h2>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-3">
-
-        <!-- 360DigiTMG -->
-        <div class="col">
-          <div class="card-clean p-4 h-100 cert-card">
-            <div class="logo-pad"><img src="assets/df4oebg-751682e5-6a04-42d9-bba1-c0dd6f6ce601.png" alt="360DigiTMG logo" /></div>
-            <h5 class="fw-bold mb-1">Data Science Certification</h5>
-            <h6 class="text-muted mb-2">360DigiTMG</h6>
-            <p class="mb-3" style="color:var(--muted)">Completed Data Science using Python & R Programming.</p>
-            <a class="btn btn-outline-dark view-cert-btn" href="assets/certification_360.png" target="_blank">View Certificate</a>
-          </div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p class="brand" style="margin:0 0 .6rem">Ujwal Waghray</p>
+          <p class="dim" style="max-width:34ch; font-size:.95rem">
+            Robotics engineer building autonomous ground systems &mdash; machines that help things grow.
+          </p>
         </div>
-
-        <!-- fCC Data Analysis -->
-        <div class="col">
-          <div class="card-clean p-4 h-100 cert-card">
-            <div class="logo-pad"><img src="assets/FreeCodeCamp_logo.svg.png" alt="freeCodeCamp logo" /></div>
-            <h5 class="fw-bold mb-1">Data Analysis with Python</h5>
-            <h6 class="text-muted mb-2">freeCodeCamp</h6>
-            <p class="mb-3" style="color:var(--muted)">Data wrangling, visualization, and statistics in Python.</p>
-            <a class="btn btn-outline-dark view-cert-btn" href="assets/cert1_boai.jpg" target="_blank">View Certificate</a>
-          </div>
+        <div>
+          <p class="foot-head">Pages</p>
+          <ul class="foot-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
         </div>
-
-        <!-- fCC College Algebra -->
-        <div class="col">
-          <div class="card-clean p-4 h-100 cert-card">
-            <div class="logo-pad"><img src="assets/FreeCodeCamp_logo.svg.png" alt="freeCodeCamp logo" /></div>
-            <h5 class="fw-bold mb-1">College Algebra with Python</h5>
-            <h6 class="text-muted mb-2">freeCodeCamp</h6>
-            <p class="mb-3" style="color:var(--muted)">Equations, functions, graphing, and applied algebra.</p>
-            <a class="btn btn-outline-dark view-cert-btn" href="assets/cert2_boai.jpg" target="_blank">View Certificate</a>
-          </div>
+        <div>
+          <p class="foot-head">Profiles</p>
+          <ul class="foot-list">
+            <li><a href="https://github.com/ujwalwag" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/ujwalwaghray" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://youtube.com/@waghrayujwal" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://lovedebtplusrobots.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
         </div>
-
-        <!-- fCC Scientific Computing -->
-        <div class="col">
-          <div class="card-clean p-4 h-100 cert-card">
-            <div class="logo-pad"><img src="assets/FreeCodeCamp_logo.svg.png" alt="freeCodeCamp logo" /></div>
-            <h5 class="fw-bold mb-1">Scientific Computing with Python</h5>
-            <h6 class="text-muted mb-2">freeCodeCamp</h6>
-            <p class="mb-3" style="color:var(--muted)">Efficient algorithms and numerical computations.</p>
-            <a class="btn btn-outline-dark view-cert-btn" href="assets/cert3_boai.jpg" target="_blank">View Certificate</a>
-          </div>
-        </div>
-
-       <!-- Google Cloud PMLE -->
-        <div class="col">
-          <div class="card-clean p-4 h-100 cert-card">
-            <div class="logo-pad"><img src="assets/Google_Cloud_logo.svg.png" alt="Google Cloud logo" /></div>
-            <h5 class="fw-bold mb-1">Professional Machine Learning Engineer</h5>
-            <h6 class="text-muted mb-2">Google Cloud</h6>
-            <p class="mb-3" style="color:var(--muted)">Building and deploying ML models on Google Cloud.</p>
-            <a class="btn btn-outline-dark view-cert-btn" href="assets/5578703.png" target="_blank">View Certificate</a>
-          </div>
-        </div>
-
-        <!-- Innodatatics Internship Certification -->
-<div class="col">
-  <div class="card-clean p-4 h-100 cert-card">
-    <div class="logo-pad">
-      <img src="assets\innologo.png" alt="Innodatatics logo" />
-    </div>
-    <h5 class="fw-bold mb-1">Internship Certification</h5>
-    <h6 class="text-muted mb-2">Innodatatics Pvt. Ltd. (USA)</h6>
-    <p class="mb-3" style="color:var(--muted)">
-      Built a career transition recommendation system using Python
-    </p>
-    <a class="btn btn-outline-dark view-cert-btn" href="assets/certificate_inno.jpg" target="_blank" rel="noopener">
-      View Certificate
-    </a>
-  </div>
-</div>
-
-
-
-
+      </div>
+      <div class="foot-bottom">
+        <span class="meta">&copy; 2026 Ujwal Waghray</span>
+        <span class="meta">Norfolk, Virginia</span>
       </div>
     </div>
-  </section>
-
-
-  <footer class="text-center py-4">
-    <div class="container"><p class="mb-0">&copy; 2025 Ujwal Waghray. All rights reserved.</p></div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
-
-  </script>
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="robots.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>
